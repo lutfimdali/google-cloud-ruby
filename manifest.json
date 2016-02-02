@@ -1,0 +1,644 @@
+{
+  "lang": "ruby",
+  "friendlyLang": "Ruby",
+  "markdown": "ruby",
+  "versions": [
+    "v0.6.1",
+    "master"
+  ],
+  "content": "json",
+  "home": "home.html",
+  "overview": "overview.html",
+  "guides": [
+    {
+      "title": "Authentication",
+      "id": "authentication",
+      "edit": "https://github.com/GoogleCloudPlatform/gcloud-common/edit/master/authentication/readme.md",
+      "contents": [
+        "https://raw.githubusercontent.com/GoogleCloudPlatform/gcloud-common/master/authentication/readme.md"
+      ]
+    },
+    {
+      "title": "FAQ",
+      "id": "faq",
+      "edit": "https://github.com/GoogleCloudPlatform/gcloud-common/edit/master/faq/readme.md",
+      "contents": [
+        "https://raw.githubusercontent.com/GoogleCloudPlatform/gcloud-common/master/faq/readme.md"
+      ]
+    },
+    {
+      "title": "Troubleshooting",
+      "id": "troubleshooting",
+      "edit": "https://github.com/GoogleCloudPlatform/gcloud-common/edit/master/troubleshooting/readme.md",
+      "contents": [
+        "https://raw.githubusercontent.com/GoogleCloudPlatform/gcloud-common/master/troubleshooting/readme.md"
+      ]
+    },
+    {
+      "title": "Contributing",
+      "id": "contributing",
+      "edit": "https://github.com/GoogleCloudPlatform/gcloud-common/edit/master/contributing/readme.md",
+      "contents": "https://raw.githubusercontent.com/GoogleCloudPlatform/gcloud-common/master/contributing/readme.md"
+    }
+  ],
+  "services": [
+    {
+      "title": "Gcloud",
+      "id": "gcloud",
+      "contents": "gcloud.json",
+      "nav": [
+        {
+          "title": "Backoff",
+          "id": "backoff",
+          "contents": "gcloud/backoff.json"
+        },
+        {
+          "title": "Error",
+          "id": "error",
+          "contents": "gcloud/error.json"
+        },
+        {
+          "title": "Upload",
+          "id": "upload",
+          "contents": "gcloud/upload.json"
+        }
+      ]
+    },
+    {
+      "title": "BigQuery",
+      "id": "bigquery",
+      "contents": "gcloud/bigquery.json",
+      "nav": [
+        {
+          "title": "ApiError",
+          "id": "apierror",
+          "contents": "bigquery/apierror.json"
+        },
+        {
+          "title": "CopyJob",
+          "id": "copyjob",
+          "contents": "bigquery/copyjob.json"
+        },
+        {
+          "title": "Data",
+          "id": "data",
+          "contents": "bigquery/data.json"
+        },
+        {
+          "title": "Dataset",
+          "id": "dataset",
+          "contents": "bigquery/dataset.json"
+        },
+        {
+          "title": "Dataset::Access",
+          "id": "dataset-access",
+          "contents": "bigquery/dataset-access.json"
+        },
+        {
+          "title": "Dataset::List",
+          "id": "dataset-list",
+          "contents": "bigquery/dataset-list.json"
+        },
+        {
+          "title": "Error",
+          "id": "error",
+          "contents": "bigquery/error.json"
+        },
+        {
+          "title": "ExtractJob",
+          "id": "extractjob",
+          "contents": "bigquery/extractjob.json"
+        },
+        {
+          "title": "InsertResponse",
+          "id": "insertresponse",
+          "contents": "bigquery/insertresponse.json"
+        },
+        {
+          "title": "InsertResponse::InsertError",
+          "id": "insertresponse-inserterror",
+          "contents": "bigquery/insertresponse-inserterror.json"
+        },
+        {
+          "title": "Job",
+          "id": "job",
+          "contents": "bigquery/job.json"
+        },
+        {
+          "title": "Job::List",
+          "id": "job-list",
+          "contents": "bigquery/job-list.json"
+        },
+        {
+          "title": "LoadJob",
+          "id": "loadjob",
+          "contents": "bigquery/loadjob.json"
+        },
+        {
+          "title": "Project",
+          "id": "project",
+          "contents": "bigquery/project.json"
+        },
+        {
+          "title": "QueryData",
+          "id": "querydata",
+          "contents": "bigquery/querydata.json"
+        },
+        {
+          "title": "QueryJob",
+          "id": "queryjob",
+          "contents": "bigquery/queryjob.json"
+        },
+        {
+          "title": "Table",
+          "id": "table",
+          "contents": "bigquery/table.json"
+        },
+        {
+          "title": "Table::List",
+          "id": "table-list",
+          "contents": "bigquery/table-list.json"
+        },
+        {
+          "title": "Table::Schema",
+          "id": "table-schema",
+          "contents": "bigquery/table-schema.json"
+        },
+        {
+          "title": "View",
+          "id": "view",
+          "contents": "bigquery/view.json"
+        }
+      ]
+    },
+    {
+      "title": "DNS",
+      "id": "dns",
+      "contents": "gcloud/dns.json",
+      "nav": [
+        {
+          "title": "ApiError",
+          "id": "apierror",
+          "contents": "dns/apierror.json"
+        },
+        {
+          "title": "Change",
+          "id": "change",
+          "contents": "dns/change.json"
+        },
+        {
+          "title": "Change::List",
+          "id": "change-list",
+          "contents": "dns/change-list.json"
+        },
+        {
+          "title": "Connection",
+          "id": "connection",
+          "contents": "dns/connection.json"
+        },
+        {
+          "title": "Connection::IPAddr",
+          "id": "connection-ipaddr",
+          "contents": "dns/connection-ipaddr.json"
+        },
+        {
+          "title": "Error",
+          "id": "error",
+          "contents": "dns/error.json"
+        },
+        {
+          "title": "Project",
+          "id": "project",
+          "contents": "dns/project.json"
+        },
+        {
+          "title": "Record",
+          "id": "record",
+          "contents": "dns/record.json"
+        },
+        {
+          "title": "Record::List",
+          "id": "record-list",
+          "contents": "dns/record-list.json"
+        },
+        {
+          "title": "Zone",
+          "id": "zone",
+          "contents": "dns/zone.json"
+        },
+        {
+          "title": "Zone::List",
+          "id": "zone-list",
+          "contents": "dns/zone-list.json"
+        },
+        {
+          "title": "Zone::Transaction",
+          "id": "zone-transaction",
+          "contents": "dns/zone-transaction.json"
+        }
+      ]
+    },
+    {
+      "title": "Datastore",
+      "id": "datastore",
+      "contents": "gcloud/datastore.json",
+      "nav": [
+        {
+          "title": "ApiError",
+          "id": "apierror",
+          "contents": "datastore/apierror.json"
+        },
+        {
+          "title": "Dataset",
+          "id": "dataset",
+          "contents": "datastore/dataset.json"
+        },
+        {
+          "title": "Dataset::LookupResults",
+          "id": "dataset-lookupresults",
+          "contents": "datastore/dataset-lookupresults.json"
+        },
+        {
+          "title": "Dataset::QueryResults",
+          "id": "dataset-queryresults",
+          "contents": "datastore/dataset-queryresults.json"
+        },
+        {
+          "title": "Entity",
+          "id": "entity",
+          "contents": "datastore/entity.json"
+        },
+        {
+          "title": "Error",
+          "id": "error",
+          "contents": "datastore/error.json"
+        },
+        {
+          "title": "Key",
+          "id": "key",
+          "contents": "datastore/key.json"
+        },
+        {
+          "title": "KeyfileError",
+          "id": "keyfileerror",
+          "contents": "datastore/keyfileerror.json"
+        },
+        {
+          "title": "Properties",
+          "id": "properties",
+          "contents": "datastore/properties.json"
+        },
+        {
+          "title": "PropertyError",
+          "id": "propertyerror",
+          "contents": "datastore/propertyerror.json"
+        },
+        {
+          "title": "Query",
+          "id": "query",
+          "contents": "datastore/query.json"
+        },
+        {
+          "title": "Transaction",
+          "id": "transaction",
+          "contents": "datastore/transaction.json"
+        },
+        {
+          "title": "TransactionError",
+          "id": "transactionerror",
+          "contents": "datastore/transactionerror.json"
+        }
+      ]
+    },
+    {
+      "title": "Logging",
+      "id": "logging",
+      "contents": "gcloud/logging.json",
+      "implemented": "> 0.6.1",
+      "nav": [
+        {
+          "title": "ApiError",
+          "id": "apierror",
+          "contents": "logging/apierror.json"
+        },
+        {
+          "title": "Entry",
+          "id": "entry",
+          "contents": "logging/entry.json"
+        },
+        {
+          "title": "Entry::HttpRequest",
+          "id": "entry-httprequest",
+          "contents": "logging/entry-httprequest.json"
+        },
+        {
+          "title": "Entry::List",
+          "id": "entry-list",
+          "contents": "logging/entry-list.json"
+        },
+        {
+          "title": "Entry::Operation",
+          "id": "entry-operation",
+          "contents": "logging/entry-operation.json"
+        },
+        {
+          "title": "Error",
+          "id": "error",
+          "contents": "logging/error.json"
+        },
+        {
+          "title": "Metric",
+          "id": "metric",
+          "contents": "logging/metric.json"
+        },
+        {
+          "title": "Metric::List",
+          "id": "metric-list",
+          "contents": "logging/metric-list.json"
+        },
+        {
+          "title": "Project",
+          "id": "project",
+          "contents": "logging/project.json"
+        },
+        {
+          "title": "Resource",
+          "id": "resource",
+          "contents": "logging/resource.json"
+        },
+        {
+          "title": "Resource::List",
+          "id": "resource-list",
+          "contents": "logging/resource-list.json"
+        },
+        {
+          "title": "Sink",
+          "id": "sink",
+          "contents": "logging/sink.json"
+        },
+        {
+          "title": "Sink::List",
+          "id": "sink-list",
+          "contents": "logging/sink-list.json"
+        }
+      ]
+    },
+    {
+      "title": "PubSub",
+      "id": "pubsub",
+      "contents": "gcloud/pubsub.json",
+      "nav": [
+        {
+          "title": "AlreadyExistsError",
+          "id": "alreadyexistserror",
+          "contents": "pubsub/alreadyexistserror.json"
+        },
+        {
+          "title": "ApiError",
+          "id": "apierror",
+          "contents": "pubsub/apierror.json"
+        },
+        {
+          "title": "Error",
+          "id": "error",
+          "contents": "pubsub/error.json"
+        },
+        {
+          "title": "Message",
+          "id": "message",
+          "contents": "pubsub/message.json"
+        },
+        {
+          "title": "NotFoundError",
+          "id": "notfounderror",
+          "contents": "pubsub/notfounderror.json"
+        },
+        {
+          "title": "Project",
+          "id": "project",
+          "contents": "pubsub/project.json"
+        },
+        {
+          "title": "ReceivedMessage",
+          "id": "receivedmessage",
+          "contents": "pubsub/receivedmessage.json"
+        },
+        {
+          "title": "Subscription",
+          "id": "subscription",
+          "contents": "pubsub/subscription.json"
+        },
+        {
+          "title": "Subscription::List",
+          "id": "subscription-list",
+          "contents": "pubsub/subscription-list.json"
+        },
+        {
+          "title": "Topic",
+          "id": "topic",
+          "contents": "pubsub/topic.json"
+        },
+        {
+          "title": "Topic::Batch",
+          "id": "topic-batch",
+          "contents": "pubsub/topic-batch.json"
+        },
+        {
+          "title": "Topic::List",
+          "id": "topic-list",
+          "contents": "pubsub/topic-list.json"
+        }
+      ]
+    },
+    {
+      "title": "Resource Manager",
+      "id": "resourcemanager",
+      "contents": "gcloud/resourcemanager.json",
+      "nav": [
+        {
+          "title": "ApiError",
+          "id": "apierror",
+          "contents": "resourcemanager/apierror.json"
+        },
+        {
+          "title": "Error",
+          "id": "error",
+          "contents": "resourcemanager/error.json"
+        },
+        {
+          "title": "Manager",
+          "id": "manager",
+          "contents": "resourcemanager/manager.json"
+        },
+        {
+          "title": "Project",
+          "id": "project",
+          "contents": "resourcemanager/project.json"
+        },
+        {
+          "title": "Project::List",
+          "id": "project-list",
+          "contents": "resourcemanager/project-list.json"
+        },
+        {
+          "title": "Project::Updater",
+          "id": "project-updater",
+          "contents": "resourcemanager/project-updater.json"
+        }
+      ]
+    },
+    {
+      "title": "Search",
+      "id": "search",
+      "contents": "gcloud/search.json",
+      "nav": [
+        {
+          "title": "ApiError",
+          "id": "apierror",
+          "contents": "search/apierror.json"
+        },
+        {
+          "title": "Document",
+          "id": "document",
+          "contents": "search/document.json"
+        },
+        {
+          "title": "Document::List",
+          "id": "document-list",
+          "contents": "search/document-list.json"
+        },
+        {
+          "title": "Error",
+          "id": "error",
+          "contents": "search/error.json"
+        },
+        {
+          "title": "FieldValue",
+          "id": "fieldvalue",
+          "contents": "search/fieldvalue.json"
+        },
+        {
+          "title": "FieldValues",
+          "id": "fieldvalues",
+          "contents": "search/fieldvalues.json"
+        },
+        {
+          "title": "Fields",
+          "id": "fields",
+          "contents": "search/fields.json"
+        },
+        {
+          "title": "Index",
+          "id": "index",
+          "contents": "search/index.json"
+        },
+        {
+          "title": "Index::List",
+          "id": "index-list",
+          "contents": "search/index-list.json"
+        },
+        {
+          "title": "Project",
+          "id": "project",
+          "contents": "search/project.json"
+        },
+        {
+          "title": "Result",
+          "id": "result",
+          "contents": "search/result.json"
+        },
+        {
+          "title": "Result::List",
+          "id": "result-list",
+          "contents": "search/result-list.json"
+        }
+      ]
+    },
+    {
+      "title": "Storage",
+      "id": "storage",
+      "contents": "gcloud/storage.json",
+      "nav": [
+        {
+          "title": "ApiError",
+          "id": "apierror",
+          "contents": "storage/apierror.json"
+        },
+        {
+          "title": "Bucket",
+          "id": "bucket",
+          "contents": "storage/bucket.json"
+        },
+        {
+          "title": "Bucket::Acl",
+          "id": "bucket-acl",
+          "contents": "storage/bucket-acl.json"
+        },
+        {
+          "title": "Bucket::Cors",
+          "id": "bucket-cors",
+          "contents": "storage/bucket-cors.json"
+        },
+        {
+          "title": "Bucket::DefaultAcl",
+          "id": "bucket-defaultacl",
+          "contents": "storage/bucket-defaultacl.json"
+        },
+        {
+          "title": "Bucket::List",
+          "id": "bucket-list",
+          "contents": "storage/bucket-list.json"
+        },
+        {
+          "title": "Bucket::Updater",
+          "id": "bucket-updater",
+          "contents": "storage/bucket-updater.json"
+        },
+        {
+          "title": "Error",
+          "id": "error",
+          "contents": "storage/error.json"
+        },
+        {
+          "title": "File",
+          "id": "file",
+          "contents": "storage/file.json"
+        },
+        {
+          "title": "File::Acl",
+          "id": "file-acl",
+          "contents": "storage/file-acl.json"
+        },
+        {
+          "title": "File::List",
+          "id": "file-list",
+          "contents": "storage/file-list.json"
+        },
+        {
+          "title": "File::Updater",
+          "id": "file-updater",
+          "contents": "storage/file-updater.json"
+        },
+        {
+          "title": "FileVerificationError",
+          "id": "fileverificationerror",
+          "contents": "storage/fileverificationerror.json"
+        },
+        {
+          "title": "Project",
+          "id": "project",
+          "contents": "storage/project.json"
+        },
+        {
+          "title": "SignedUrlUnavailable",
+          "id": "signedurlunavailable",
+          "contents": "storage/signedurlunavailable.json"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "title": "RubyGems",
+    "href": "http://rubygems.org/gems/gcloud"
+  }
+}
