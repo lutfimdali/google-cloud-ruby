@@ -1,1 +1,1 @@
-{"id":"error","metadata":{"name":"Error","description":"<h1 id=\"logging-error\">Logging Error</h1>\n\n<p>Base Logging exception class.</p>","source":"lib/gcloud/logging/errors.rb#L24","resources":[],"examples":[]},"methods":[]}
+{"id":"error","metadata":{"name":"Error","description":"<h1 id=\"logging-error\">Logging Error</h1>  <p>Base Logging exception class.</p>","source":"lib/gcloud/logging/errors.rb#L24","resources":[],"examples":[]},"methods":[]}
