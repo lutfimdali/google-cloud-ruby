@@ -1,1 +1,1 @@
-{"id":"error","metadata":{"name":"Error","description":"<h1 id=\"storage-error\">Storage Error</h1>  <p>Base Storage exception class.</p>","source":"lib/gcloud/storage/errors.rb#L24","resources":[],"examples":[]},"methods":[]}
+{"id":"error","metadata":{"name":"Error","description":"<h1 id=\"storage-error\">Storage Error</h1>\n\n<p>Base Storage exception class.</p>","source":"lib/gcloud/storage/errors.rb#L24","resources":[],"examples":[]},"methods":[]}
