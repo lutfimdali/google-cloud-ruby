@@ -1,1 +1,0 @@
-{"id":"key","metadata":{"name":"Key","description":"","source":"lib/gcloud/datastore/proto.rb#L251","resources":[],"examples":[]},"methods":[{"metadata":{"name":"dup","description":"","source":"lib/gcloud/datastore/proto.rb#L252","resources":[],"examples":[]},"params":[],"exceptions":[],"returns":[]}]}
