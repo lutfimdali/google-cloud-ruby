@@ -1,0 +1,1 @@
+{"id":"gcloud/pubsub/notfounderror","name":"NotFoundError","title":["Gcloud","Pubsub","NotFoundError"],"description":"<h1 id=\"notfounderror\">NotFoundError</h1>\n\n<p>Raised when Pub/Sub returns a <code class=\"highlighter-rouge\">NOT_FOUND</code> error.</p>","source":"lib/gcloud/pubsub/errors.rb#L92","resources":[],"examples":[],"methods":[]}

@@ -1,0 +1,1 @@
+{"id":"logging","metadata":{"name":"Logging","title":["Gcloud","Logging"],"description":"<h1 id=\"google-cloud-logging\">Google Cloud Logging</h1>\n\n<p>Google Cloud Logging collects and stores logs from applications and services\non the Google Cloud Platform.</p>\n\n<p>…</p>","source":"lib/gcloud/logging.rb#L63","resources":[],"examples":[]},"methods":[]}
