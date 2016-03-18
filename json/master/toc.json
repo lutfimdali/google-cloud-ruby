@@ -21,7 +21,8 @@
       "id": "troubleshooting",
       "edit": "https://github.com/GoogleCloudPlatform/gcloud-common/edit/master/troubleshooting/readme.md",
       "contents": [
-        "https://raw.githubusercontent.com/GoogleCloudPlatform/gcloud-common/master/troubleshooting/readme.md"
+        "https://raw.githubusercontent.com/GoogleCloudPlatform/gcloud-common/master/troubleshooting/readme.md",
+        "authentication.md"
       ]
     },
     {

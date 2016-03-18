@@ -10,5 +10,15 @@
   "package": {
     "title": "RubyGems",
     "href": "http://rubygems.org/gems/gcloud"
-  }
+  },
+  "methodTypeSymbols": [
+    {
+      "type": "class",
+      "symbol": "::"
+    },
+    {
+      "type": "instance",
+      "symbol": "#"
+    }
+  ]
 }
