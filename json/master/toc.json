@@ -5,7 +5,8 @@
       "id": "authentication",
       "edit": "https://github.com/GoogleCloudPlatform/gcloud-common/edit/master/authentication/readme.md",
       "contents": [
-        "https://raw.githubusercontent.com/GoogleCloudPlatform/gcloud-common/master/authentication/readme.md"
+        "https://raw.githubusercontent.com/GoogleCloudPlatform/gcloud-common/master/authentication/readme.md",
+        "authentication.md"
       ]
     },
     {
