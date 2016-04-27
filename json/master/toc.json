@@ -22,8 +22,7 @@
       "id": "troubleshooting",
       "edit": "https://github.com/GoogleCloudPlatform/gcloud-common/edit/master/troubleshooting/readme.md",
       "contents": [
-        "https://raw.githubusercontent.com/GoogleCloudPlatform/gcloud-common/master/troubleshooting/readme.md",
-        "authentication.md"
+        "https://raw.githubusercontent.com/GoogleCloudPlatform/gcloud-common/master/troubleshooting/readme.md"
       ]
     },
     {
@@ -183,6 +182,24 @@
         {
           "title": "File",
           "type": "gcloud/storage/file"
+        }
+      ]
+    },
+    {
+      "title": "Translate",
+      "type": "gcloud/translate",
+      "nav": [
+        {
+          "title": "Api",
+          "type": "gcloud/translate/api"
+        },
+        {
+          "title": "Translation",
+          "type": "gcloud/translate/translation"
+        },
+        {
+          "title": "Detection",
+          "type": "gcloud/translate/detection"
         }
       ]
     }

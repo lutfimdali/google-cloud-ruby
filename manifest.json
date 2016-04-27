@@ -3,7 +3,8 @@
   "friendlyLang": "Ruby",
   "markdown": "ruby",
   "versions": [
-    "master"
+    "master",
+    "v0.7.2"
   ],
   "content": "json",
   "home": "home.html",
