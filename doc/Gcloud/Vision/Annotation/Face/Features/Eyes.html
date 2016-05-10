@@ -1,0 +1,733 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Gcloud::Vision::Annotation::Face::Features::Eyes
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="../../../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../../../';
+  framesUrl = "../../../../../frames.html#!Gcloud/Vision/Annotation/Face/Features/Eyes.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../../../_index.html">Index (E)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../../../Gcloud.html" title="Gcloud (module)">Gcloud</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../../Vision.html" title="Gcloud::Vision (module)">Vision</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../Annotation.html" title="Gcloud::Vision::Annotation (class)">Annotation</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Face.html" title="Gcloud::Vision::Annotation::Face (class)">Face</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Features.html" title="Gcloud::Vision::Annotation::Face::Features (class)">Features</a></span></span>
+     &raquo; 
+    <span class="title">Eyes</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Gcloud::Vision::Annotation::Face::Features::Eyes
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Gcloud::Vision::Annotation::Face::Features::Eyes</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/gcloud/vision/annotation/face.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <h1>Eyes</h1>
+
+<p>The landmarks of the eyes in the features of a face.</p>
+
+<p>Left and right are defined from the vantage of the viewer of the
+image, without considering mirror projections typical of photos. So
+<code>face.features.eyes.left</code> typically is the person&#39;s right eye.</p>
+
+<p>See <span class='object_link'><a href="../Features.html" title="Gcloud::Vision::Annotation::Face::Features (class)">Gcloud::Vision::Annotation::Face::Features</a></span> and <span class='object_link'><a href="../../Face.html" title="Gcloud::Vision::Annotation::Face (class)">Gcloud::Vision::Annotation::Face</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='id identifier rubyid_image'>image</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/face.jpg</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_face'>face</span> <span class='op'>=</span> <span class='id identifier rubyid_image'>image</span><span class='period'>.</span><span class='id identifier rubyid_face'>face</span>
+
+<span class='id identifier rubyid_eyes'>eyes</span> <span class='op'>=</span> <span class='id identifier rubyid_face'>face</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_eyes'>eyes</span>
+
+<span class='id identifier rubyid_right_eye'>right_eye</span> <span class='op'>=</span> <span class='id identifier rubyid_eyes'>eyes</span><span class='period'>.</span><span class='id identifier rubyid_right'>right</span>
+<span class='id identifier rubyid_right_eye'>right_eye</span><span class='period'>.</span><span class='id identifier rubyid_pupil'>pupil</span>
+<span class='comment'>#=&gt; #&lt;Landmark (x: 256.63464, y: 79.641411, z: -6.0731235)&gt;</span></code></pre>
+    
+  </div>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://cloud.google.com/vision/reference/rest/v1/images/annotate#Type_1" target="_parent" title="images.annotate Type">images.annotate Type</a></li>
+    
+  </ul>
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#left-instance_method" title="#left (instance method)">- (Eye) <strong>left</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The left eye.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#right-instance_method" title="#right (instance method)">- (Eye) <strong>right</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The right eye.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Eyes) <strong>initialize</strong>(left, right) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of Eyes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_a-instance_method" title="#to_a (instance method)">- (Array) <strong>to_a</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the object&#39;s property values as an array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_ary-instance_method" title="#to_ary (instance method)">- (Array) <strong>to_ary</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the object&#39;s property values as an array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_h-instance_method" title="#to_h (instance method)">- (Hash) <strong>to_h</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Deeply converts object to a hash.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_hash-instance_method" title="#to_hash (instance method)">- (Hash) <strong>to_hash</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Deeply converts object to a hash.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Gcloud::Vision::Annotation::Face::Features::Eyes (class)">Eyes</a></span></tt>) <strong>initialize</strong>(left, right) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a new instance of Eyes</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1115
+1116
+1117
+1118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/vision/annotation/face.rb', line 1115</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_left'>left</span><span class='comma'>,</span> <span class='id identifier rubyid_right'>right</span>
+  <span class='ivar'>@left</span>  <span class='op'>=</span> <span class='id identifier rubyid_left'>left</span>
+  <span class='ivar'>@right</span> <span class='op'>=</span> <span class='id identifier rubyid_right'>right</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="left=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="left-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Eye.html" title="Gcloud::Vision::Annotation::Face::Features::Eye (class)">Eye</a></span></tt>) <strong>left</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the left eye</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Eye.html" title="Gcloud::Vision::Annotation::Face::Features::Eye (class)">Eye</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the left eye</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1113
+1114
+1115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/vision/annotation/face.rb', line 1113</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_left'>left</span>
+  <span class='ivar'>@left</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="right=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="right-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Eye.html" title="Gcloud::Vision::Annotation::Face::Features::Eye (class)">Eye</a></span></tt>) <strong>right</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the right eye</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Eye.html" title="Gcloud::Vision::Annotation::Face::Features::Eye (class)">Eye</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the right eye</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1113</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/vision/annotation/face.rb', line 1113</span>
+
+<span class='id identifier rubyid_attr_accessor'>attr_accessor</span> <span class='symbol'>:left</span><span class='comma'>,</span> <span class='symbol'>:right</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="to_a-instance_method">
+  
+    - (<tt>Array</tt>) <strong>to_a</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the object&#39;s property values as an array.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1125
+1126
+1127</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/vision/annotation/face.rb', line 1125</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_a'>to_a</span>
+  <span class='id identifier rubyid_to_ary'>to_ary</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_ary-instance_method">
+  
+    - (<tt>Array</tt>) <strong>to_ary</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the object&#39;s property values as an array.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1134
+1135
+1136</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/vision/annotation/face.rb', line 1134</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_ary'>to_ary</span>
+  <span class='lbracket'>[</span><span class='id identifier rubyid_left'>left</span><span class='comma'>,</span> <span class='id identifier rubyid_right'>right</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_h-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>to_h</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Deeply converts object to a hash. All keys will be symbolized.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1143
+1144
+1145</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/vision/annotation/face.rb', line 1143</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
+  <span class='id identifier rubyid_to_hash'>to_hash</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_hash-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>to_hash</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Deeply converts object to a hash. All keys will be symbolized.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1152
+1153
+1154</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/vision/annotation/face.rb', line 1152</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_hash'>to_hash</span>
+  <span class='lbrace'>{</span> <span class='label'>left:</span> <span class='id identifier rubyid_left'>left</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span><span class='comma'>,</span> <span class='label'>right:</span> <span class='id identifier rubyid_right'>right</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:51 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>

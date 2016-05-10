@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Gcloud::Translate
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Gcloud/Translate.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (T)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Gcloud.html" title="Gcloud (module)">Gcloud</a></span></span>
+     &raquo; 
+    <span class="title">Translate</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Gcloud::Translate
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/gcloud/translate.rb<span class="defines">,<br />
+  lib/gcloud/translate/api.rb,<br /> lib/gcloud/translate/errors.rb,<br /> lib/gcloud/translate/language.rb,<br /> lib/gcloud/translate/detection.rb,<br /> lib/gcloud/translate/connection.rb,<br /> lib/gcloud/translate/translation.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <h1>Google Translate API</h1>
+
+<p><a href="https://cloud.google.com/translate/">Google Translate API</a> provides a
+simple, programmatic interface for translating an arbitrary string into any
+supported language. It is highly responsive, so websites and applications
+can integrate with Translate API for fast, dynamic translation of source
+text. Language detection is also available in cases where the source
+language is unknown.</p>
+
+<p>Translate API supports more than ninety different languages, from Afrikaans
+to Zulu. Used in combination, this enables translation between thousands of
+language pairs. Also, you can send in HTML and receive HTML with translated
+text back. You don&#39;t need to extract your source text or reassemble the
+translated content.</p>
+
+<h2>Authenticating</h2>
+
+<p>Unlike other Cloud Platform services, which authenticate using a project ID
+and OAuth 2.0 credentials, Translate API requires a public API access key.
+(This may change in future releases of Translate API.) Follow the general
+instructions at <a href="https://cloud.google.com/translate/v2/using_rest#auth">Identifying your application to
+Google</a>, and the
+specific instructions for <a href="https://cloud.google.com/translate/v2/using_rest#creating-server-api-keys">Server
+keys</a>.</p>
+
+<h2>Translating texts</h2>
+
+<p>Translating text from one language to another is easy (and extremely fast.)
+The only required arguments to <span class='object_link'><a href="Translate/Api.html#translate-instance_method" title="Gcloud::Translate::Api#translate (method)">Api#translate</a></span> are a
+string and the <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO
+639-1</a> code of the
+language to which you wish to translate.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_translate'>translate</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span>
+
+<span class='id identifier rubyid_translation'>translation</span> <span class='op'>=</span> <span class='id identifier rubyid_translate'>translate</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello world!</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>la</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_translation'>translation</span> <span class='comment'>#=&gt; Salve mundi!
+</span>
+<span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_from'>from</span> <span class='comment'>#=&gt; &quot;en&quot;
+</span><span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_origin'>origin</span> <span class='comment'>#=&gt; &quot;Hello world!&quot;
+</span><span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_to'>to</span> <span class='comment'>#=&gt; &quot;la&quot;
+</span><span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='comment'>#=&gt; &quot;Salve mundi!&quot;
+</span></code></pre>
+
+<p>You may want to use the <code>from</code> option to specify the language of the source
+text, as the following example illustrates. (Single words do not give
+Translate API much to work with.)</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_translate'>translate</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span>
+
+<span class='id identifier rubyid_translation'>translation</span> <span class='op'>=</span> <span class='id identifier rubyid_translate'>translate</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>chat</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>en</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_detected?'>detected?</span> <span class='comment'>#=&gt; true
+</span><span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_from'>from</span> <span class='comment'>#=&gt; &quot;en&quot;
+</span><span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='comment'>#=&gt; &quot;chat&quot;
+</span>
+<span class='id identifier rubyid_translation'>translation</span> <span class='op'>=</span> <span class='id identifier rubyid_translate'>translate</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>chat</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>from:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fr</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>en</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_detected?'>detected?</span> <span class='comment'>#=&gt; false
+</span><span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_from'>from</span> <span class='comment'>#=&gt; &quot;fr&quot;
+</span><span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='comment'>#=&gt; &quot;cat&quot;
+</span></code></pre>
+
+<p>You can pass multiple texts to <span class='object_link'><a href="Translate/Api.html#translate-instance_method" title="Gcloud::Translate::Api#translate (method)">Api#translate</a></span>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_translate'>translate</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span>
+
+<span class='id identifier rubyid_translations'>translations</span> <span class='op'>=</span> <span class='id identifier rubyid_translate'>translate</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>chien</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>chat</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>from:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fr</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>en</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_translations'>translations</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='comment'>#=&gt; 2
+</span><span class='id identifier rubyid_translations'>translations</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_origin'>origin</span> <span class='comment'>#=&gt; &quot;chien&quot;
+</span><span class='id identifier rubyid_translations'>translations</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='comment'>#=&gt; &quot;dog&quot;
+</span><span class='id identifier rubyid_translations'>translations</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_origin'>origin</span> <span class='comment'>#=&gt; &quot;chat&quot;
+</span><span class='id identifier rubyid_translations'>translations</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='comment'>#=&gt; &quot;cat&quot;
+</span></code></pre>
+
+<p>By default, any HTML in your source text will be preserved.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_translate'>translate</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span>
+
+<span class='id identifier rubyid_translation'>translation</span> <span class='op'>=</span> <span class='id identifier rubyid_translate'>translate</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;strong&gt;Hello&lt;/strong&gt; world!</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                                  <span class='label'>to:</span> <span class='symbol'>:la</span>
+<span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='comment'>#=&gt; &quot;&lt;strong&gt;Salve&lt;/strong&gt; mundi!&quot;
+</span></code></pre>
+
+<h2>Detecting languages</h2>
+
+<p>You can use <span class='object_link'><a href="Translate/Api.html#detect-instance_method" title="Gcloud::Translate::Api#detect (method)">Api#detect</a></span> to see which language the
+Translate API ranks as the most likely source language for a text. The
+<code>confidence</code> score is a float value between <code>0</code> and <code>1</code>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_translate'>translate</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span>
+
+<span class='id identifier rubyid_detection'>detection</span> <span class='op'>=</span> <span class='id identifier rubyid_translate'>translate</span><span class='period'>.</span><span class='id identifier rubyid_detect'>detect</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>chat</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_detection'>detection</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='comment'>#=&gt; &quot;chat&quot;
+</span><span class='id identifier rubyid_detection'>detection</span><span class='period'>.</span><span class='id identifier rubyid_language'>language</span> <span class='comment'>#=&gt; &quot;en&quot;
+</span><span class='id identifier rubyid_detection'>detection</span><span class='period'>.</span><span class='id identifier rubyid_confidence'>confidence</span> <span class='comment'>#=&gt; 0.59922177
+</span></code></pre>
+
+<p>You can pass multiple texts to <span class='object_link'><a href="Translate/Api.html#detect-instance_method" title="Gcloud::Translate::Api#detect (method)">Api#detect</a></span>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_translate'>translate</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span>
+
+<span class='id identifier rubyid_detections'>detections</span> <span class='op'>=</span> <span class='id identifier rubyid_translate'>translate</span><span class='period'>.</span><span class='id identifier rubyid_detect'>detect</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>chien</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>chat</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_detections'>detections</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='comment'>#=&gt; 2
+</span><span class='id identifier rubyid_detections'>detections</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='comment'>#=&gt; &quot;chien&quot;
+</span><span class='id identifier rubyid_detections'>detections</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_language'>language</span> <span class='comment'>#=&gt; &quot;fr&quot;
+</span><span class='id identifier rubyid_detections'>detections</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_confidence'>confidence</span> <span class='comment'>#=&gt; 0.7109375
+</span><span class='id identifier rubyid_detections'>detections</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='comment'>#=&gt; &quot;chat&quot;
+</span><span class='id identifier rubyid_detections'>detections</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_language'>language</span> <span class='comment'>#=&gt; &quot;en&quot;
+</span><span class='id identifier rubyid_detections'>detections</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_confidence'>confidence</span> <span class='comment'>#=&gt; 0.59922177
+</span></code></pre>
+
+<h2>Listing supported languages</h2>
+
+<p>Translate API adds new languages frequently. You can use
+<span class='object_link'><a href="Translate/Api.html#languages-instance_method" title="Gcloud::Translate::Api#languages (method)">Api#languages</a></span> to query the list of supported languages.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_translate'>translate</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span>
+
+<span class='id identifier rubyid_languages'>languages</span> <span class='op'>=</span> <span class='id identifier rubyid_translate'>translate</span><span class='period'>.</span><span class='id identifier rubyid_languages'>languages</span>
+
+<span class='id identifier rubyid_languages'>languages</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='comment'>#=&gt; 104
+</span><span class='id identifier rubyid_languages'>languages</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='comment'>#=&gt; &quot;af&quot;
+</span><span class='id identifier rubyid_languages'>languages</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; nil
+</span></code></pre>
+
+<p>To receive the names of the supported languages, as well as their <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO
+639-1</a> codes, provide
+the code for the language in which you wish to receive the names.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_translate'>translate</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span>
+
+<span class='id identifier rubyid_languages'>languages</span> <span class='op'>=</span> <span class='id identifier rubyid_translate'>translate</span><span class='period'>.</span><span class='id identifier rubyid_languages'>languages</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>en</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_languages'>languages</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='comment'>#=&gt; 104
+</span><span class='id identifier rubyid_languages'>languages</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='comment'>#=&gt; &quot;af&quot;
+</span><span class='id identifier rubyid_languages'>languages</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; &quot;Afrikaans&quot;
+</span></code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Translate/Api.html" title="Gcloud::Translate::Api (class)">Api</a></span>, <span class='object_link'><a href="Translate/ApiError.html" title="Gcloud::Translate::ApiError (class)">ApiError</a></span>, <span class='object_link'><a href="Translate/Detection.html" title="Gcloud::Translate::Detection (class)">Detection</a></span>, <span class='object_link'><a href="Translate/Error.html" title="Gcloud::Translate::Error (class)">Error</a></span>, <span class='object_link'><a href="Translate/Language.html" title="Gcloud::Translate::Language (class)">Language</a></span>, <span class='object_link'><a href="Translate/Translation.html" title="Gcloud::Translate::Translation (class)">Translation</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+
+
+</div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:42 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>

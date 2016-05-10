@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.README.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1>gcloud</h1>
+
+<p>Idiomatic Ruby client for <a href="https://cloud.google.com/">Google Cloud Platform</a> services.</p>
+
+<p><a href="https://travis-ci.org/GoogleCloudPlatform/gcloud-ruby/"><img src="https://travis-ci.org/GoogleCloudPlatform/gcloud-ruby.svg" alt="Travis Build Status"></a>
+<a href="https://coveralls.io/r/GoogleCloudPlatform/gcloud-ruby?branch=master"><img src="https://img.shields.io/coveralls/GoogleCloudPlatform/gcloud-ruby.svg" alt="Coverage Status"></a>
+<a href="http://badge.fury.io/rb/gcloud"><img src="https://badge.fury.io/rb/gcloud.svg" alt="Gem Version"></a></p>
+
+<ul>
+<li><a href="http://googlecloudplatform.github.io/gcloud-ruby/">Homepage</a></li>
+<li><a href="http://googlecloudplatform.github.io/gcloud-ruby/docs/master/">API Documentation</a></li>
+</ul>
+
+<h2>Ruby API Client library for Google Cloud</h2>
+
+<p>This client supports the following Google Cloud Platform services:</p>
+
+<ul>
+<li><a href="#bigquery">Google Cloud BigQuery</a></li>
+<li><a href="#datastore">Google Cloud Datastore</a></li>
+<li><a href="#dns">Google Cloud DNS</a></li>
+<li><a href="#pubsub">Google Cloud Pub/Sub</a></li>
+<li><a href="#storage">Google Cloud Storage</a></li>
+</ul>
+
+<p>If you need support for other Google APIs, check out the <a href="https://github.com/google/google-api-ruby-client">Google API Ruby Client library</a>.</p>
+
+<h2>Quick Start</h2>
+
+<pre class="code sh"><code class="sh">$ gem install gcloud
+</code></pre>
+
+<h3>Authentication</h3>
+
+<p>Gcloud uses Service Account credentials to connect to Google Cloud services. When running on Compute Engine the credentials will be discovered automatically. When running on other environments the Service Account credentials can be specified by providing the path to the JSON file, or the JSON itself, in environment variables. Additionally, Cloud SDK credentials can also be discovered automatically, but this is only recommended during development.</p>
+
+<p>Instructions and configuration options are covered in the <a href="AUTHENTICATION.md">Authentication guide</a>. The examples in Quick Start will demonstrate providing the <strong>Project ID</strong> and <strong>Credentials JSON file path</strong> in code.</p>
+
+<h3>BigQuery</h3>
+
+<ul>
+<li><a href="http://googlecloudplatform.github.io/gcloud-ruby/docs/master/Gcloud/Bigquery.html">gcloud-ruby BigQuery API Documentation</a></li>
+<li><a href="https://cloud.google.com/bigquery/docs">Google Cloud BigQuery Documentation</a></li>
+</ul>
+
+<h4>Preview</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-todo-project-id</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/path/to/keyfile.json</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_bigquery'>bigquery</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_bigquery'>bigquery</span>
+
+<span class='comment'># Create a new table to archive todos
+</span><span class='id identifier rubyid_dataset'>dataset</span> <span class='op'>=</span> <span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_dataset'>dataset</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-todo-archive</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_create_table'>create_table</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>todos</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+          <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Todos Archive</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+          <span class='label'>description:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Archive for completed TODO records</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># Load data into the table
+</span><span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/archive/todos/completed-todos.csv</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_load_job'>load_job</span> <span class='op'>=</span> <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='id identifier rubyid_file'>file</span>
+
+<span class='comment'># Run a query for the number of completed todos by owner
+</span><span class='id identifier rubyid_count_sql'>count_sql</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT owner, COUNT(*) AS complete_count FROM todos GROUP BY owner</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span> <span class='id identifier rubyid_count_sql'>count_sql</span>
+<span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_row'>row</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h3>Datastore</h3>
+
+<ul>
+<li><a href="http://googlecloudplatform.github.io/gcloud-ruby/docs/master/Gcloud/Datastore.html">gcloud-ruby Datastore API Documentation</a></li>
+<li><a href="https://cloud.google.com/datastore/docs">Google Cloud Datastore Documentation</a></li>
+</ul>
+
+<p><em>Follow the <a href="https://cloud.google.com/datastore/docs/activate">activation instructions</a> to use the Google Cloud Datastore API with your project.</em></p>
+
+<h4>Preview</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-todo-project-id</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/path/to/keyfile.json</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_dataset'>dataset</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_datastore'>datastore</span>
+
+<span class='comment'># Create a new task to demo datastore
+</span><span class='id identifier rubyid_demo_task'>demo_task</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_entity'>entity</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Task</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>datastore-demo</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span>
+  <span class='id identifier rubyid_t'>t</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>description</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Demonstrate Datastore functionality</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_t'>t</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>completed</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='kw'>end</span>
+
+<span class='comment'># Save the new task
+</span><span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span> <span class='id identifier rubyid_demo_task'>demo_task</span>
+
+<span class='comment'># Run a query for all completed tasks
+</span><span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Task</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span>
+  <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>completed</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>=</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_completed_tasks'>completed_tasks</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_query'>query</span>
+</code></pre>
+
+<h3>DNS</h3>
+
+<ul>
+<li><a href="http://googlecloudplatform.github.io/gcloud-ruby/docs/master/Gcloud/Dns.html">gcloud-ruby DNS API documentation</a></li>
+<li><a href="https://cloud.google.com/dns/docs">Google Cloud DNS Documentation</a></li>
+</ul>
+
+<h4>Preview</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_dns'>dns</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_dns'>dns</span>
+
+<span class='comment'># Retrieve a zone
+</span><span class='id identifier rubyid_zone'>zone</span> <span class='op'>=</span> <span class='id identifier rubyid_dns'>dns</span><span class='period'>.</span><span class='id identifier rubyid_zone'>zone</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>example-com</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># Update records in the zone
+</span><span class='id identifier rubyid_change'>change</span> <span class='op'>=</span> <span class='id identifier rubyid_zone'>zone</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_tx'>tx</span><span class='op'>|</span>
+  <span class='id identifier rubyid_tx'>tx</span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>www</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>A</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>  <span class='int'>86400</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1.2.3.4</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_tx'>tx</span><span class='period'>.</span><span class='id identifier rubyid_remove'>remove</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>example.com.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>TXT</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_tx'>tx</span><span class='period'>.</span><span class='id identifier rubyid_replace'>replace</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>example.com.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>MX</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>86400</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>10 mail1.example.com.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                                           <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>20 mail2.example.com.</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_tx'>tx</span><span class='period'>.</span><span class='id identifier rubyid_modify'>modify</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>www.example.com.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CNAME</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+    <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_ttl'>ttl</span> <span class='op'>=</span> <span class='int'>86400</span> <span class='comment'># only change the TTL
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+</code></pre>
+
+<h3>Logging</h3>
+
+<ul>
+<li><a href="http://googlecloudplatform.github.io/gcloud-ruby/docs/master/Gcloud/Logging.html">gcloud-ruby Logging API documentation</a></li>
+<li><a href="https://cloud.google.com/logging/docs/">Google Cloud Logging Documentation</a></li>
+</ul>
+
+<h4>Preview</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_logging'>logging</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_logging'>logging</span>
+
+<span class='comment'># List all log entries
+</span><span class='id identifier rubyid_logging'>logging</span><span class='period'>.</span><span class='id identifier rubyid_entries'>entries</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_timestamp'>timestamp</span><span class='embexpr_end'>}</span><span class='tstring_content'>] </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_log_name'>log_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_payload'>payload</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+
+<span class='comment'># List only entries from a single log
+</span><span class='id identifier rubyid_entries'>entries</span> <span class='op'>=</span> <span class='id identifier rubyid_logging'>logging</span><span class='period'>.</span><span class='id identifier rubyid_entries'>entries</span> <span class='label'>filter:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>log:syslog</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># Write a log entry
+</span><span class='id identifier rubyid_entry'>entry</span> <span class='op'>=</span> <span class='id identifier rubyid_logging'>logging</span><span class='period'>.</span><span class='id identifier rubyid_entry'>entry</span>
+<span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Job started.</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_log_name'>log_name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_app_log</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gae_app</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_labels'>labels</span><span class='lbracket'>[</span><span class='symbol'>:module_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_labels'>labels</span><span class='lbracket'>[</span><span class='symbol'>:version_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>20150925t173233</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_logging'>logging</span><span class='period'>.</span><span class='id identifier rubyid_write_entries'>write_entries</span> <span class='id identifier rubyid_entry'>entry</span>
+</code></pre>
+
+<h3>Pub/Sub</h3>
+
+<ul>
+<li><a href="http://googlecloudplatform.github.io/gcloud-ruby/docs/master/Gcloud/Pubsub.html">gcloud-ruby Pub/Sub API documentation</a></li>
+<li><a href="https://cloud.google.com/pubsub/docs">Google Cloud Pub/Sub Documentation</a></li>
+</ul>
+
+<h4>Preview</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-todo-project-id</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/path/to/keyfile.json</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='comment'># Retrieve a topic
+</span><span class='id identifier rubyid_topic'>topic</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_topic'>topic</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># Publish a new message
+</span><span class='id identifier rubyid_msg'>msg</span> <span class='op'>=</span> <span class='id identifier rubyid_topic'>topic</span><span class='period'>.</span><span class='id identifier rubyid_publish'>publish</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>new-message</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># Retrieve a subscription
+</span><span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># Pull available messages
+</span><span class='id identifier rubyid_msgs'>msgs</span> <span class='op'>=</span> <span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_pull'>pull</span>
+</code></pre>
+
+<h3>Resource Manager</h3>
+
+<ul>
+<li><a href="http://googlecloudplatform.github.io/gcloud-ruby/docs/master/Gcloud/ResourceManager.html">gcloud-ruby Resource Manager API documentation</a></li>
+<li><a href="https://cloud.google.com/resource-manager/">Google Cloud Resource Manager Documentation</a></li>
+</ul>
+
+<h4>Preview</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_resource_manager'>resource_manager</span>
+
+<span class='comment'># List all projects
+</span><span class='id identifier rubyid_resource_manager'>resource_manager</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_project'>project</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_projects'>projects</span><span class='period'>.</span><span class='id identifier rubyid_project_id'>project_id</span>
+<span class='kw'>end</span>
+
+<span class='comment'># Label a project as production
+</span><span class='id identifier rubyid_project'>project</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_manager'>resource_manager</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tokyo-rain-123</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span>
+  <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_labels'>labels</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>env</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>production</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+
+<span class='comment'># List only projects with the &quot;production&quot; label
+</span><span class='id identifier rubyid_projects'>projects</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_manager'>resource_manager</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span> <span class='label'>filter:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>labels.env:production</span><span class='tstring_end'>&quot;</span></span>
+</code></pre>
+
+<h3>Storage</h3>
+
+<ul>
+<li><a href="http://googlecloudplatform.github.io/gcloud-ruby/docs/master/Gcloud/Storage.html">gcloud-ruby Storage API documentation</a></li>
+<li><a href="https://cloud.google.com/storage/docs">Google Cloud Storage Documentation</a></li>
+</ul>
+
+<h4>Preview</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-todo-project-id</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/path/to/keyfile.json</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_storage'>storage</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_storage'>storage</span>
+
+<span class='id identifier rubyid_bucket'>bucket</span> <span class='op'>=</span> <span class='id identifier rubyid_storage'>storage</span><span class='period'>.</span><span class='id identifier rubyid_bucket'>bucket</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>task-attachments</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='id identifier rubyid_bucket'>bucket</span><span class='period'>.</span><span class='id identifier rubyid_file'>file</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/my-file.ext</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># Download the file to the local file system
+</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_download'>download</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/tasks/attachments/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># Copy the file to a backup bucket
+</span><span class='id identifier rubyid_backup'>backup</span> <span class='op'>=</span> <span class='id identifier rubyid_storage'>storage</span><span class='period'>.</span><span class='id identifier rubyid_bucket'>bucket</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>task-attachment-backups</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_copy'>copy</span> <span class='id identifier rubyid_backup'>backup</span><span class='comma'>,</span> <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+</code></pre>
+
+<h3>Translate</h3>
+
+<ul>
+<li><a href="http://googlecloudplatform.github.io/gcloud-ruby/docs/master/Gcloud/Translate.html">gcloud-ruby Translate API documentation</a></li>
+<li><a href="https://cloud.google.com/translate/docs">Google Translate Documentation</a></li>
+</ul>
+
+<h4>Preview</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_translate'>translate</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span>
+
+<span class='id identifier rubyid_translation'>translation</span> <span class='op'>=</span> <span class='id identifier rubyid_translate'>translate</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello world!</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>to:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>la</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_translation'>translation</span> <span class='comment'>#=&gt; Salve mundi!
+</span>
+<span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_from'>from</span> <span class='comment'>#=&gt; &quot;en&quot;
+</span><span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_origin'>origin</span> <span class='comment'>#=&gt; &quot;Hello world!&quot;
+</span><span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_to'>to</span> <span class='comment'>#=&gt; &quot;la&quot;
+</span><span class='id identifier rubyid_translation'>translation</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='comment'>#=&gt; &quot;Salve mundi!&quot;
+</span></code></pre>
+
+<h3>Vision</h3>
+
+<ul>
+<li><a href="http://googlecloudplatform.github.io/gcloud-ruby/docs/master/Gcloud/Vision.html">gcloud-ruby Vision API documentation</a></li>
+<li><a href="https://cloud.google.com/vision/docs">Google Cloud Vision Documentation</a></li>
+</ul>
+
+<h4>Preview</h4>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='id identifier rubyid_image'>image</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/landmark.jpg</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_landmark'>landmark</span> <span class='op'>=</span> <span class='id identifier rubyid_image'>image</span><span class='period'>.</span><span class='id identifier rubyid_landmark'>landmark</span>
+<span class='id identifier rubyid_landmark'>landmark</span><span class='period'>.</span><span class='id identifier rubyid_description'>description</span> <span class='comment'>#=&gt; &quot;Mount Rushmore&quot;
+</span></code></pre>
+
+<h2>Supported Ruby Versions</h2>
+
+<p>gcloud is supported on Ruby 2.0+.</p>
+
+<h2>Versioning</h2>
+
+<p>This library follows <a href="http://semver.org/">Semantic Versioning</a>.</p>
+
+<p>It is currently in major version zero (0.y.z), which means that anything may change at any time and the public API should not be considered stable.</p>
+
+<h2>Contributing</h2>
+
+<p>Contributions to this library are always welcome and highly encouraged.</p>
+
+<p>See <a href="CONTRIBUTING.md">CONTRIBUTING</a> for more information on how to get started.</p>
+
+<p>Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms. See <a href="CODE_OF_CONDUCT.md">Code of Conduct</a> for more information.</p>
+
+<h2>License</h2>
+
+<p>This library is licensed under Apache 2.0. Full license text is
+available in <a href="LICENSE">LICENSE</a>.</p>
+
+<h2>Support</h2>
+
+<p>Please <a href="https://github.com/GoogleCloudPlatform/gcloud-ruby/issues">report bugs at the project on Github</a>.
+Don&#39;t hesitate to <a href="http://stackoverflow.com/questions/tagged/gcloud-ruby">ask questions</a> about the client or APIs on <a href="http://stackoverflow.com">StackOverflow</a>.</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:42 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,1960 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Gcloud::Pubsub::Subscription
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Gcloud/Pubsub/Subscription.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Gcloud.html" title="Gcloud (module)">Gcloud</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Pubsub.html" title="Gcloud::Pubsub (module)">Pubsub</a></span></span>
+     &raquo; 
+    <span class="title">Subscription</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Gcloud::Pubsub::Subscription
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Gcloud::Pubsub::Subscription</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/gcloud/pubsub/subscription.rb<span class="defines">,<br />
+  lib/gcloud/pubsub/subscription/list.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <h1>Subscription</h1>
+
+<p>A named resource representing the stream of messages from a single,
+specific <span class='object_link'><a href="Topic.html" title="Gcloud::Pubsub::Topic (class)">Topic</a></span>, to be delivered to the subscribing application.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_msgs'>msgs</span> <span class='op'>=</span> <span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_pull'>pull</span>
+<span class='id identifier rubyid_msgs'>msgs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span> <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_acknowledge!'>acknowledge!</span> <span class='rbrace'>}</span></code></pre>
+    
+  </div>
+
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Subscription/List.html" title="Gcloud::Pubsub::Subscription::List (class)">List</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#acknowledge-instance_method" title="#acknowledge (instance method)">- (Object) <strong>acknowledge</strong>(*messages) </a>
+    
+
+    
+      (also: #ack)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Acknowledges receipt of a message.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#deadline-instance_method" title="#deadline (instance method)">- (Object) <strong>deadline</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>This value is the maximum number of seconds after a subscriber receives a message before the subscriber should acknowledge the message.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delay-instance_method" title="#delay (instance method)">- (Object) <strong>delay</strong>(new_deadline, *messages) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Modifies the acknowledge deadline for messages.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete-instance_method" title="#delete (instance method)">- (Boolean) <strong>delete</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Deletes an existing subscription.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#endpoint-instance_method" title="#endpoint (instance method)">- (Object) <strong>endpoint</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the URL locating the endpoint to which messages should be pushed.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#endpoint%3D-instance_method" title="#endpoint= (instance method)">- (Object) <strong>endpoint=</strong>(new_endpoint) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the URL locating the endpoint to which messages should be pushed.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#exists%3F-instance_method" title="#exists? (instance method)">- (Boolean) <strong>exists?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Determines whether the subscription exists in the Pub/Sub service.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#listen-instance_method" title="#listen (instance method)">- (Object) <strong>listen</strong>(max: 100, autoack: false, delay: 1) {|msg| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Poll the backend for new messages.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (Object) <strong>name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The name of the subscription.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#policy-instance_method" title="#policy (instance method)">- (Hash) <strong>policy</strong>(force: nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets the access control policy.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#policy%3D-instance_method" title="#policy= (instance method)">- (Object) <strong>policy=</strong>(new_policy) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the access control policy.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pull-instance_method" title="#pull (instance method)">- (Array&lt;Gcloud::Pubsub::ReceivedMessage&gt;) <strong>pull</strong>(immediate: true, max: 100, autoack: false) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Pulls messages from the server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_permissions-instance_method" title="#test_permissions (instance method)">- (Array&lt;String&gt;) <strong>test_permissions</strong>(*permissions) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Tests the specified permissions against the <a href="https://cloud.google.com/iam/">Cloud IAM</a> access control policy.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#topic-instance_method" title="#topic (instance method)">- (Topic) <strong>topic</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The <span class='object_link'><a href="Topic.html" title="Gcloud::Pubsub::Topic (class)">Topic</a></span> from which this subscription receives messages.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wait_for_messages-instance_method" title="#wait_for_messages (instance method)">- (Array&lt;Gcloud::Pubsub::ReceivedMessage&gt;) <strong>wait_for_messages</strong>(max: 100, autoack: false) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Pulls from the server while waiting for messages to become available.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="acknowledge-instance_method">
+  
+    - (<tt>Object</tt>) <strong>acknowledge</strong>(*messages) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='ack-instance_method'>ack</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Acknowledges receipt of a message. After an ack,
+the Pub/Sub system can remove the message from the subscription.
+Acknowledging a message whose ack deadline has expired may succeed,
+although the message may have been sent again.
+Acknowledging a message more than once will not result in an error.
+This is only used for messages received via pull.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_messages'>messages</span> <span class='op'>=</span> <span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_pull'>pull</span>
+<span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_acknowledge'>acknowledge</span> <span class='id identifier rubyid_messages'>messages</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>messages</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ReceivedMessage.html" title="Gcloud::Pubsub::ReceivedMessage (class)">ReceivedMessage</a></span></tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>One or more <span class='object_link'><a href="ReceivedMessage.html" title="Gcloud::Pubsub::ReceivedMessage (class)">ReceivedMessage</a></span>
+objects or ack_id values.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+357
+358
+359
+360
+361
+362
+363
+364
+365</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 357</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_acknowledge'>acknowledge</span> <span class='op'>*</span><span class='id identifier rubyid_messages'>messages</span>
+  <span class='id identifier rubyid_ack_ids'>ack_ids</span> <span class='op'>=</span> <span class='id identifier rubyid_coerce_ack_ids'>coerce_ack_ids</span> <span class='id identifier rubyid_messages'>messages</span>
+  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_ack_ids'>ack_ids</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+  <span class='id identifier rubyid_ensure_service!'>ensure_service!</span>
+  <span class='id identifier rubyid_service'>service</span><span class='period'>.</span><span class='id identifier rubyid_acknowledge'>acknowledge</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_ack_ids'>ack_ids</span>
+  <span class='kw'>true</span>
+<span class='kw'>rescue</span> <span class='const'>GRPC</span><span class='op'>::</span><span class='const'>BadStatus</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Error</span><span class='period'>.</span><span class='id identifier rubyid_from_error'>from_error</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="deadline-instance_method">
+  
+    - (<tt>Object</tt>) <strong>deadline</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>This value is the maximum number of seconds after a subscriber receives
+a message before the subscriber should acknowledge the message.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 97</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_deadline'>deadline</span>
+  <span class='id identifier rubyid_ensure_grpc!'>ensure_grpc!</span>
+  <span class='ivar'>@grpc</span><span class='period'>.</span><span class='id identifier rubyid_ack_deadline_seconds'>ack_deadline_seconds</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delay-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delay</strong>(new_deadline, *messages) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Modifies the acknowledge deadline for messages.</p>
+
+<p>This indicates that more time is needed to process the messages, or to
+make the messages available for redelivery if the processing was
+interrupted.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_messages'>messages</span> <span class='op'>=</span> <span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_pull'>pull</span>
+<span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_delay'>delay</span> <span class='int'>120</span><span class='comma'>,</span> <span class='id identifier rubyid_messages'>messages</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_deadline</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new ack deadline in seconds from the
+time this request is sent to the Pub/Sub system. Must be &gt;= 0. For
+example, if the value is <code>10</code>, the new ack deadline will expire 10
+seconds after the call is made. Specifying <code>0</code> may immediately make
+the message available for another pull request.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>messages</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ReceivedMessage.html" title="Gcloud::Pubsub::ReceivedMessage (class)">ReceivedMessage</a></span></tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>One or more <span class='object_link'><a href="ReceivedMessage.html" title="Gcloud::Pubsub::ReceivedMessage (class)">ReceivedMessage</a></span>
+objects or ack_id values.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+393
+394
+395
+396
+397
+398
+399
+400</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 393</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delay'>delay</span> <span class='id identifier rubyid_new_deadline'>new_deadline</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_messages'>messages</span>
+  <span class='id identifier rubyid_ack_ids'>ack_ids</span> <span class='op'>=</span> <span class='id identifier rubyid_coerce_ack_ids'>coerce_ack_ids</span> <span class='id identifier rubyid_messages'>messages</span>
+  <span class='id identifier rubyid_ensure_service!'>ensure_service!</span>
+  <span class='id identifier rubyid_service'>service</span><span class='period'>.</span><span class='id identifier rubyid_modify_ack_deadline'>modify_ack_deadline</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_ack_ids'>ack_ids</span><span class='comma'>,</span> <span class='id identifier rubyid_new_deadline'>new_deadline</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>rescue</span> <span class='const'>GRPC</span><span class='op'>::</span><span class='const'>BadStatus</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Error</span><span class='period'>.</span><span class='id identifier rubyid_from_error'>from_error</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>delete</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Deletes an existing subscription.
+All pending messages in the subscription are immediately dropped.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Returns <code>true</code> if the subscription was deleted.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+179
+180
+181
+182
+183
+184
+185</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 179</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span>
+  <span class='id identifier rubyid_ensure_service!'>ensure_service!</span>
+  <span class='id identifier rubyid_service'>service</span><span class='period'>.</span><span class='id identifier rubyid_delete_subscription'>delete_subscription</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>rescue</span> <span class='const'>GRPC</span><span class='op'>::</span><span class='const'>BadStatus</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Error</span><span class='period'>.</span><span class='id identifier rubyid_from_error'>from_error</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="endpoint-instance_method">
+  
+    - (<tt>Object</tt>) <strong>endpoint</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the URL locating the endpoint to which messages should be
+pushed.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 105</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_endpoint'>endpoint</span>
+  <span class='id identifier rubyid_ensure_grpc!'>ensure_grpc!</span>
+  <span class='ivar'>@grpc</span><span class='period'>.</span><span class='id identifier rubyid_push_config'>push_config</span><span class='period'>.</span><span class='id identifier rubyid_push_endpoint'>push_endpoint</span> <span class='kw'>if</span> <span class='ivar'>@grpc</span><span class='period'>.</span><span class='id identifier rubyid_push_config'>push_config</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="endpoint=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>endpoint=</strong>(new_endpoint) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sets the URL locating the endpoint to which messages should be pushed.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 112</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_endpoint='>endpoint=</span> <span class='id identifier rubyid_new_endpoint'>new_endpoint</span>
+  <span class='id identifier rubyid_ensure_service!'>ensure_service!</span>
+  <span class='id identifier rubyid_service'>service</span><span class='period'>.</span><span class='id identifier rubyid_modify_push_config'>modify_push_config</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_new_endpoint'>new_endpoint</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='ivar'>@grpc</span><span class='period'>.</span><span class='id identifier rubyid_push_config'>push_config</span> <span class='op'>=</span> <span class='const'>Google</span><span class='op'>::</span><span class='const'>Pubsub</span><span class='op'>::</span><span class='const'>V1</span><span class='op'>::</span><span class='const'>PushConfig</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+    <span class='label'>push_endpoint:</span> <span class='id identifier rubyid_new_endpoint'>new_endpoint</span><span class='comma'>,</span>
+    <span class='label'>attributes:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='rparen'>)</span> <span class='kw'>if</span> <span class='ivar'>@grpc</span>
+<span class='kw'>rescue</span> <span class='const'>GRPC</span><span class='op'>::</span><span class='const'>BadStatus</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Error</span><span class='period'>.</span><span class='id identifier rubyid_from_error'>from_error</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="exists?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>exists?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Determines whether the subscription exists in the Pub/Sub service.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span> <span class='comment'>#=&gt; true</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 135</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_exists?'>exists?</span>
+  <span class='comment'># Always true if we have a grpc object
+</span>  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>unless</span> <span class='ivar'>@grpc</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='comment'># If we have a value, return it
+</span>  <span class='kw'>return</span> <span class='ivar'>@exists</span> <span class='kw'>unless</span> <span class='ivar'>@exists</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_ensure_grpc!'>ensure_grpc!</span>
+  <span class='ivar'>@exists</span> <span class='op'>=</span> <span class='op'>!</span><span class='ivar'>@grpc</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>rescue</span> <span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>NotFoundError</span>
+  <span class='ivar'>@exists</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="listen-instance_method">
+  
+    - (<tt>Object</tt>) <strong>listen</strong>(max: 100, autoack: false, delay: 1) {|msg| ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Poll the backend for new messages. This runs a loop to ping the API,
+blocking indefinitely, yielding retrieved messages as they are received.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_listen'>listen</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span>
+  <span class='comment'># process msg
+</span><span class='kw'>end</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Limit the number of messages pulled per batch with <code>max</code>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_listen'>listen</span> <span class='label'>max:</span> <span class='int'>20</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span>
+  <span class='comment'># process msg
+</span><span class='kw'>end</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Automatically acknowledge messages with <code>autoack</code>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_listen'>listen</span> <span class='label'>autoack:</span> <span class='kw'>true</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span>
+  <span class='comment'># process msg
+</span><span class='kw'>end</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>max</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The maximum number of messages to return for this
+request. The Pub/Sub system may return fewer than the number
+specified. The default value is <code>100</code>, the maximum value is <code>1000</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>autoack</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Automatically acknowledge the message as it is
+pulled. The default value is <code>false</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>delay</span>
+      
+      
+        <span class='type'>(<tt>Number</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The number of seconds to pause between requests
+when the Google Cloud service has no messages to return. The default
+value is <code>1</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>msg</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a block for processing new messages</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>msg</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ReceivedMessage.html" title="Gcloud::Pubsub::ReceivedMessage (class)">ReceivedMessage</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the newly received message</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 325</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_listen'>listen</span> <span class='label'>max:</span> <span class='int'>100</span><span class='comma'>,</span> <span class='label'>autoack:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>delay:</span> <span class='int'>1</span>
+  <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_msgs'>msgs</span> <span class='op'>=</span> <span class='id identifier rubyid_wait_for_messages'>wait_for_messages</span> <span class='label'>max:</span> <span class='id identifier rubyid_max'>max</span><span class='comma'>,</span> <span class='label'>autoack:</span> <span class='id identifier rubyid_autoack'>autoack</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_msgs'>msgs</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
+      <span class='id identifier rubyid_msgs'>msgs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_msg'>msg</span> <span class='rbrace'>}</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_sleep'>sleep</span> <span class='id identifier rubyid_delay'>delay</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="name-instance_method">
+  
+    - (<tt>Object</tt>) <strong>name</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The name of the subscription.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 71</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='ivar'>@grpc</span> <span class='op'>?</span> <span class='ivar'>@grpc</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>:</span> <span class='ivar'>@name</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="policy-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>policy</strong>(force: nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Gets the access control policy.</p>
+
+<p>By default, the policy values are memoized to reduce the number of API
+calls to the Pub/Sub service.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Policy values are memoized to reduce the number of API calls:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_subscription'>subscription</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-subscription</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_subscription'>subscription</span><span class='period'>.</span><span class='id identifier rubyid_policy'>policy</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bindings</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_subscription'>subscription</span><span class='period'>.</span><span class='id identifier rubyid_policy'>policy</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rules</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Use <code>force</code> to retrieve the latest policy from the service:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_subscription'>subscription</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-subscription</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_policy'>policy</span> <span class='op'>=</span> <span class='id identifier rubyid_subscription'>subscription</span><span class='period'>.</span><span class='id identifier rubyid_policy'>policy</span> <span class='label'>force:</span> <span class='kw'>true</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>force</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Force the latest policy to be retrieved from the
+Pub/Sub service when <code>true</code>. Otherwise the policy will be memoized to
+reduce the number of API calls made to the Pub/Sub service. The
+default is <code>false</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Returns a hash that conforms to the following structure:</p>
+
+<p>{
+  &quot;etag&quot;=&gt;&quot;CAE=&quot;,
+  &quot;bindings&quot; =&gt; [{
+    &quot;role&quot; =&gt; &quot;roles/viewer&quot;,
+    &quot;members&quot; =&gt; [&quot;serviceAccount:your-service-account&quot;]
+  }]
+}</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 442</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_policy'>policy</span> <span class='label'>force:</span> <span class='kw'>nil</span>
+  <span class='ivar'>@policy</span> <span class='op'>=</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id identifier rubyid_force'>force</span>
+  <span class='ivar'>@policy</span> <span class='op'>||=</span> <span class='kw'>begin</span>
+    <span class='id identifier rubyid_ensure_service!'>ensure_service!</span>
+    <span class='id identifier rubyid_grpc'>grpc</span> <span class='op'>=</span> <span class='id identifier rubyid_service'>service</span><span class='period'>.</span><span class='id identifier rubyid_get_subscription_policy'>get_subscription_policy</span> <span class='id identifier rubyid_name'>name</span>
+    <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='const'>Google</span><span class='op'>::</span><span class='const'>Iam</span><span class='op'>::</span><span class='const'>V1</span><span class='op'>::</span><span class='const'>Policy</span><span class='period'>.</span><span class='id identifier rubyid_encode_json'>encode_json</span><span class='lparen'>(</span><span class='id identifier rubyid_grpc'>grpc</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='const'>GRPC</span><span class='op'>::</span><span class='const'>BadStatus</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Error</span><span class='period'>.</span><span class='id identifier rubyid_from_error'>from_error</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="policy=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>policy=</strong>(new_policy) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sets the access control policy.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_viewer_policy'>viewer_policy</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bindings</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>role</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>roles/viewer</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>members</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>serviceAccount:your-service-account</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='rbrace'>}</span><span class='rbracket'>]</span>
+<span class='rbrace'>}</span>
+<span class='id identifier rubyid_subscription'>subscription</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-subscription</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_subscription'>subscription</span><span class='period'>.</span><span class='id identifier rubyid_policy'>policy</span> <span class='op'>=</span> <span class='id identifier rubyid_viewer_policy'>viewer_policy</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_policy</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A hash that conforms to the following
+structure:</p>
+
+<p>{
+    &quot;bindings&quot; =&gt; [{
+      &quot;role&quot; =&gt; &quot;roles/viewer&quot;,
+      &quot;members&quot; =&gt; [&quot;serviceAccount:your-service-account&quot;]
+    }]
+  }</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+481
+482
+483
+484
+485
+486
+487</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 481</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_policy='>policy=</span> <span class='id identifier rubyid_new_policy'>new_policy</span>
+  <span class='id identifier rubyid_ensure_service!'>ensure_service!</span>
+  <span class='id identifier rubyid_grpc'>grpc</span> <span class='op'>=</span> <span class='id identifier rubyid_service'>service</span><span class='period'>.</span><span class='id identifier rubyid_set_subscription_policy'>set_subscription_policy</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_new_policy'>new_policy</span>
+  <span class='ivar'>@policy</span> <span class='op'>=</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='const'>Google</span><span class='op'>::</span><span class='const'>Iam</span><span class='op'>::</span><span class='const'>V1</span><span class='op'>::</span><span class='const'>Policy</span><span class='period'>.</span><span class='id identifier rubyid_encode_json'>encode_json</span><span class='lparen'>(</span><span class='id identifier rubyid_grpc'>grpc</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'>GRPC</span><span class='op'>::</span><span class='const'>BadStatus</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Error</span><span class='period'>.</span><span class='id identifier rubyid_from_error'>from_error</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="pull-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="ReceivedMessage.html" title="Gcloud::Pubsub::ReceivedMessage (class)">Gcloud::Pubsub::ReceivedMessage</a></span>&gt;</tt>) <strong>pull</strong>(immediate: true, max: 100, autoack: false) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Pulls messages from the server. Returns an empty list if there are no
+messages available in the backlog. Raises an ApiError with status
+<code>UNAVAILABLE</code> if there are too many concurrent pull requests pending
+for the given subscription.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_pull'>pull</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span> <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_acknowledge!'>acknowledge!</span> <span class='rbrace'>}</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>A maximum number of messages returned can also be specified:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>max:</span> <span class='int'>10</span>
+<span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_pull'>pull</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span> <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_acknowledge!'>acknowledge!</span> <span class='rbrace'>}</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>The call can block until messages are available:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_msgs'>msgs</span> <span class='op'>=</span> <span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_pull'>pull</span> <span class='label'>immediate:</span> <span class='kw'>false</span>
+<span class='id identifier rubyid_msgs'>msgs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span> <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_acknowledge!'>acknowledge!</span> <span class='rbrace'>}</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>immediate</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>When <code>true</code> the system will respond
+immediately even if it is not able to return messages. When <code>false</code>
+the system is allowed to wait until it can return least one message.
+No messages are returned when a request times out. The default value
+is <code>true</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>max</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The maximum number of messages to return for this
+request. The Pub/Sub system may return fewer than the number
+specified. The default value is <code>100</code>, the maximum value is <code>1000</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>autoack</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Automatically acknowledge the message as it is
+pulled. The default value is <code>false</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="ReceivedMessage.html" title="Gcloud::Pubsub::ReceivedMessage (class)">Gcloud::Pubsub::ReceivedMessage</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 234</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_pull'>pull</span> <span class='label'>immediate:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>max:</span> <span class='int'>100</span><span class='comma'>,</span> <span class='label'>autoack:</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_ensure_service!'>ensure_service!</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>immediate:</span> <span class='id identifier rubyid_immediate'>immediate</span><span class='comma'>,</span> <span class='label'>max:</span> <span class='id identifier rubyid_max'>max</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_list_grpc'>list_grpc</span> <span class='op'>=</span> <span class='id identifier rubyid_service'>service</span><span class='period'>.</span><span class='id identifier rubyid_pull'>pull</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='id identifier rubyid_messages'>messages</span> <span class='op'>=</span> <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_list_grpc'>list_grpc</span><span class='period'>.</span><span class='id identifier rubyid_received_messages'>received_messages</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_msg_grpc'>msg_grpc</span><span class='op'>|</span>
+    <span class='const'>ReceivedMessage</span><span class='period'>.</span><span class='id identifier rubyid_from_grpc'>from_grpc</span> <span class='id identifier rubyid_msg_grpc'>msg_grpc</span><span class='comma'>,</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_acknowledge'>acknowledge</span> <span class='id identifier rubyid_messages'>messages</span> <span class='kw'>if</span> <span class='id identifier rubyid_autoack'>autoack</span>
+  <span class='id identifier rubyid_messages'>messages</span>
+<span class='kw'>rescue</span> <span class='const'>GRPC</span><span class='op'>::</span><span class='const'>BadStatus</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Error</span><span class='period'>.</span><span class='id identifier rubyid_from_error'>from_error</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'>Faraday</span><span class='op'>::</span><span class='const'>TimeoutError</span>
+  <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="test_permissions-instance_method">
+  
+    - (<tt>Array&lt;String&gt;</tt>) <strong>test_permissions</strong>(*permissions) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Tests the specified permissions against the <a href="https://cloud.google.com/iam/">Cloud
+IAM</a> access control policy.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-subscription</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_perms'>perms</span> <span class='op'>=</span> <span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_test_permissions'>test_permissions</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pubsub.subscriptions.get</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                             <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pubsub.subscriptions.consume</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_perms'>perms</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pubsub.subscriptions.get</span><span class='tstring_end'>&quot;</span></span> <span class='comment'>#=&gt; true
+</span><span class='id identifier rubyid_perms'>perms</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pubsub.subscriptions.consume</span><span class='tstring_end'>&quot;</span></span> <span class='comment'>#=&gt; false</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>permissions</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The set of permissions to
+check access for. Permissions with wildcards (such as <code>*</code> or
+<code>storage.*</code>) are not allowed.</p>
+
+<p>The permissions that can be checked on a subscription are:</p>
+
+<ul>
+<li>pubsub.subscriptions.consume</li>
+<li>pubsub.subscriptions.get</li>
+<li>pubsub.subscriptions.delete</li>
+<li>pubsub.subscriptions.update</li>
+<li>pubsub.subscriptions.getIamPolicy</li>
+<li>pubsub.subscriptions.setIamPolicy</li>
+</ul>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The permissions that have access.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://cloud.google.com/iam/docs/managing-policies" target="_parent" title="Managing Policies">Managing Policies</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+522
+523
+524
+525
+526
+527
+528
+529</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 522</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_test_permissions'>test_permissions</span> <span class='op'>*</span><span class='id identifier rubyid_permissions'>permissions</span>
+  <span class='id identifier rubyid_permissions'>permissions</span> <span class='op'>=</span> <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_permissions'>permissions</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span>
+  <span class='id identifier rubyid_ensure_service!'>ensure_service!</span>
+  <span class='id identifier rubyid_grpc'>grpc</span> <span class='op'>=</span> <span class='id identifier rubyid_service'>service</span><span class='period'>.</span><span class='id identifier rubyid_test_subscription_permissions'>test_subscription_permissions</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_permissions'>permissions</span>
+  <span class='id identifier rubyid_grpc'>grpc</span><span class='period'>.</span><span class='id identifier rubyid_permissions'>permissions</span>
+<span class='kw'>rescue</span> <span class='const'>GRPC</span><span class='op'>::</span><span class='const'>BadStatus</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>Error</span><span class='period'>.</span><span class='id identifier rubyid_from_error'>from_error</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="topic-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Topic.html" title="Gcloud::Pubsub::Topic (class)">Topic</a></span></tt>) <strong>topic</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The <span class='object_link'><a href="Topic.html" title="Gcloud::Pubsub::Topic (class)">Topic</a></span> from which this subscription receives messages.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_topic'>topic</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='comment'>#=&gt; &quot;projects/my-project/topics/my-topic&quot;</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Topic.html" title="Gcloud::Pubsub::Topic (class)">Topic</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89
+90
+91
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 89</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_topic'>topic</span>
+  <span class='id identifier rubyid_ensure_grpc!'>ensure_grpc!</span>
+  <span class='const'>Topic</span><span class='period'>.</span><span class='id identifier rubyid_new_lazy'>new_lazy</span> <span class='ivar'>@grpc</span><span class='period'>.</span><span class='id identifier rubyid_topic'>topic</span><span class='comma'>,</span> <span class='id identifier rubyid_service'>service</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="wait_for_messages-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="ReceivedMessage.html" title="Gcloud::Pubsub::ReceivedMessage (class)">Gcloud::Pubsub::ReceivedMessage</a></span>&gt;</tt>) <strong>wait_for_messages</strong>(max: 100, autoack: false) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Pulls from the server while waiting for messages to become available.
+This is the same as:</p>
+
+<p>subscription.pull immediate: false</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pubsub'>pubsub</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_pubsub'>pubsub</span>
+
+<span class='id identifier rubyid_sub'>sub</span> <span class='op'>=</span> <span class='id identifier rubyid_pubsub'>pubsub</span><span class='period'>.</span><span class='id identifier rubyid_subscription'>subscription</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-topic-sub</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_msgs'>msgs</span> <span class='op'>=</span> <span class='id identifier rubyid_sub'>sub</span><span class='period'>.</span><span class='id identifier rubyid_wait_for_messages'>wait_for_messages</span>
+<span class='id identifier rubyid_msgs'>msgs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span> <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_acknowledge!'>acknowledge!</span> <span class='rbrace'>}</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>max</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The maximum number of messages to return for this
+request. The Pub/Sub system may return fewer than the number
+specified. The default value is <code>100</code>, the maximum value is <code>1000</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>autoack</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Automatically acknowledge the message as it is
+pulled. The default value is <code>false</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="ReceivedMessage.html" title="Gcloud::Pubsub::ReceivedMessage (class)">Gcloud::Pubsub::ReceivedMessage</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+273
+274
+275</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/pubsub/subscription.rb', line 273</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_wait_for_messages'>wait_for_messages</span> <span class='label'>max:</span> <span class='int'>100</span><span class='comma'>,</span> <span class='label'>autoack:</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_pull'>pull</span> <span class='label'>immediate:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>max:</span> <span class='id identifier rubyid_max'>max</span><span class='comma'>,</span> <span class='label'>autoack:</span> <span class='id identifier rubyid_autoack'>autoack</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:49 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>

@@ -150,24 +150,6 @@
       ]
     },
     {
-      "title": "Search",
-      "type": "gcloud/search",
-      "nav": [
-        {
-          "title": "Project",
-          "type": "gcloud/search/project"
-        },
-        {
-          "title": "Index",
-          "type": "gcloud/search/index"
-        },
-        {
-          "title": "Document",
-          "type": "gcloud/search/document"
-        }
-      ]
-    },
-    {
       "title": "Storage",
       "type": "gcloud/storage",
       "nav": [
@@ -200,6 +182,24 @@
         {
           "title": "Detection",
           "type": "gcloud/translate/detection"
+        }
+      ]
+    },
+    {
+      "title": "Vision",
+      "type": "gcloud/vision",
+      "nav": [
+        {
+          "title": "Project",
+          "type": "gcloud/vision/project"
+        },
+        {
+          "title": "Image",
+          "type": "gcloud/vision/image"
+        },
+        {
+          "title": "Annotation",
+          "type": "gcloud/vision/annotation"
         }
       ]
     }

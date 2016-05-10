@@ -1,0 +1,906 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Gcloud::Bigquery::ExtractJob
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Gcloud/Bigquery/ExtractJob.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (E)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Gcloud.html" title="Gcloud (module)">Gcloud</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Bigquery.html" title="Gcloud::Bigquery (module)">Bigquery</a></span></span>
+     &raquo; 
+    <span class="title">ExtractJob</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Gcloud::Bigquery::ExtractJob
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Job.html" title="Gcloud::Bigquery::Job (class)">Job</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Job.html" title="Gcloud::Bigquery::Job (class)">Job</a></span></li>
+          
+            <li class="next">Gcloud::Bigquery::ExtractJob</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/gcloud/bigquery/extract_job.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <h1>ExtractJob</h1>
+
+<p>A <span class='object_link'><a href="Job.html" title="Gcloud::Bigquery::Job (class)">Job</a></span> subclass representing an export operation that may be performed
+on a <span class='object_link'><a href="Table.html" title="Gcloud::Bigquery::Table (class)">Table</a></span>. A ExtractJob instance is created when you call
+<span class='object_link'><a href="Table.html#extract-instance_method" title="Gcloud::Bigquery::Table#extract (method)">Table#extract</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://cloud.google.com/bigquery/exporting-data-from-bigquery" target="_parent" title="Exporting Data From BigQuery">Exporting Data From BigQuery</a></li>
+    
+      <li><a href="https://cloud.google.com/bigquery/docs/reference/v2/jobs" target="_parent" title="Jobs API reference">Jobs API reference</a></li>
+    
+  </ul>
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#avro%3F-instance_method" title="#avro? (instance method)">- (Boolean) <strong>avro?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if the destination format for the data is <a href="http://avro.apache.org/">Avro</a>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compression%3F-instance_method" title="#compression? (instance method)">- (Boolean) <strong>compression?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if the export operation compresses the data using gzip.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#csv%3F-instance_method" title="#csv? (instance method)">- (Boolean) <strong>csv?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if the destination format for the data is CSV.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delimiter-instance_method" title="#delimiter (instance method)">- (Object) <strong>delimiter</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The symbol the operation uses to delimit fields in the exported data.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destinations-instance_method" title="#destinations (instance method)">- (Object) <strong>destinations</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The URI or URIs representing the Google Cloud Storage files to which the data is exported.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destinations_counts-instance_method" title="#destinations_counts (instance method)">- (Object) <strong>destinations_counts</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The count of files per destination URI or URI pattern specified in <span class='object_link'><a href="#destinations-instance_method" title="Gcloud::Bigquery::ExtractJob#destinations (method)">#destinations</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destinations_file_counts-instance_method" title="#destinations_file_counts (instance method)">- (Object) <strong>destinations_file_counts</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The count of files per destination URI or URI pattern specified in <span class='object_link'><a href="#destinations-instance_method" title="Gcloud::Bigquery::ExtractJob#destinations (method)">#destinations</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#json%3F-instance_method" title="#json? (instance method)">- (Boolean) <strong>json?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if the destination format for the data is <a href="http://jsonlines.org/">newline-delimited JSON</a>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#print_header%3F-instance_method" title="#print_header? (instance method)">- (Boolean) <strong>print_header?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if the exported data contains a header row.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#source-instance_method" title="#source (instance method)">- (Object) <strong>source</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The table from which the data is exported.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Job.html" title="Gcloud::Bigquery::Job (class)">Job</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Job.html#configuration-instance_method" title="Gcloud::Bigquery::Job#configuration (method)">#configuration</a></span>, <span class='object_link'><a href="Job.html#created_at-instance_method" title="Gcloud::Bigquery::Job#created_at (method)">#created_at</a></span>, <span class='object_link'><a href="Job.html#done%3F-instance_method" title="Gcloud::Bigquery::Job#done? (method)">#done?</a></span>, <span class='object_link'><a href="Job.html#ended_at-instance_method" title="Gcloud::Bigquery::Job#ended_at (method)">#ended_at</a></span>, <span class='object_link'><a href="Job.html#error-instance_method" title="Gcloud::Bigquery::Job#error (method)">#error</a></span>, <span class='object_link'><a href="Job.html#errors-instance_method" title="Gcloud::Bigquery::Job#errors (method)">#errors</a></span>, <span class='object_link'><a href="Job.html#failed%3F-instance_method" title="Gcloud::Bigquery::Job#failed? (method)">#failed?</a></span>, <span class='object_link'><a href="Job.html#job_id-instance_method" title="Gcloud::Bigquery::Job#job_id (method)">#job_id</a></span>, <span class='object_link'><a href="Job.html#pending%3F-instance_method" title="Gcloud::Bigquery::Job#pending? (method)">#pending?</a></span>, <span class='object_link'><a href="Job.html#project_id-instance_method" title="Gcloud::Bigquery::Job#project_id (method)">#project_id</a></span>, <span class='object_link'><a href="Job.html#reload%21-instance_method" title="Gcloud::Bigquery::Job#reload! (method)">#reload!</a></span>, <span class='object_link'><a href="Job.html#rerun%21-instance_method" title="Gcloud::Bigquery::Job#rerun! (method)">#rerun!</a></span>, <span class='object_link'><a href="Job.html#running%3F-instance_method" title="Gcloud::Bigquery::Job#running? (method)">#running?</a></span>, <span class='object_link'><a href="Job.html#started_at-instance_method" title="Gcloud::Bigquery::Job#started_at (method)">#started_at</a></span>, <span class='object_link'><a href="Job.html#state-instance_method" title="Gcloud::Bigquery::Job#state (method)">#state</a></span>, <span class='object_link'><a href="Job.html#statistics-instance_method" title="Gcloud::Bigquery::Job#statistics (method)">#statistics</a></span>, <span class='object_link'><a href="Job.html#status-instance_method" title="Gcloud::Bigquery::Job#status (method)">#status</a></span>, <span class='object_link'><a href="Job.html#wait_until_done%21-instance_method" title="Gcloud::Bigquery::Job#wait_until_done! (method)">#wait_until_done!</a></span></p>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="avro?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>avro?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if the destination format for the data is
+<a href="http://avro.apache.org/">Avro</a>. The default is <code>false</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/extract_job.rb', line 77</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_avro?'>avro?</span>
+  <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>extract</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>destinationFormat</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_val'>val</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>AVRO</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="compression?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>compression?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if the export operation compresses the data using gzip. The
+default is <code>false</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/extract_job.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_compression?'>compression?</span>
+  <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>extract</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>compression</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_val'>val</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GZIP</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="csv?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>csv?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if the destination format for the data is CSV. Tables with nested
+or repeated fields cannot be exported as CSV. The default is <code>true</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70
+71
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/extract_job.rb', line 68</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_csv?'>csv?</span>
+  <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>extract</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>destinationFormat</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='kw'>return</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_val'>val</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_val'>val</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CSV</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delimiter-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delimiter</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The symbol the operation uses to delimit fields in the exported data.
+The default is a comma (,).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/extract_job.rb', line 85</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delimiter'>delimiter</span>
+  <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>extract</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fieldDelimiter</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_val'>val</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_val'>val</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="destinations-instance_method">
+  
+    - (<tt>Object</tt>) <strong>destinations</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The URI or URIs representing the Google Cloud Storage files to which
+the data is exported.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/extract_job.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_destinations'>destinations</span>
+  <span class='const'>Array</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>extract</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>destinationUris</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="destinations_counts-instance_method">
+  
+    - (<tt>Object</tt>) <strong>destinations_counts</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The count of files per destination URI or URI pattern specified in
+<span class='object_link'><a href="#destinations-instance_method" title="Gcloud::Bigquery::ExtractJob#destinations (method)">#destinations</a></span>. Returns a Hash with the URI patterns as keys and the
+counts as values.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/extract_job.rb', line 112</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_destinations_counts'>destinations_counts</span>
+  <span class='const'>Hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_destinations'>destinations</span><span class='period'>.</span><span class='id identifier rubyid_zip'>zip</span> <span class='id identifier rubyid_destinations_file_counts'>destinations_file_counts</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="destinations_file_counts-instance_method">
+  
+    - (<tt>Object</tt>) <strong>destinations_file_counts</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The count of files per destination URI or URI pattern specified in
+<span class='object_link'><a href="#destinations-instance_method" title="Gcloud::Bigquery::ExtractJob#destinations (method)">#destinations</a></span>. Returns an Array of values in the same order as the URI
+patterns.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/extract_job.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_destinations_file_counts'>destinations_file_counts</span>
+  <span class='const'>Array</span> <span class='id identifier rubyid_stats'>stats</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>extract</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>destinationUriFileCounts</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="json?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>json?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if the destination format for the data is <a href="http://jsonlines.org/">newline-delimited
+JSON</a>. The default is <code>false</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/extract_job.rb', line 60</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_json?'>json?</span>
+  <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>extract</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>destinationFormat</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_val'>val</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>NEWLINE_DELIMITED_JSON</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="print_header?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>print_header?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if the exported data contains a header row. The default is
+<code>true</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+94
+95
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/extract_job.rb', line 94</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_print_header?'>print_header?</span>
+  <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>extract</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>printHeader</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='kw'>true</span> <span class='kw'>if</span> <span class='id identifier rubyid_val'>val</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_val'>val</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="source-instance_method">
+  
+    - (<tt>Object</tt>) <strong>source</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The table from which the data is exported. This is the table upon
+which <span class='object_link'><a href="Table.html#extract-instance_method" title="Gcloud::Bigquery::Table#extract (method)">Table#extract</a></span> was called. Returns a <span class='object_link'><a href="Table.html" title="Gcloud::Bigquery::Table (class)">Table</a></span> instance.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43
+44
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/extract_job.rb', line 41</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_source'>source</span>
+  <span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>extract</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sourceTable</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_table'>table</span>
+  <span class='id identifier rubyid_retrieve_table'>retrieve_table</span> <span class='id identifier rubyid_table'>table</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>projectId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+                 <span class='id identifier rubyid_table'>table</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>datasetId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+                 <span class='id identifier rubyid_table'>table</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tableId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:49 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>

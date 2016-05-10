@@ -1,0 +1,715 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Gcloud::Bigquery::CopyJob
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Gcloud/Bigquery/CopyJob.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Gcloud.html" title="Gcloud (module)">Gcloud</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Bigquery.html" title="Gcloud::Bigquery (module)">Bigquery</a></span></span>
+     &raquo; 
+    <span class="title">CopyJob</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Gcloud::Bigquery::CopyJob
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="Job.html" title="Gcloud::Bigquery::Job (class)">Job</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Job.html" title="Gcloud::Bigquery::Job (class)">Job</a></span></li>
+          
+            <li class="next">Gcloud::Bigquery::CopyJob</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/gcloud/bigquery/copy_job.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <h1>CopyJob</h1>
+
+<p>A <span class='object_link'><a href="Job.html" title="Gcloud::Bigquery::Job (class)">Job</a></span> subclass representing a copy operation that may be performed on a
+<span class='object_link'><a href="Table.html" title="Gcloud::Bigquery::Table (class)">Table</a></span>. A CopyJob instance is created when you call <span class='object_link'><a href="Table.html#copy-instance_method" title="Gcloud::Bigquery::Table#copy (method)">Table#copy</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://cloud.google.com/bigquery/docs/tables#copyingtable" target="_parent" title="Copying an Existing Table">Copying an Existing Table</a></li>
+    
+      <li><a href="https://cloud.google.com/bigquery/docs/reference/v2/jobs" target="_parent" title="Jobs API reference">Jobs API reference</a></li>
+    
+  </ul>
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_if_needed%3F-instance_method" title="#create_if_needed? (instance method)">- (Boolean) <strong>create_if_needed?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if the create disposition for the job is <code>CREATE_IF_NEEDED</code>, which provides the following behavior: If the table does not exist, the copy operation creates the table.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_never%3F-instance_method" title="#create_never? (instance method)">- (Boolean) <strong>create_never?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if the create disposition for the job is <code>CREATE_NEVER</code>, which provides the following behavior: The table must already exist; if it does not, an error is returned in the job result.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#destination-instance_method" title="#destination (instance method)">- (Object) <strong>destination</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The table to which data is copied.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#source-instance_method" title="#source (instance method)">- (Object) <strong>source</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The table from which data is copied.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_append%3F-instance_method" title="#write_append? (instance method)">- (Boolean) <strong>write_append?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if the write disposition for the job is <code>WRITE_APPEND</code>, which provides the following behavior: If the table already exists, the copy operation appends the data to the table.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_empty%3F-instance_method" title="#write_empty? (instance method)">- (Boolean) <strong>write_empty?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if the write disposition for the job is <code>WRITE_EMPTY</code>, which provides the following behavior: If the table already exists and contains data, the job will have an error.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_truncate%3F-instance_method" title="#write_truncate? (instance method)">- (Boolean) <strong>write_truncate?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks if the write disposition for the job is <code>WRITE_TRUNCATE</code>, which provides the following behavior: If the table already exists, the copy operation overwrites the table data.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Job.html" title="Gcloud::Bigquery::Job (class)">Job</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Job.html#configuration-instance_method" title="Gcloud::Bigquery::Job#configuration (method)">#configuration</a></span>, <span class='object_link'><a href="Job.html#created_at-instance_method" title="Gcloud::Bigquery::Job#created_at (method)">#created_at</a></span>, <span class='object_link'><a href="Job.html#done%3F-instance_method" title="Gcloud::Bigquery::Job#done? (method)">#done?</a></span>, <span class='object_link'><a href="Job.html#ended_at-instance_method" title="Gcloud::Bigquery::Job#ended_at (method)">#ended_at</a></span>, <span class='object_link'><a href="Job.html#error-instance_method" title="Gcloud::Bigquery::Job#error (method)">#error</a></span>, <span class='object_link'><a href="Job.html#errors-instance_method" title="Gcloud::Bigquery::Job#errors (method)">#errors</a></span>, <span class='object_link'><a href="Job.html#failed%3F-instance_method" title="Gcloud::Bigquery::Job#failed? (method)">#failed?</a></span>, <span class='object_link'><a href="Job.html#job_id-instance_method" title="Gcloud::Bigquery::Job#job_id (method)">#job_id</a></span>, <span class='object_link'><a href="Job.html#pending%3F-instance_method" title="Gcloud::Bigquery::Job#pending? (method)">#pending?</a></span>, <span class='object_link'><a href="Job.html#project_id-instance_method" title="Gcloud::Bigquery::Job#project_id (method)">#project_id</a></span>, <span class='object_link'><a href="Job.html#reload%21-instance_method" title="Gcloud::Bigquery::Job#reload! (method)">#reload!</a></span>, <span class='object_link'><a href="Job.html#rerun%21-instance_method" title="Gcloud::Bigquery::Job#rerun! (method)">#rerun!</a></span>, <span class='object_link'><a href="Job.html#running%3F-instance_method" title="Gcloud::Bigquery::Job#running? (method)">#running?</a></span>, <span class='object_link'><a href="Job.html#started_at-instance_method" title="Gcloud::Bigquery::Job#started_at (method)">#started_at</a></span>, <span class='object_link'><a href="Job.html#state-instance_method" title="Gcloud::Bigquery::Job#state (method)">#state</a></span>, <span class='object_link'><a href="Job.html#statistics-instance_method" title="Gcloud::Bigquery::Job#statistics (method)">#statistics</a></span>, <span class='object_link'><a href="Job.html#status-instance_method" title="Gcloud::Bigquery::Job#status (method)">#status</a></span>, <span class='object_link'><a href="Job.html#wait_until_done%21-instance_method" title="Gcloud::Bigquery::Job#wait_until_done! (method)">#wait_until_done!</a></span></p>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="create_if_needed?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>create_if_needed?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if the create disposition for the job is <code>CREATE_IF_NEEDED</code>,
+which provides the following behavior: If the table does not exist,
+the copy operation creates the table. This is the default.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/copy_job.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_if_needed?'>create_if_needed?</span>
+  <span class='id identifier rubyid_disp'>disp</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>copy</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>createDisposition</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_disp'>disp</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CREATE_IF_NEEDED</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_never?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>create_never?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if the create disposition for the job is <code>CREATE_NEVER</code>, which
+provides the following behavior: The table must already exist; if it
+does not, an error is returned in the job result.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66
+67</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/copy_job.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_never?'>create_never?</span>
+  <span class='id identifier rubyid_disp'>disp</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>copy</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>createDisposition</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_disp'>disp</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CREATE_NEVER</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="destination-instance_method">
+  
+    - (<tt>Object</tt>) <strong>destination</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The table to which data is copied. Returns a <span class='object_link'><a href="Table.html" title="Gcloud::Bigquery::Table (class)">Table</a></span> instance.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+43
+44
+45
+46
+47
+48
+49</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/copy_job.rb', line 43</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_destination'>destination</span>
+  <span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>copy</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>destinationTable</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_table'>table</span>
+  <span class='id identifier rubyid_retrieve_table'>retrieve_table</span> <span class='id identifier rubyid_table'>table</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>projectId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+                 <span class='id identifier rubyid_table'>table</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>datasetId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+                 <span class='id identifier rubyid_table'>table</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tableId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="source-instance_method">
+  
+    - (<tt>Object</tt>) <strong>source</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The table from which data is copied. This is the table on
+which <span class='object_link'><a href="Table.html#copy-instance_method" title="Gcloud::Bigquery::Table#copy (method)">Table#copy</a></span> was called. Returns a <span class='object_link'><a href="Table.html" title="Gcloud::Bigquery::Table (class)">Table</a></span> instance.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/copy_job.rb', line 33</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_source'>source</span>
+  <span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>copy</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sourceTable</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_table'>table</span>
+  <span class='id identifier rubyid_retrieve_table'>retrieve_table</span> <span class='id identifier rubyid_table'>table</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>projectId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+                 <span class='id identifier rubyid_table'>table</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>datasetId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+                 <span class='id identifier rubyid_table'>table</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tableId</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_append?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>write_append?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if the write disposition for the job is <code>WRITE_APPEND</code>, which
+provides the following behavior: If the table already exists, the copy
+operation appends the data to the table.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/copy_job.rb', line 82</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_append?'>write_append?</span>
+  <span class='id identifier rubyid_disp'>disp</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>copy</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>writeDisposition</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_disp'>disp</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>WRITE_APPEND</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_empty?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>write_empty?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if the write disposition for the job is <code>WRITE_EMPTY</code>, which
+provides the following behavior: If the table already exists and
+contains data, the job will have an error. This is the default.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93
+94</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/copy_job.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_empty?'>write_empty?</span>
+  <span class='id identifier rubyid_disp'>disp</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>copy</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>writeDisposition</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_disp'>disp</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>WRITE_EMPTY</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_truncate?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>write_truncate?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks if the write disposition for the job is <code>WRITE_TRUNCATE</code>, which
+provides the following behavior: If the table already exists, the copy
+operation overwrites the table data.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/copy_job.rb', line 73</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_truncate?'>write_truncate?</span>
+  <span class='id identifier rubyid_disp'>disp</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>copy</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>writeDisposition</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_disp'>disp</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>WRITE_TRUNCATE</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:48 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>

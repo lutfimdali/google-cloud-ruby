@@ -1,0 +1,444 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Gcloud::Bigquery
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Gcloud/Bigquery.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (B)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Gcloud.html" title="Gcloud (module)">Gcloud</a></span></span>
+     &raquo; 
+    <span class="title">Bigquery</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Gcloud::Bigquery
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/gcloud/bigquery.rb<span class="defines">,<br />
+  lib/gcloud/bigquery/job.rb,<br /> lib/gcloud/bigquery/data.rb,<br /> lib/gcloud/bigquery/view.rb,<br /> lib/gcloud/bigquery/table.rb,<br /> lib/gcloud/bigquery/errors.rb,<br /> lib/gcloud/bigquery/dataset.rb,<br /> lib/gcloud/bigquery/project.rb,<br /> lib/gcloud/bigquery/load_job.rb,<br /> lib/gcloud/bigquery/copy_job.rb,<br /> lib/gcloud/bigquery/job/list.rb,<br /> lib/gcloud/bigquery/query_job.rb,<br /> lib/gcloud/bigquery/connection.rb,<br /> lib/gcloud/bigquery/query_data.rb,<br /> lib/gcloud/bigquery/table/list.rb,<br /> lib/gcloud/bigquery/extract_job.rb,<br /> lib/gcloud/bigquery/credentials.rb,<br /> lib/gcloud/bigquery/table/schema.rb,<br /> lib/gcloud/bigquery/dataset/list.rb,<br /> lib/gcloud/bigquery/dataset/access.rb,<br /> lib/gcloud/bigquery/insert_response.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <h1>Google Cloud BigQuery</h1>
+
+<p>Google Cloud BigQuery enables super-fast, SQL-like queries against massive
+datasets, using the processing power of Google&#39;s infrastructure. To learn
+more, read <a href="https://cloud.google.com/bigquery/what-is-bigquery">What is
+BigQuery?</a>.</p>
+
+<p>Gcloud&#39;s goal is to provide an API that is familiar and comfortable to
+Rubyists. Authentication is handled by <span class='object_link'><a href="../Gcloud.html#bigquery-instance_method" title="Gcloud#bigquery (method)">#bigquery</a></span>. You can provide
+the project and credential information to connect to the BigQuery service,
+or if you are running on Google Compute Engine this configuration is taken
+care of for you. You can read more about the options for connecting in the
+<a href="https://googlecloudplatform.github.io/gcloud-ruby/#/docs/guides/authentication">Authentication
+Guide</a>.</p>
+
+<p>To help you get started quickly, the first few examples below use a public
+dataset provided by Google. As soon as you have <a href="https://cloud.google.com/bigquery/sign-up">signed
+up</a> to use BigQuery, and provided
+that you stay in the free tier for queries, you should be able to run these
+first examples without the need to set up billing or to load data (although
+we&#39;ll show you how to do that too.)</p>
+
+<h2>Listing Datasets and Tables</h2>
+
+<p>A BigQuery project holds datasets, which in turn hold tables. Assuming that
+you have not yet created datasets or tables in your own project, let&#39;s
+connect to Google&#39;s <code>publicdata</code> project, and see what you find.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>publicdata</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_bigquery'>bigquery</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_bigquery'>bigquery</span>
+
+<span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_datasets'>datasets</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='comment'>#=&gt; 1
+</span><span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_datasets'>datasets</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='id identifier rubyid_dataset_id'>dataset_id</span> <span class='comment'>#=&gt; &quot;samples&quot;
+</span>
+<span class='id identifier rubyid_dataset'>dataset</span> <span class='op'>=</span> <span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_datasets'>datasets</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+<span class='id identifier rubyid_tables'>tables</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_tables'>tables</span>
+
+<span class='id identifier rubyid_tables'>tables</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='comment'>#=&gt; 7
+</span><span class='id identifier rubyid_tables'>tables</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='op'>&amp;</span><span class='symbol'>:table_id</span> <span class='comment'>#=&gt; [..., &quot;shakespeare&quot;, &quot;trigrams&quot;, &quot;wikipedia&quot;]
+</span></code></pre>
+
+<p>In addition listing all datasets and tables in the project, you can also
+retrieve individual datasets and tables by ID. Let&#39;s look at the structure
+of the <code>shakespeare</code> table, which contains an entry for every word in every
+play written by Shakespeare.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>publicdata</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_bigquery'>bigquery</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_bigquery'>bigquery</span>
+
+<span class='id identifier rubyid_dataset'>dataset</span> <span class='op'>=</span> <span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_dataset'>dataset</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>samples</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_table'>table</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>shakespeare</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span> <span class='comment'>#=&gt; [&quot;word&quot;, &quot;word_count&quot;, &quot;corpus&quot;, &quot;corpus_date&quot;]
+</span><span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_rows_count'>rows_count</span> <span class='comment'>#=&gt; 164656
+</span></code></pre>
+
+<p>Now that you know the column names for the Shakespeare table, you can write
+and run a query.</p>
+
+<h2>Running queries</h2>
+
+<p>BigQuery offers both synchronous and asynchronous methods, as explained in
+<a href="https://cloud.google.com/bigquery/querying-data">Querying Data</a>.</p>
+
+<h3>Synchronous queries</h3>
+
+<p>Let&#39;s start with the simpler synchronous approach. Notice that this time you
+are connecting using your own default project. This is necessary for running
+a query, since queries need to be able to create tables to hold results.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_bigquery'>bigquery</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_bigquery'>bigquery</span>
+
+<span class='id identifier rubyid_sql'>sql</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT TOP(word, 50) as word, COUNT(*) as count </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FROM publicdata:samples.shakespeare</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span> <span class='id identifier rubyid_sql'>sql</span>
+
+<span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='comment'>#=&gt; 50
+</span><span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_next?'>next?</span> <span class='comment'>#=&gt; false
+</span><span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span> <span class='comment'>#=&gt; {&quot;word&quot;=&gt;&quot;you&quot;, &quot;count&quot;=&gt;42}
+</span></code></pre>
+
+<p>The <code>TOP</code> function shown above is just one of a variety of functions
+offered by BigQuery. See the <a href="https://cloud.google.com/bigquery/query-reference">Query
+Reference</a> for a full
+listing.</p>
+
+<h3>Asynchronous queries</h3>
+
+<p>Because you probably should not block for most BigQuery operations,
+including querying as well as importing, exporting, and copying data, the
+BigQuery API enables you to manage longer-running jobs. In the asynchronous
+approach to running a query, an instance of <span class='object_link'><a href="Bigquery/QueryJob.html" title="Gcloud::Bigquery::QueryJob (class)">QueryJob</a></span> is
+returned, rather than an instance of <span class='object_link'><a href="Bigquery/QueryData.html" title="Gcloud::Bigquery::QueryData (class)">QueryData</a></span>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_bigquery'>bigquery</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_bigquery'>bigquery</span>
+
+<span class='id identifier rubyid_sql'>sql</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT TOP(word, 50) as word, COUNT(*) as count </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FROM publicdata:samples.shakespeare</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_job'>job</span> <span class='op'>=</span> <span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_query_job'>query_job</span> <span class='id identifier rubyid_sql'>sql</span>
+
+<span class='id identifier rubyid_job'>job</span><span class='period'>.</span><span class='id identifier rubyid_wait_until_done!'>wait_until_done!</span>
+<span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_job'>job</span><span class='period'>.</span><span class='id identifier rubyid_failed?'>failed?</span>
+  <span class='id identifier rubyid_job'>job</span><span class='period'>.</span><span class='id identifier rubyid_query_results'>query_results</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_row'>row</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_row'>row</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>word</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Once you have determined that the job is done and has not failed, you can
+obtain an instance of <span class='object_link'><a href="Bigquery/QueryData.html" title="Gcloud::Bigquery::QueryData (class)">QueryData</a></span> by calling
+<span class='object_link'><a href="Bigquery/QueryJob.html#query_results-instance_method" title="Gcloud::Bigquery::QueryJob#query_results (method)">QueryJob#query_results</a></span>. The query results for both of
+the above examples are stored in temporary tables with a lifetime of about
+24 hours. See the final example below for a demonstration of how to store
+query results in a permanent table.</p>
+
+<h2>Creating Datasets and Tables</h2>
+
+<p>The first thing you need to do in a new BigQuery project is to create a
+<span class='object_link'><a href="Bigquery/Dataset.html" title="Gcloud::Bigquery::Dataset (class)">Dataset</a></span>. Datasets hold tables and control access to
+them.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud/bigquery</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_bigquery'>bigquery</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_bigquery'>bigquery</span>
+<span class='id identifier rubyid_dataset'>dataset</span> <span class='op'>=</span> <span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_create_dataset'>create_dataset</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_dataset</span><span class='tstring_end'>&quot;</span></span>
+</code></pre>
+
+<p>Now that you have a dataset, you can use it to create a table. Every table
+is defined by a schema that may contain nested and repeated fields. The
+example below shows a schema with a repeated record field named
+<code>cities_lived</code>. (For more information about nested and repeated fields, see
+<a href="https://cloud.google.com/bigquery/preparing-data-for-bigquery">Preparing Data for
+BigQuery</a>.)</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_bigquery'>bigquery</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_bigquery'>bigquery</span>
+<span class='id identifier rubyid_dataset'>dataset</span> <span class='op'>=</span> <span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_dataset'>dataset</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_dataset</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_create_table'>create_table</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>people</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_schema'>schema</span><span class='op'>|</span>
+  <span class='id identifier rubyid_schema'>schema</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>first_name</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>mode:</span> <span class='symbol'>:required</span>
+  <span class='id identifier rubyid_schema'>schema</span><span class='period'>.</span><span class='id identifier rubyid_record'>record</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cities_lived</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>mode:</span> <span class='symbol'>:repeated</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_nested_schema'>nested_schema</span><span class='op'>|</span>
+    <span class='id identifier rubyid_nested_schema'>nested_schema</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>place</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>mode:</span> <span class='symbol'>:required</span>
+    <span class='id identifier rubyid_nested_schema'>nested_schema</span><span class='period'>.</span><span class='id identifier rubyid_integer'>integer</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>number_of_years</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>mode:</span> <span class='symbol'>:required</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Because of the repeated field in this schema, we cannot use the CSV format
+to load data into the table.</p>
+
+<h2>Loading records</h2>
+
+<p>In addition to CSV, data can be imported from files that are formatted as
+<a href="http://jsonlines.org/">Newline-delimited JSON</a> or
+<a href="http://avro.apache.org/">Avro</a>, or from a Google Cloud Datastore backup. It
+can also be &quot;streamed&quot; into BigQuery.</p>
+
+<p>To follow along with these examples, you will need to set up billing on the
+<a href="https://console.developers.google.com">Google Developers Console</a>.</p>
+
+<h3>Streaming records</h3>
+
+<p>For situations in which you want new data to be available for querying as
+soon as possible, inserting individual records directly from your Ruby
+application is a great approach.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_bigquery'>bigquery</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_bigquery'>bigquery</span>
+<span class='id identifier rubyid_dataset'>dataset</span> <span class='op'>=</span> <span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_dataset'>dataset</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_dataset</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_table'>table</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>people</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_rows'>rows</span> <span class='op'>=</span> <span class='lbracket'>[</span>
+    <span class='lbrace'>{</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>first_name</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Anna</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cities_lived</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span>
+            <span class='lbrace'>{</span>
+                <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>place</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Stockholm</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>number_of_years</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='int'>2</span>
+            <span class='rbrace'>}</span>
+        <span class='rbracket'>]</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='lbrace'>{</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>first_name</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Bob</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cities_lived</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span>
+            <span class='lbrace'>{</span>
+                <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>place</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Seattle</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>number_of_years</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='int'>5</span>
+            <span class='rbrace'>}</span><span class='comma'>,</span>
+            <span class='lbrace'>{</span>
+                <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>place</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Austin</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>number_of_years</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='int'>6</span>
+            <span class='rbrace'>}</span>
+        <span class='rbracket'>]</span>
+    <span class='rbrace'>}</span>
+<span class='rbracket'>]</span>
+<span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_insert'>insert</span> <span class='id identifier rubyid_rows'>rows</span>
+</code></pre>
+
+<p>There are some trade-offs involved with streaming, so be sure to read the
+discussion of data consistency in <a href="https://cloud.google.com/bigquery/streaming-data-into-bigquery">Streaming Data Into
+BigQuery</a>.</p>
+
+<h3>Uploading a file</h3>
+
+<p>To follow along with this example, please download the
+<a href="http://www.ssa.gov/OACT/babynames/names.zip">names.zip</a> archive from the
+U.S. Social Security Administration. Inside the archive you will find over
+100 files containing baby name records since the year 1880. A PDF file also
+contained in the archive specifies the schema used below.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_bigquery'>bigquery</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_bigquery'>bigquery</span>
+<span class='id identifier rubyid_dataset'>dataset</span> <span class='op'>=</span> <span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_dataset'>dataset</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_dataset</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_create_table'>create_table</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>baby_names</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_schema'>schema</span><span class='op'>|</span>
+  <span class='id identifier rubyid_schema'>schema</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>mode:</span> <span class='symbol'>:required</span>
+  <span class='id identifier rubyid_schema'>schema</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>sex</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>mode:</span> <span class='symbol'>:required</span>
+  <span class='id identifier rubyid_schema'>schema</span><span class='period'>.</span><span class='id identifier rubyid_integer'>integer</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>number</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>mode:</span> <span class='symbol'>:required</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>names/yob2014.txt</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_load_job'>load_job</span> <span class='op'>=</span> <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span> <span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='label'>format:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>csv</span><span class='tstring_end'>&quot;</span></span>
+</code></pre>
+
+<p>Because the names data, although formatted as CSV, is distributed in files
+with a <code>.txt</code> extension, this example explicitly passes the <code>format</code> option
+in order to demonstrate how to handle such situations. Because CSV is the
+default format for load operations, the option is not actually necessary.
+For JSON saved with a <code>.txt</code> extension, however, it would be.</p>
+
+<h3>A note about large uploads</h3>
+
+<p>You may encounter a Broken pipe (<code>Errno::EPIPE</code>) error when attempting to
+upload large files. To avoid this problem, add the
+<a href="https://rubygems.org/gems/httpclient">httpclient</a> gem to your project, and
+the line (or lines) of configuration shown below. These lines must execute
+after you require gcloud but before you make your first gcloud connection.
+The first statement configures <a href="https://rubygems.org/gems/faraday">Faraday</a>
+to use httpclient. The second statement, which should only be added if you
+are using a version of Faraday at or above 0.9.2, is a workaround for <a href="https://github.com/GoogleCloudPlatform/gcloud-ruby/issues/367">this
+gzip issue</a>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># Use httpclient to avoid broken pipe errors with large uploads
+</span><span class='const'>Faraday</span><span class='period'>.</span><span class='id identifier rubyid_default_adapter'>default_adapter</span> <span class='op'>=</span> <span class='symbol'>:httpclient</span>
+
+<span class='comment'># Only add the following statement if using Faraday &gt;= 0.9.2
+</span><span class='comment'># Override gzip middleware with no-op for httpclient
+</span><span class='const'>Faraday</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id identifier rubyid_register_middleware'>register_middleware</span> <span class='symbol'>:gzip</span> <span class='op'>=&gt;</span>
+                                        <span class='const'>Faraday</span><span class='op'>::</span><span class='const'>Response</span><span class='op'>::</span><span class='const'>Middleware</span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_bigquery'>bigquery</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_bigquery'>bigquery</span>
+</code></pre>
+
+<h2>Exporting query results to Google Cloud Storage</h2>
+
+<p>The example below shows how to pass the <code>table</code> option with a query in order
+to store results in a permanent table. It also shows how to export the
+result data to a Google Cloud Storage file. In order to follow along, you
+will need to enable the Google Cloud Storage API in addition to setting up
+billing.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_bigquery'>bigquery</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_bigquery'>bigquery</span>
+<span class='id identifier rubyid_dataset'>dataset</span> <span class='op'>=</span> <span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_dataset'>dataset</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_dataset</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_source_table'>source_table</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_table'>table</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>baby_names</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_result_table'>result_table</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_create_table'>create_table</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>baby_names_results</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_sql'>sql</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT name, number as count </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FROM baby_names </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>WHERE name CONTAINS &#39;Sam&#39; </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ORDER BY count DESC</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_query_job'>query_job</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_query_job'>query_job</span> <span class='id identifier rubyid_sql'>sql</span><span class='comma'>,</span> <span class='label'>table:</span> <span class='id identifier rubyid_result_table'>result_table</span>
+
+<span class='id identifier rubyid_query_job'>query_job</span><span class='period'>.</span><span class='id identifier rubyid_wait_until_done!'>wait_until_done!</span>
+
+<span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_query_job'>query_job</span><span class='period'>.</span><span class='id identifier rubyid_failed?'>failed?</span>
+
+  <span class='id identifier rubyid_storage'>storage</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_storage'>storage</span>
+  <span class='id identifier rubyid_bucket_id'>bucket_id</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bigquery-exports-</span><span class='embexpr_beg'>#{</span><span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_uuid'>uuid</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_bucket'>bucket</span> <span class='op'>=</span> <span class='id identifier rubyid_storage'>storage</span><span class='period'>.</span><span class='id identifier rubyid_create_bucket'>create_bucket</span> <span class='id identifier rubyid_bucket_id'>bucket_id</span>
+  <span class='id identifier rubyid_extract_url'>extract_url</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gs://</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bucket'>bucket</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/baby-names-sam.csv</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id identifier rubyid_extract_job'>extract_job</span> <span class='op'>=</span> <span class='id identifier rubyid_result_table'>result_table</span><span class='period'>.</span><span class='id identifier rubyid_extract'>extract</span> <span class='id identifier rubyid_extract_url'>extract_url</span>
+
+  <span class='id identifier rubyid_extract_job'>extract_job</span><span class='period'>.</span><span class='id identifier rubyid_wait_until_done!'>wait_until_done!</span>
+
+  <span class='comment'># Download to local filesystem
+</span>  <span class='id identifier rubyid_bucket'>bucket</span><span class='period'>.</span><span class='id identifier rubyid_files'>files</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='id identifier rubyid_download'>download</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>baby-names-sam.csv</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='kw'>end</span>
+</code></pre>
+
+<p>If a table you wish to export contains a large amount of data, you can pass
+a wildcard URI to export to multiple files (for sharding), or an array of
+URIs (for partitioning), or both. See <a href="https://cloud.google.com/bigquery/exporting-data-from-bigquery">Exporting Data From
+BigQuery</a>
+for details.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Bigquery/ApiError.html" title="Gcloud::Bigquery::ApiError (class)">ApiError</a></span>, <span class='object_link'><a href="Bigquery/CopyJob.html" title="Gcloud::Bigquery::CopyJob (class)">CopyJob</a></span>, <span class='object_link'><a href="Bigquery/Data.html" title="Gcloud::Bigquery::Data (class)">Data</a></span>, <span class='object_link'><a href="Bigquery/Dataset.html" title="Gcloud::Bigquery::Dataset (class)">Dataset</a></span>, <span class='object_link'><a href="Bigquery/Error.html" title="Gcloud::Bigquery::Error (class)">Error</a></span>, <span class='object_link'><a href="Bigquery/ExtractJob.html" title="Gcloud::Bigquery::ExtractJob (class)">ExtractJob</a></span>, <span class='object_link'><a href="Bigquery/InsertResponse.html" title="Gcloud::Bigquery::InsertResponse (class)">InsertResponse</a></span>, <span class='object_link'><a href="Bigquery/Job.html" title="Gcloud::Bigquery::Job (class)">Job</a></span>, <span class='object_link'><a href="Bigquery/LoadJob.html" title="Gcloud::Bigquery::LoadJob (class)">LoadJob</a></span>, <span class='object_link'><a href="Bigquery/Project.html" title="Gcloud::Bigquery::Project (class)">Project</a></span>, <span class='object_link'><a href="Bigquery/QueryData.html" title="Gcloud::Bigquery::QueryData (class)">QueryData</a></span>, <span class='object_link'><a href="Bigquery/QueryJob.html" title="Gcloud::Bigquery::QueryJob (class)">QueryJob</a></span>, <span class='object_link'><a href="Bigquery/Table.html" title="Gcloud::Bigquery::Table (class)">Table</a></span>, <span class='object_link'><a href="Bigquery/View.html" title="Gcloud::Bigquery::View (class)">View</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+
+
+</div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:42 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,649 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Gcloud::Datastore::Dataset::QueryResults
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!Gcloud/Datastore/Dataset/QueryResults.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (Q)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Gcloud.html" title="Gcloud (module)">Gcloud</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Datastore.html" title="Gcloud::Datastore (module)">Datastore</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Dataset.html" title="Gcloud::Datastore::Dataset (class)">Dataset</a></span></span>
+     &raquo; 
+    <span class="title">QueryResults</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Gcloud::Datastore::Dataset::QueryResults
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Array</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Array</li>
+          
+            <li class="next">Gcloud::Datastore::Dataset::QueryResults</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/gcloud/datastore/dataset/query_results.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>QueryResults is a special case Array with additional values.
+A QueryResults object is returned from Dataset#run and contains
+the Entities from the query as well as the query&#39;s cursor and
+more_results value.</p>
+
+<p>Please be cautious when treating the QueryResults as an Array.
+Many common Array methods will return a new Array instance.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_entities'>entities</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_query'>query</span>
+<span class='id identifier rubyid_entities'>entities</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='comment'>#=&gt; 3
+</span><span class='id identifier rubyid_entities'>entities</span><span class='period'>.</span><span class='id identifier rubyid_cursor'>cursor</span> <span class='comment'>#=&gt; &quot;c3VwZXJhd2Vzb21lIQ&quot;</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Caution, many Array methods will return a new Array instance:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_entities'>entities</span> <span class='op'>=</span> <span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_query'>query</span>
+<span class='id identifier rubyid_entities'>entities</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='comment'>#=&gt; 3
+</span><span class='id identifier rubyid_entities'>entities</span><span class='period'>.</span><span class='id identifier rubyid_end_cursor'>end_cursor</span> <span class='comment'>#=&gt; &quot;c3VwZXJhd2Vzb21lIQ&quot;
+</span><span class='id identifier rubyid_names'>names</span> <span class='op'>=</span> <span class='id identifier rubyid_entities'>entities</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_names'>names</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='comment'>#=&gt; 3
+</span><span class='id identifier rubyid_names'>names</span><span class='period'>.</span><span class='id identifier rubyid_cursor'>cursor</span> <span class='comment'>#=&gt; NoMethodError</span></code></pre>
+    
+  </div>
+
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#end_cursor-instance_method" title="#end_cursor (instance method)">- (Object) <strong>end_cursor</strong> </a>
+    
+
+    
+      (also: #cursor)
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The end_cursor of the QueryResults.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#more_results-instance_method" title="#more_results (instance method)">- (Object) <strong>more_results</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The state of the query after the current batch.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (QueryResults) <strong>initialize</strong>(arr = [], end_cursor = nil, more_results = nil) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Create a new QueryResults with an array of values.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#more_after_limit%3F-instance_method" title="#more_after_limit? (instance method)">- (Boolean) <strong>more_after_limit?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Convenience method for determining id the more_results value is &quot;MORE_RESULTS_AFTER_LIMIT&quot;.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#no_more%3F-instance_method" title="#no_more? (instance method)">- (Boolean) <strong>no_more?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Convenience method for determining id the more_results value is &quot;NO_MORE_RESULTS&quot;.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#not_finished%3F-instance_method" title="#not_finished? (instance method)">- (Boolean) <strong>not_finished?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Convenience method for determining id the more_results value is &quot;NOT_FINISHED&quot;.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Gcloud::Datastore::Dataset::QueryResults (class)">QueryResults</a></span></tt>) <strong>initialize</strong>(arr = [], end_cursor = nil, more_results = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Create a new QueryResults with an array of values.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/datastore/dataset/query_results.rb', line 85</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_arr'>arr</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_end_cursor'>end_cursor</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_more_results'>more_results</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='kw'>super</span> <span class='id identifier rubyid_arr'>arr</span>
+  <span class='ivar'>@end_cursor</span> <span class='op'>=</span> <span class='id identifier rubyid_end_cursor'>end_cursor</span>
+  <span class='ivar'>@more_results</span> <span class='op'>=</span> <span class='id identifier rubyid_more_results'>more_results</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="end_cursor-instance_method">
+  
+    - (<tt>Object</tt>) <strong>end_cursor</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='cursor-instance_method'>cursor</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The end_cursor of the QueryResults.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/datastore/dataset/query_results.rb', line 46</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_end_cursor'>end_cursor</span>
+  <span class='ivar'>@end_cursor</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="more_results-instance_method">
+  
+    - (<tt>Object</tt>) <strong>more_results</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The state of the query after the current batch.</p>
+
+<p>Expected values are:</p>
+
+<p>&quot;MORE_RESULTS_AFTER_LIMIT&quot;:
+&quot;NOT_FINISHED&quot;:
+&quot;NO_MORE_RESULTS&quot;:</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/datastore/dataset/query_results.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_more_results'>more_results</span>
+  <span class='ivar'>@more_results</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="more_after_limit?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>more_after_limit?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Convenience method for determining id the more_results value
+is &quot;MORE_RESULTS_AFTER_LIMIT&quot;</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/datastore/dataset/query_results.rb', line 70</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_more_after_limit?'>more_after_limit?</span>
+  <span class='id identifier rubyid_more_results'>more_results</span> <span class='op'>==</span> <span class='const'>Proto</span><span class='period'>.</span><span class='id identifier rubyid_to_more_results_string'>to_more_results_string</span><span class='lparen'>(</span>
+    <span class='const'>Proto</span><span class='op'>::</span><span class='const'>QueryResultBatch</span><span class='op'>::</span><span class='const'>MoreResultsType</span><span class='op'>::</span><span class='const'>MORE_RESULTS_AFTER_LIMIT</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="no_more?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>no_more?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Convenience method for determining id the more_results value
+is &quot;NO_MORE_RESULTS&quot;</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/datastore/dataset/query_results.rb', line 78</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_no_more?'>no_more?</span>
+  <span class='id identifier rubyid_more_results'>more_results</span> <span class='op'>==</span> <span class='const'>Proto</span><span class='period'>.</span><span class='id identifier rubyid_to_more_results_string'>to_more_results_string</span><span class='lparen'>(</span>
+    <span class='const'>Proto</span><span class='op'>::</span><span class='const'>QueryResultBatch</span><span class='op'>::</span><span class='const'>MoreResultsType</span><span class='op'>::</span><span class='const'>NO_MORE_RESULTS</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="not_finished?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>not_finished?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Convenience method for determining id the more_results value
+is &quot;NOT_FINISHED&quot;</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/datastore/dataset/query_results.rb', line 62</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_not_finished?'>not_finished?</span>
+  <span class='id identifier rubyid_more_results'>more_results</span> <span class='op'>==</span> <span class='const'>Proto</span><span class='period'>.</span><span class='id identifier rubyid_to_more_results_string'>to_more_results_string</span><span class='lparen'>(</span>
+    <span class='const'>Proto</span><span class='op'>::</span><span class='const'>QueryResultBatch</span><span class='op'>::</span><span class='const'>MoreResultsType</span><span class='op'>::</span><span class='const'>NOT_FINISHED</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:53 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>

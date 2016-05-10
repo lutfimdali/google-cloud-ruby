@@ -1,0 +1,3263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Gcloud::Bigquery::Dataset::Access
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!Gcloud/Bigquery/Dataset/Access.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (A)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Gcloud.html" title="Gcloud (module)">Gcloud</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Bigquery.html" title="Gcloud::Bigquery (module)">Bigquery</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Dataset.html" title="Gcloud::Bigquery::Dataset (class)">Dataset</a></span></span>
+     &raquo; 
+    <span class="title">Access</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Gcloud::Bigquery::Dataset::Access
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Gcloud::Bigquery::Dataset::Access</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/gcloud/bigquery/dataset/access.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <h1>Dataset Access Control</h1>
+
+<p>Represents the Access rules for a <span class='object_link'><a href="../Dataset.html" title="Gcloud::Bigquery::Dataset (class)">Gcloud::Bigquery::Dataset</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_bigquery'>bigquery</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_bigquery'>bigquery</span>
+<span class='id identifier rubyid_dataset'>dataset</span> <span class='op'>=</span> <span class='id identifier rubyid_bigquery'>bigquery</span><span class='period'>.</span><span class='id identifier rubyid_dataset'>dataset</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my_dataset</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_dataset'>dataset</span><span class='period'>.</span><span class='id identifier rubyid_access'>access</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_access'>access</span><span class='op'>|</span>
+  <span class='id identifier rubyid_access'>access</span><span class='period'>.</span><span class='id identifier rubyid_add_owner_group'>add_owner_group</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>owners@example.com</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_access'>access</span><span class='period'>.</span><span class='id identifier rubyid_add_writer_user'>add_writer_user</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>writer@example.com</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_access'>access</span><span class='period'>.</span><span class='id identifier rubyid_remove_writer_user'>remove_writer_user</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>readers@example.com</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_access'>access</span><span class='period'>.</span><span class='id identifier rubyid_add_reader_special'>add_reader_special</span> <span class='symbol'>:all</span>
+  <span class='id identifier rubyid_access'>access</span><span class='period'>.</span><span class='id identifier rubyid_add_reader_view'>add_reader_view</span> <span class='id identifier rubyid_other_dataset_view_object'>other_dataset_view_object</span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://cloud.google.com/bigquery/access-control" target="_parent" title="BigQuery Access Control">BigQuery Access Control</a></li>
+    
+  </ul>
+
+</div>
+  <h2>Constant Summary</h2>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_owner_domain-instance_method" title="#add_owner_domain (instance method)">- (Object) <strong>add_owner_domain</strong>(domain) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add owner access to a domain.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_owner_group-instance_method" title="#add_owner_group (instance method)">- (Object) <strong>add_owner_group</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add owner access to a group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_owner_special-instance_method" title="#add_owner_special (instance method)">- (Object) <strong>add_owner_special</strong>(group) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add owner access to a special group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_owner_user-instance_method" title="#add_owner_user (instance method)">- (Object) <strong>add_owner_user</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add owner access to a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_owner_view-instance_method" title="#add_owner_view (instance method)">- (Object) <strong>add_owner_view</strong>(view) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add owner access to a view.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_reader_domain-instance_method" title="#add_reader_domain (instance method)">- (Object) <strong>add_reader_domain</strong>(domain) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add reader access to a domain.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_reader_group-instance_method" title="#add_reader_group (instance method)">- (Object) <strong>add_reader_group</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add reader access to a group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_reader_special-instance_method" title="#add_reader_special (instance method)">- (Object) <strong>add_reader_special</strong>(group) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add reader access to a special group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_reader_user-instance_method" title="#add_reader_user (instance method)">- (Object) <strong>add_reader_user</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add reader access to a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_reader_view-instance_method" title="#add_reader_view (instance method)">- (Object) <strong>add_reader_view</strong>(view) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add reader access to a view.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_writer_domain-instance_method" title="#add_writer_domain (instance method)">- (Object) <strong>add_writer_domain</strong>(domain) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add writer access to a domain.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_writer_group-instance_method" title="#add_writer_group (instance method)">- (Object) <strong>add_writer_group</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add writer access to a group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_writer_special-instance_method" title="#add_writer_special (instance method)">- (Object) <strong>add_writer_special</strong>(group) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add writer access to a special group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_writer_user-instance_method" title="#add_writer_user (instance method)">- (Object) <strong>add_writer_user</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add writer access to a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_writer_view-instance_method" title="#add_writer_view (instance method)">- (Object) <strong>add_writer_view</strong>(view) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add writer access to a view.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#owner_domain%3F-instance_method" title="#owner_domain? (instance method)">- (Boolean) <strong>owner_domain?</strong>(domain) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks owner access for a domain.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#owner_group%3F-instance_method" title="#owner_group? (instance method)">- (Boolean) <strong>owner_group?</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks owner access for a group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#owner_special%3F-instance_method" title="#owner_special? (instance method)">- (Boolean) <strong>owner_special?</strong>(group) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks owner access for a special group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#owner_user%3F-instance_method" title="#owner_user? (instance method)">- (Boolean) <strong>owner_user?</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks owner access for a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#owner_view%3F-instance_method" title="#owner_view? (instance method)">- (Boolean) <strong>owner_view?</strong>(view) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks owner access for a view.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reader_domain%3F-instance_method" title="#reader_domain? (instance method)">- (Boolean) <strong>reader_domain?</strong>(domain) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks reader access for a domain.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reader_group%3F-instance_method" title="#reader_group? (instance method)">- (Boolean) <strong>reader_group?</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks reader access for a group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reader_special%3F-instance_method" title="#reader_special? (instance method)">- (Boolean) <strong>reader_special?</strong>(group) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks reader access for a special group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reader_user%3F-instance_method" title="#reader_user? (instance method)">- (Boolean) <strong>reader_user?</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks reader access for a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reader_view%3F-instance_method" title="#reader_view? (instance method)">- (Boolean) <strong>reader_view?</strong>(view) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks reader access for a view.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_owner_domain-instance_method" title="#remove_owner_domain (instance method)">- (Object) <strong>remove_owner_domain</strong>(domain) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove owner access from a domain.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_owner_group-instance_method" title="#remove_owner_group (instance method)">- (Object) <strong>remove_owner_group</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove owner access from a group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_owner_special-instance_method" title="#remove_owner_special (instance method)">- (Object) <strong>remove_owner_special</strong>(group) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove owner access from a special group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_owner_user-instance_method" title="#remove_owner_user (instance method)">- (Object) <strong>remove_owner_user</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove owner access from a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_owner_view-instance_method" title="#remove_owner_view (instance method)">- (Object) <strong>remove_owner_view</strong>(view) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove owner access from a view.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_reader_domain-instance_method" title="#remove_reader_domain (instance method)">- (Object) <strong>remove_reader_domain</strong>(domain) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove reader access from a domain.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_reader_group-instance_method" title="#remove_reader_group (instance method)">- (Object) <strong>remove_reader_group</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove reader access from a group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_reader_special-instance_method" title="#remove_reader_special (instance method)">- (Object) <strong>remove_reader_special</strong>(group) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove reader access from a special group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_reader_user-instance_method" title="#remove_reader_user (instance method)">- (Object) <strong>remove_reader_user</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove reader access from a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_reader_view-instance_method" title="#remove_reader_view (instance method)">- (Object) <strong>remove_reader_view</strong>(view) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove reader access from a view.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_writer_domain-instance_method" title="#remove_writer_domain (instance method)">- (Object) <strong>remove_writer_domain</strong>(domain) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove writer access from a domain.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_writer_group-instance_method" title="#remove_writer_group (instance method)">- (Object) <strong>remove_writer_group</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove writer access from a group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_writer_special-instance_method" title="#remove_writer_special (instance method)">- (Object) <strong>remove_writer_special</strong>(group) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove writer access from a special group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_writer_user-instance_method" title="#remove_writer_user (instance method)">- (Object) <strong>remove_writer_user</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove writer access from a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_writer_view-instance_method" title="#remove_writer_view (instance method)">- (Object) <strong>remove_writer_view</strong>(view) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Remove writer access from a view.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#writer_domain%3F-instance_method" title="#writer_domain? (instance method)">- (Boolean) <strong>writer_domain?</strong>(domain) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks writer access for a domain.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#writer_group%3F-instance_method" title="#writer_group? (instance method)">- (Boolean) <strong>writer_group?</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks writer access for a group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#writer_special%3F-instance_method" title="#writer_special? (instance method)">- (Boolean) <strong>writer_special?</strong>(group) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks writer access for a special group.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#writer_user%3F-instance_method" title="#writer_user? (instance method)">- (Boolean) <strong>writer_user?</strong>(email) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks writer access for a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#writer_view%3F-instance_method" title="#writer_view? (instance method)">- (Boolean) <strong>writer_view?</strong>(view) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Checks writer access for a view.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="add_owner_domain-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_owner_domain</strong>(domain) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add owner access to a domain.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+179
+180
+181</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 179</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_owner_domain'>add_owner_domain</span> <span class='id identifier rubyid_domain'>domain</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='id identifier rubyid_domain'>domain</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_owner_group-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_owner_group</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add owner access to a group.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+173
+174
+175</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 173</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_owner_group'>add_owner_group</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_owner_special-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_owner_special</strong>(group) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add owner access to a special group.
+Accepted values are <code>owners</code>, <code>writers</code>, <code>readers</code>, and <code>all</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+186
+187
+188</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 186</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_owner_special'>add_owner_special</span> <span class='id identifier rubyid_group'>group</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:special</span><span class='comma'>,</span> <span class='id identifier rubyid_group'>group</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_owner_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_owner_user</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add owner access to a user.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+167
+168
+169</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 167</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_owner_user'>add_owner_user</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_owner_view-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_owner_view</strong>(view) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add owner access to a view.
+The view can be a Gcloud::Bigquery::View object,
+or a string identifier as specified by the
+<a href="https://cloud.google.com/bigquery/query-reference#from">Query
+Reference</a>:
++project_name:datasetId.tableId+.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+197
+198
+199</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 197</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_owner_view'>add_owner_view</span> <span class='id identifier rubyid_view'>view</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:view</span><span class='comma'>,</span> <span class='id identifier rubyid_view'>view</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_reader_domain-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_reader_domain</strong>(domain) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add reader access to a domain.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+107
+108
+109</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 107</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_reader_domain'>add_reader_domain</span> <span class='id identifier rubyid_domain'>domain</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='id identifier rubyid_domain'>domain</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_reader_group-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_reader_group</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add reader access to a group.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 101</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_reader_group'>add_reader_group</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_reader_special-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_reader_special</strong>(group) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add reader access to a special group.
+Accepted values are <code>owners</code>, <code>writers</code>, <code>readers</code>, and <code>all</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+114
+115
+116</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 114</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_reader_special'>add_reader_special</span> <span class='id identifier rubyid_group'>group</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:special</span><span class='comma'>,</span> <span class='id identifier rubyid_group'>group</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_reader_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_reader_user</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add reader access to a user.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 95</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_reader_user'>add_reader_user</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_reader_view-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_reader_view</strong>(view) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add reader access to a view.
+The view can be a Gcloud::Bigquery::View object,
+or a string identifier as specified by the
+<a href="https://cloud.google.com/bigquery/query-reference#from">Query
+Reference</a>:
++project_name:datasetId.tableId+.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+125
+126
+127</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 125</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_reader_view'>add_reader_view</span> <span class='id identifier rubyid_view'>view</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:view</span><span class='comma'>,</span> <span class='id identifier rubyid_view'>view</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_writer_domain-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_writer_domain</strong>(domain) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add writer access to a domain.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+143
+144
+145</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 143</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_writer_domain'>add_writer_domain</span> <span class='id identifier rubyid_domain'>domain</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='id identifier rubyid_domain'>domain</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_writer_group-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_writer_group</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add writer access to a group.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 137</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_writer_group'>add_writer_group</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_writer_special-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_writer_special</strong>(group) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add writer access to a special group.
+Accepted values are <code>owners</code>, <code>writers</code>, <code>readers</code>, and <code>all</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+150
+151
+152</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 150</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_writer_special'>add_writer_special</span> <span class='id identifier rubyid_group'>group</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:special</span><span class='comma'>,</span> <span class='id identifier rubyid_group'>group</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_writer_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_writer_user</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add writer access to a user.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+131
+132
+133</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 131</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_writer_user'>add_writer_user</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_writer_view-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_writer_view</strong>(view) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add writer access to a view.
+The view can be a Gcloud::Bigquery::View object,
+or a string identifier as specified by the
+<a href="https://cloud.google.com/bigquery/query-reference#from">Query
+Reference</a>:
++project_name:datasetId.tableId+.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+161
+162
+163</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 161</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_writer_view'>add_writer_view</span> <span class='id identifier rubyid_view'>view</span>
+  <span class='id identifier rubyid_add_access_role_scope_value'>add_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:view</span><span class='comma'>,</span> <span class='id identifier rubyid_view'>view</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="owner_domain?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>owner_domain?</strong>(domain) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks owner access for a domain.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+395
+396
+397</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 395</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_owner_domain?'>owner_domain?</span> <span class='id identifier rubyid_domain'>domain</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='id identifier rubyid_domain'>domain</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="owner_group?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>owner_group?</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks owner access for a group.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+389
+390
+391</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 389</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_owner_group?'>owner_group?</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="owner_special?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>owner_special?</strong>(group) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks owner access for a special group.
+Accepted values are <code>owners</code>, <code>writers</code>, <code>readers</code>, and <code>all</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+402
+403
+404</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 402</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_owner_special?'>owner_special?</span> <span class='id identifier rubyid_group'>group</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:special</span><span class='comma'>,</span> <span class='id identifier rubyid_group'>group</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="owner_user?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>owner_user?</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks owner access for a user.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+383
+384
+385</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 383</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_owner_user?'>owner_user?</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="owner_view?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>owner_view?</strong>(view) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks owner access for a view.
+The view can be a Gcloud::Bigquery::View object,
+or a string identifier as specified by the
+<a href="https://cloud.google.com/bigquery/query-reference#from">Query
+Reference</a>:
++project_name:datasetId.tableId+.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+413
+414
+415</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 413</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_owner_view?'>owner_view?</span> <span class='id identifier rubyid_view'>view</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:view</span><span class='comma'>,</span> <span class='id identifier rubyid_view'>view</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reader_domain?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>reader_domain?</strong>(domain) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks reader access for a domain.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+323
+324
+325</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 323</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reader_domain?'>reader_domain?</span> <span class='id identifier rubyid_domain'>domain</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='id identifier rubyid_domain'>domain</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reader_group?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>reader_group?</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks reader access for a group.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+317
+318
+319</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 317</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reader_group?'>reader_group?</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reader_special?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>reader_special?</strong>(group) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks reader access for a special group.
+Accepted values are <code>owners</code>, <code>writers</code>, <code>readers</code>, and <code>all</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+330
+331
+332</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 330</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reader_special?'>reader_special?</span> <span class='id identifier rubyid_group'>group</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:special</span><span class='comma'>,</span> <span class='id identifier rubyid_group'>group</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reader_user?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>reader_user?</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks reader access for a user.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+311
+312
+313</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 311</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reader_user?'>reader_user?</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reader_view?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>reader_view?</strong>(view) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks reader access for a view.
+The view can be a Gcloud::Bigquery::View object,
+or a string identifier as specified by the
+<a href="https://cloud.google.com/bigquery/query-reference#from">Query
+Reference</a>:
++project_name:datasetId.tableId+.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+341
+342
+343</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 341</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reader_view?'>reader_view?</span> <span class='id identifier rubyid_view'>view</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:view</span><span class='comma'>,</span> <span class='id identifier rubyid_view'>view</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_owner_domain-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_owner_domain</strong>(domain) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove owner access from a domain.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+287
+288
+289</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 287</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_owner_domain'>remove_owner_domain</span> <span class='id identifier rubyid_domain'>domain</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='id identifier rubyid_domain'>domain</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_owner_group-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_owner_group</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove owner access from a group.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+281
+282
+283</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 281</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_owner_group'>remove_owner_group</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_owner_special-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_owner_special</strong>(group) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove owner access from a special group.
+Accepted values are <code>owners</code>, <code>writers</code>, <code>readers</code>, and <code>all</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+294
+295
+296</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 294</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_owner_special'>remove_owner_special</span> <span class='id identifier rubyid_group'>group</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:special</span><span class='comma'>,</span> <span class='id identifier rubyid_group'>group</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_owner_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_owner_user</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove owner access from a user.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+275
+276
+277</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 275</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_owner_user'>remove_owner_user</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_owner_view-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_owner_view</strong>(view) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove owner access from a view.
+The view can be a Gcloud::Bigquery::View object,
+or a string identifier as specified by the
+<a href="https://cloud.google.com/bigquery/query-reference#from">Query
+Reference</a>:
++project_name:datasetId.tableId+.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+305
+306
+307</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 305</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_owner_view'>remove_owner_view</span> <span class='id identifier rubyid_view'>view</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:owner</span><span class='comma'>,</span> <span class='symbol'>:view</span><span class='comma'>,</span> <span class='id identifier rubyid_view'>view</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_reader_domain-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_reader_domain</strong>(domain) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove reader access from a domain.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+215
+216
+217</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 215</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_reader_domain'>remove_reader_domain</span> <span class='id identifier rubyid_domain'>domain</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='id identifier rubyid_domain'>domain</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_reader_group-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_reader_group</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove reader access from a group.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+209
+210
+211</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 209</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_reader_group'>remove_reader_group</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_reader_special-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_reader_special</strong>(group) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove reader access from a special group.
+Accepted values are <code>owners</code>, <code>writers</code>, <code>readers</code>, and <code>all</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+222
+223
+224</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 222</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_reader_special'>remove_reader_special</span> <span class='id identifier rubyid_group'>group</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:special</span><span class='comma'>,</span> <span class='id identifier rubyid_group'>group</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_reader_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_reader_user</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove reader access from a user.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+203
+204
+205</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 203</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_reader_user'>remove_reader_user</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_reader_view-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_reader_view</strong>(view) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove reader access from a view.
+The view can be a Gcloud::Bigquery::View object,
+or a string identifier as specified by the
+<a href="https://cloud.google.com/bigquery/query-reference#from">Query
+Reference</a>:
++project_name:datasetId.tableId+.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+233
+234
+235</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 233</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_reader_view'>remove_reader_view</span> <span class='id identifier rubyid_view'>view</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:reader</span><span class='comma'>,</span> <span class='symbol'>:view</span><span class='comma'>,</span> <span class='id identifier rubyid_view'>view</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_writer_domain-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_writer_domain</strong>(domain) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove writer access from a domain.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+251
+252
+253</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 251</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_writer_domain'>remove_writer_domain</span> <span class='id identifier rubyid_domain'>domain</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='id identifier rubyid_domain'>domain</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_writer_group-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_writer_group</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove writer access from a group.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+245
+246
+247</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 245</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_writer_group'>remove_writer_group</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_writer_special-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_writer_special</strong>(group) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove writer access from a special group.
+Accepted values are <code>owners</code>, <code>writers</code>, <code>readers</code>, and <code>all</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+258
+259
+260</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 258</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_writer_special'>remove_writer_special</span> <span class='id identifier rubyid_group'>group</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:special</span><span class='comma'>,</span> <span class='id identifier rubyid_group'>group</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_writer_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_writer_user</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove writer access from a user.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 239</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_writer_user'>remove_writer_user</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_writer_view-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_writer_view</strong>(view) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Remove writer access from a view.
+The view can be a Gcloud::Bigquery::View object,
+or a string identifier as specified by the
+<a href="https://cloud.google.com/bigquery/query-reference#from">Query
+Reference</a>:
++project_name:datasetId.tableId+.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+269
+270
+271</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 269</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_remove_writer_view'>remove_writer_view</span> <span class='id identifier rubyid_view'>view</span>
+  <span class='id identifier rubyid_remove_access_role_scope_value'>remove_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:view</span><span class='comma'>,</span> <span class='id identifier rubyid_view'>view</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="writer_domain?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>writer_domain?</strong>(domain) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks writer access for a domain.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+359
+360
+361</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 359</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_writer_domain?'>writer_domain?</span> <span class='id identifier rubyid_domain'>domain</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='id identifier rubyid_domain'>domain</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="writer_group?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>writer_group?</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks writer access for a group.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+353
+354
+355</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 353</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_writer_group?'>writer_group?</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:group</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="writer_special?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>writer_special?</strong>(group) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks writer access for a special group.
+Accepted values are <code>owners</code>, <code>writers</code>, <code>readers</code>, and <code>all</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+366
+367
+368</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 366</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_writer_special?'>writer_special?</span> <span class='id identifier rubyid_group'>group</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:special</span><span class='comma'>,</span> <span class='id identifier rubyid_group'>group</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="writer_user?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>writer_user?</strong>(email) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks writer access for a user.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+347
+348
+349</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 347</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_writer_user?'>writer_user?</span> <span class='id identifier rubyid_email'>email</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="writer_view?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>writer_view?</strong>(view) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Checks writer access for a view.
+The view can be a Gcloud::Bigquery::View object,
+or a string identifier as specified by the
+<a href="https://cloud.google.com/bigquery/query-reference#from">Query
+Reference</a>:
++project_name:datasetId.tableId+.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+377
+378
+379</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/bigquery/dataset/access.rb', line 377</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_writer_view?'>writer_view?</span> <span class='id identifier rubyid_view'>view</span>
+  <span class='id identifier rubyid_lookup_access_role_scope_value'>lookup_access_role_scope_value</span> <span class='symbol'>:writer</span><span class='comma'>,</span> <span class='symbol'>:view</span><span class='comma'>,</span> <span class='id identifier rubyid_view'>view</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:52 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>

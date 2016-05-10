@@ -1,0 +1,509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Gcloud::Backoff
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Gcloud/Backoff.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (B)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Gcloud.html" title="Gcloud (module)">Gcloud</a></span></span>
+     &raquo; 
+    <span class="title">Backoff</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Gcloud::Backoff
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Gcloud::Backoff</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/gcloud/backoff.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Backoff allows users to control how Google API calls are retried.
+If an API call fails the response will be checked to see if the
+call can be retried. If the response matches the criteria, then it
+will be retried with an incremental backoff. This means that an
+increasing delay will be added between each retried call. The first
+retry will be delayed one second, the second retry will be delayed
+two seconds, and so on.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud/backoff</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Backoff</span><span class='period'>.</span><span class='id identifier rubyid_retries'>retries</span> <span class='op'>=</span> <span class='int'>5</span> <span class='comment'># Set a maximum of five retries per call</span></code></pre>
+    
+  </div>
+
+
+</div>
+
+
+
+  <h2>Class Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#backoff-class_method" title="backoff (class method)">+ (Object) <strong>backoff</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The code to run when a backoff is handled.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#grpc_codes-class_method" title="grpc_codes (class method)">+ (Object) <strong>grpc_codes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The GRPC Status Codes that should be retried.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#http_codes-class_method" title="http_codes (class method)">+ (Object) <strong>http_codes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The HTTP Status Codes that should be retried.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reasons-class_method" title="reasons (class method)">+ (Object) <strong>reasons</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The Google API error reasons that should be retried.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#retries-class_method" title="retries (class method)">+ (Object) <strong>retries</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The number of times a retriable API call should be retried.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+
+  <div id="class_attr_details" class="attr_details">
+    <h2>Class Attribute Details</h2>
+    
+      
+      <span id="backoff=-class_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="backoff-class_method">
+  
+    + (<tt>Object</tt>) <strong>backoff</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The code to run when a backoff is handled.
+This must be a Proc and must take the number of
+retries as an argument.</p>
+
+<p>Note: This method is undocumented and may change.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/backoff.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_backoff'>backoff</span>
+  <span class='ivar'>@backoff</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="grpc_codes=-class_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="grpc_codes-class_method">
+  
+    + (<tt>Object</tt>) <strong>grpc_codes</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The GRPC Status Codes that should be retried.</p>
+
+<p>The default values are 14.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/backoff.rb', line 43</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_grpc_codes'>grpc_codes</span>
+  <span class='ivar'>@grpc_codes</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="http_codes=-class_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="http_codes-class_method">
+  
+    + (<tt>Object</tt>) <strong>http_codes</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The HTTP Status Codes that should be retried.</p>
+
+<p>The default values are 500 and 503.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/backoff.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_http_codes'>http_codes</span>
+  <span class='ivar'>@http_codes</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="reasons=-class_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="reasons-class_method">
+  
+    + (<tt>Object</tt>) <strong>reasons</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The Google API error reasons that should be retried.</p>
+
+<p>The default values are rateLimitExceeded and
+userRateLimitExceeded.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/backoff.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reasons'>reasons</span>
+  <span class='ivar'>@reasons</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="retries=-class_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="retries-class_method">
+  
+    + (<tt>Object</tt>) <strong>retries</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The number of times a retriable API call should be retried.</p>
+
+<p>The default value is 3.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/backoff.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_retries'>retries</span>
+  <span class='ivar'>@retries</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+</div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:43 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>

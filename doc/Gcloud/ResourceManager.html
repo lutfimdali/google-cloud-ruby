@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Gcloud::ResourceManager
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Gcloud/ResourceManager.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (R)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Gcloud.html" title="Gcloud (module)">Gcloud</a></span></span>
+     &raquo; 
+    <span class="title">ResourceManager</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Gcloud::ResourceManager
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/gcloud/resource_manager.rb<span class="defines">,<br />
+  lib/gcloud/resource_manager/errors.rb,<br /> lib/gcloud/resource_manager/manager.rb,<br /> lib/gcloud/resource_manager/project.rb,<br /> lib/gcloud/resource_manager/connection.rb,<br /> lib/gcloud/resource_manager/credentials.rb,<br /> lib/gcloud/resource_manager/project/list.rb,<br /> lib/gcloud/resource_manager/project/updater.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <h1>Google Cloud Resource Manager</h1>
+
+<p>The Resource Manager API provides methods that you can use to
+programmatically manage your projects in the Google Cloud Platform. You may
+be familiar with managing projects in the <a href="https://developers.google.com/console/help/new/">Developers
+Console</a>. With this API you
+can do the following:</p>
+
+<ul>
+<li>Get a list of all projects associated with an account</li>
+<li>Create new projects</li>
+<li>Update existing projects</li>
+<li>Delete projects</li>
+<li>Undelete, or recover, projects that you don&#39;t want to delete</li>
+</ul>
+
+<p>The Resource Manager API is a Beta release and is not covered by any SLA or
+deprecation policy and may be subject to backward-incompatible changes.</p>
+
+<h2>Accessing the Service</h2>
+
+<p>Currently, the full functionality of the Resource Manager API is available
+only to whitelisted users. (Contact your account manager or a member of the
+Google Cloud sales team if you are interested in access.) Read-only methods
+such as <span class='object_link'><a href="ResourceManager/Manager.html#projects-instance_method" title="Gcloud::ResourceManager::Manager#projects (method)">Manager#projects</a></span> and
+<span class='object_link'><a href="ResourceManager/Manager.html#project-instance_method" title="Gcloud::ResourceManager::Manager#project (method)">Manager#project</a></span> are accessible to any user who enables
+the Resource Manager API in the <a href="https://console.developers.google.com">Developers
+Console</a>.</p>
+
+<h2>Authentication</h2>
+
+<p>The Resource Manager API currently requires authentication of a <a href="https://developers.google.com/identity/protocols/OAuth2">User
+Account</a>, and
+cannot currently be accessed with a <a href="https://developers.google.com/identity/protocols/OAuth2ServiceAccount">Service
+Account</a>.
+To use a User Account install the <a href="http://cloud.google.com/sdk">Google Cloud
+SDK</a> and authenticate with the following:</p>
+
+<pre class="code ruby"><code class="ruby">$ gcloud auth login
+</code></pre>
+
+<p>Also make sure all <code>GCLOUD</code> environment variables are cleared of any service
+accounts. Then gcloud will be able to detect the user authentication and
+connect with those credentials.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_resource_manager'>resource_manager</span>
+</code></pre>
+
+<h2>Listing Projects</h2>
+
+<p>Project is a collection of settings, credentials, and metadata about the
+application or applications you&#39;re working on. You can retrieve and inspect
+all projects that you have permissions to. (See
+<span class='object_link'><a href="ResourceManager/Manager.html#projects-instance_method" title="Gcloud::ResourceManager::Manager#projects (method)">Manager#projects</a></span>)</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_resource_manager'>resource_manager</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_project'>project</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_projects'>projects</span><span class='period'>.</span><span class='id identifier rubyid_project_id'>project_id</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h2>Managing Projects with Labels</h2>
+
+<p>Labels can be added to or removed from projects. (See
+<span class='object_link'><a href="ResourceManager/Project.html#labels-instance_method" title="Gcloud::ResourceManager::Project#labels (method)">Project#labels</a></span>)</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_resource_manager'>resource_manager</span>
+<span class='id identifier rubyid_project'>project</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_manager'>resource_manager</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tokyo-rain-123</span><span class='tstring_end'>&quot;</span></span>
+<span class='comment'># Label the project as production
+</span><span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span>
+  <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_labels'>labels</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>env</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>production</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Projects can then be filtered by labels. (See
+<span class='object_link'><a href="ResourceManager/Manager.html#projects-instance_method" title="Gcloud::ResourceManager::Manager#projects (method)">Manager#projects</a></span>)</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_resource_manager'>resource_manager</span>
+<span class='comment'># Find only the productions projects
+</span><span class='id identifier rubyid_projects'>projects</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_manager'>resource_manager</span><span class='period'>.</span><span class='id identifier rubyid_projects'>projects</span> <span class='label'>filter:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>labels.env:production</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_projects'>projects</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_project'>project</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_project_id'>project_id</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h2>Creating a Project</h2>
+
+<p>You can also use the API to create new projects. (See
+<span class='object_link'><a href="ResourceManager/Manager.html#create_project-instance_method" title="Gcloud::ResourceManager::Manager#create_project (method)">Manager#create_project</a></span>)</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_resource_manager'>resource_manager</span>
+<span class='id identifier rubyid_project'>project</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_manager'>resource_manager</span><span class='period'>.</span><span class='id identifier rubyid_create_project'>create_project</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tokyo-rain-123</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                                          <span class='label'>name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Todos Development</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                                          <span class='label'>labels:</span> <span class='lbrace'>{</span><span class='label'>env:</span> <span class='symbol'>:development</span><span class='rbrace'>}</span>
+</code></pre>
+
+<h2>Deleting a Project</h2>
+
+<p>You can delete projects when they are no longer needed. (See
+<span class='object_link'><a href="ResourceManager/Manager.html#delete-instance_method" title="Gcloud::ResourceManager::Manager#delete (method)">Manager#delete</a></span> and
+<span class='object_link'><a href="ResourceManager/Project.html#delete-instance_method" title="Gcloud::ResourceManager::Project#delete (method)">Project#delete</a></span>)</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_resource_manager'>resource_manager</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tokyo-rain-123</span><span class='tstring_end'>&quot;</span></span>
+</code></pre>
+
+<h2>Undeleting a Project</h2>
+
+<p>You can also restore a deleted project within the waiting period that starts
+when the project was deleted. Restoring a project returns it to the state it
+was in prior to being deleted. (See
+<span class='object_link'><a href="ResourceManager/Manager.html#undelete-instance_method" title="Gcloud::ResourceManager::Manager#undelete (method)">Manager#undelete</a></span> and
+<span class='object_link'><a href="ResourceManager/Project.html#undelete-instance_method" title="Gcloud::ResourceManager::Project#undelete (method)">Project#undelete</a></span>)</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_resource_manager'>resource_manager</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span><span class='period'>.</span><span class='id identifier rubyid_undelete'>undelete</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tokyo-rain-123</span><span class='tstring_end'>&quot;</span></span>
+</code></pre>
+
+<h2>Managing IAM Policies</h2>
+
+<p>Google Cloud Identity and Access Management (<a href="https://cloud.google.com/iam/">Cloud
+IAM</a>) access control policies can be managed
+on projects. These policies allow project owners to manage <em>who</em> (identity)
+has access to <em>what</em> (role). See <a href="https://cloud.google.com/iam/docs/overview">Cloud IAM
+Overview</a> for more information.</p>
+
+<p>A project&#39;s access control policy can be retrieved. (See
+<span class='object_link'><a href="ResourceManager/Project.html#policy-instance_method" title="Gcloud::ResourceManager::Project#policy (method)">Project#policy</a></span>)</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_resource_manager'>resource_manager</span>
+<span class='id identifier rubyid_project'>project</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_manager'>resource_manager</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tokyo-rain-123</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_policy'>policy</span> <span class='op'>=</span> <span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_policy'>policy</span>
+</code></pre>
+
+<p>A project&#39;s access control policy can also be set. (See
+<span class='object_link'><a href="ResourceManager/Project.html#policy%3D-instance_method" title="Gcloud::ResourceManager::Project#policy= (method)">Project#policy=</a></span>)</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_resource_manager'>resource_manager</span>
+<span class='id identifier rubyid_project'>project</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_manager'>resource_manager</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tokyo-rain-123</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_viewer_policy'>viewer_policy</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bindings</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>role</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>roles/viewer</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>members</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>serviceAccount:your-service-account</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='rbrace'>}</span><span class='rbracket'>]</span>
+<span class='rbrace'>}</span>
+<span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_policy'>policy</span> <span class='op'>=</span> <span class='id identifier rubyid_viewer_policy'>viewer_policy</span>
+</code></pre>
+
+<p>And permissions can be tested on a project. (See
+<span class='object_link'><a href="ResourceManager/Project.html#test_permissions-instance_method" title="Gcloud::ResourceManager::Project#test_permissions (method)">Project#test_permissions</a></span>)</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_resource_manager'>resource_manager</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_resource_manager'>resource_manager</span>
+<span class='id identifier rubyid_project'>project</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_manager'>resource_manager</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tokyo-rain-123</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_perms'>perms</span> <span class='op'>=</span> <span class='id identifier rubyid_project'>project</span><span class='period'>.</span><span class='id identifier rubyid_test_permissions'>test_permissions</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>resourcemanager.projects.get</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                                 <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>resourcemanager.projects.delete</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_perms'>perms</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>resourcemanager.projects.get</span><span class='tstring_end'>&quot;</span></span>    <span class='comment'>#=&gt; true
+</span><span class='id identifier rubyid_perms'>perms</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>resourcemanager.projects.delete</span><span class='tstring_end'>&quot;</span></span> <span class='comment'>#=&gt; false
+</span></code></pre>
+
+<p>For more information about using access control policies see <a href="https://cloud.google.com/iam/docs/managing-policies">Managing
+Policies</a>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="ResourceManager/ApiError.html" title="Gcloud::ResourceManager::ApiError (class)">ApiError</a></span>, <span class='object_link'><a href="ResourceManager/Error.html" title="Gcloud::ResourceManager::Error (class)">Error</a></span>, <span class='object_link'><a href="ResourceManager/Manager.html" title="Gcloud::ResourceManager::Manager (class)">Manager</a></span>, <span class='object_link'><a href="ResourceManager/Project.html" title="Gcloud::ResourceManager::Project (class)">Project</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+
+
+</div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:42 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>

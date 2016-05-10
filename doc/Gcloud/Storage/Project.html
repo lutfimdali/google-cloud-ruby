@@ -1,0 +1,1031 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Gcloud::Storage::Project
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!Gcloud/Storage/Project.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Gcloud.html" title="Gcloud (module)">Gcloud</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Storage.html" title="Gcloud::Storage (module)">Storage</a></span></span>
+     &raquo; 
+    <span class="title">Project</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Gcloud::Storage::Project
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Gcloud::Storage::Project</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/gcloud/storage/project.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <h1>Project</h1>
+
+<p>Represents the project that storage buckets and files belong to.
+All data in Google Cloud Storage belongs inside a project.
+A project consists of a set of users, a set of APIs, billing,
+authentication, and monitoring settings for those APIs.</p>
+
+<p>Gcloud::Storage::Project is the main object for interacting with
+Google Storage. <span class='object_link'><a href="Bucket.html" title="Gcloud::Storage::Bucket (class)">Bucket</a></span> objects are created,
+read, updated, and deleted by Gcloud::Storage::Project.</p>
+
+<p>See <span class='object_link'><a href="../../Gcloud.html#storage-instance_method" title="Gcloud#storage (method)">Gcloud#storage</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_storage'>storage</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_storage'>storage</span>
+
+<span class='id identifier rubyid_bucket'>bucket</span> <span class='op'>=</span> <span class='id identifier rubyid_storage'>storage</span><span class='period'>.</span><span class='id identifier rubyid_bucket'>bucket</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-bucket</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='id identifier rubyid_bucket'>bucket</span><span class='period'>.</span><span class='id identifier rubyid_file'>file</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/my-file.ext</span><span class='tstring_end'>&quot;</span></span></code></pre>
+    
+  </div>
+
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bucket-instance_method" title="#bucket (instance method)">- (Gcloud::Storage::Bucket<sup>?</sup>) <strong>bucket</strong>(bucket_name) </a>
+    
+
+    
+      (also: #find_bucket)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Retrieves bucket by name.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#buckets-instance_method" title="#buckets (instance method)">- (Array&lt;Gcloud::Storage::Bucket&gt;) <strong>buckets</strong>(prefix: nil, token: nil, max: nil) </a>
+    
+
+    
+      (also: #find_buckets)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Retrieves a list of buckets for the given project.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_bucket-instance_method" title="#create_bucket (instance method)">- (Gcloud::Storage::Bucket) <strong>create_bucket</strong>(bucket_name, acl: nil, default_acl: nil, cors: nil, location: nil, logging_bucket: nil, logging_prefix: nil, retries: nil, storage_class: nil, versioning: nil, website_main: nil, website_404: nil) {|cors| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new bucket with optional attributes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#project-instance_method" title="#project (instance method)">- (Object) <strong>project</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The Storage project connected to.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="bucket-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Bucket.html" title="Gcloud::Storage::Bucket (class)">Gcloud::Storage::Bucket</a></span></tt><sup>?</sup>) <strong>bucket</strong>(bucket_name) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='find_bucket-instance_method'>find_bucket</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Retrieves bucket by name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_storage'>storage</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_storage'>storage</span>
+
+<span class='id identifier rubyid_bucket'>bucket</span> <span class='op'>=</span> <span class='id identifier rubyid_storage'>storage</span><span class='period'>.</span><span class='id identifier rubyid_bucket'>bucket</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-bucket</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_bucket'>bucket</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>bucket_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Name of a bucket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Bucket.html" title="Gcloud::Storage::Bucket (class)">Gcloud::Storage::Bucket</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Returns nil if bucket does not
+exist</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+166
+167
+168
+169
+170
+171
+172
+173
+174</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/storage/project.rb', line 166</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_bucket'>bucket</span> <span class='id identifier rubyid_bucket_name'>bucket_name</span>
+  <span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_get_bucket'>get_bucket</span> <span class='id identifier rubyid_bucket_name'>bucket_name</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_success?'>success?</span>
+    <span class='const'>Bucket</span><span class='period'>.</span><span class='id identifier rubyid_from_gapi'>from_gapi</span> <span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>error</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>code</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='int'>404</span>
+    <span class='id identifier rubyid_fail'>fail</span> <span class='const'>ApiError</span><span class='period'>.</span><span class='id identifier rubyid_from_response'>from_response</span><span class='lparen'>(</span><span class='id identifier rubyid_resp'>resp</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="buckets-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="Bucket.html" title="Gcloud::Storage::Bucket (class)">Gcloud::Storage::Bucket</a></span>&gt;</tt>) <strong>buckets</strong>(prefix: nil, token: nil, max: nil) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='find_buckets-instance_method'>find_buckets</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Retrieves a list of buckets for the given project.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_storage'>storage</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_storage'>storage</span>
+
+<span class='id identifier rubyid_buckets'>buckets</span> <span class='op'>=</span> <span class='id identifier rubyid_storage'>storage</span><span class='period'>.</span><span class='id identifier rubyid_buckets'>buckets</span>
+<span class='id identifier rubyid_buckets'>buckets</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_bucket'>bucket</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_bucket'>bucket</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
+<span class='kw'>end</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Retrieve all buckets with names that begin with a given prefix:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_storage'>storage</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_storage'>storage</span>
+
+<span class='id identifier rubyid_user_buckets'>user_buckets</span> <span class='op'>=</span> <span class='id identifier rubyid_storage'>storage</span><span class='period'>.</span><span class='id identifier rubyid_buckets'>buckets</span> <span class='label'>prefix:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user-</span><span class='tstring_end'>&quot;</span></span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>With pagination: (See <span class='object_link'><a href="Bucket/List.html#token-instance_method" title="Gcloud::Storage::Bucket::List#token (method)">Bucket::List#token</a></span>)</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_storage'>storage</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_storage'>storage</span>
+
+<span class='id identifier rubyid_all_buckets'>all_buckets</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_tmp_buckets'>tmp_buckets</span> <span class='op'>=</span> <span class='id identifier rubyid_storage'>storage</span><span class='period'>.</span><span class='id identifier rubyid_buckets'>buckets</span>
+<span class='kw'>while</span> <span class='id identifier rubyid_tmp_buckets'>tmp_buckets</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_tmp_buckets'>tmp_buckets</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_bucket'>bucket</span><span class='op'>|</span>
+    <span class='id identifier rubyid_all_buckets'>all_buckets</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_bucket'>bucket</span>
+  <span class='kw'>end</span>
+  <span class='comment'># break loop if no more buckets available
+</span>  <span class='kw'>break</span> <span class='kw'>if</span> <span class='id identifier rubyid_tmp_buckets'>tmp_buckets</span><span class='period'>.</span><span class='id identifier rubyid_token'>token</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='comment'># get the next group of buckets
+</span>  <span class='id identifier rubyid_tmp_buckets'>tmp_buckets</span> <span class='op'>=</span> <span class='id identifier rubyid_storage'>storage</span><span class='period'>.</span><span class='id identifier rubyid_buckets'>buckets</span> <span class='label'>token:</span> <span class='id identifier rubyid_tmp_buckets'>tmp_buckets</span><span class='period'>.</span><span class='id identifier rubyid_token'>token</span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>prefix</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Filter results to buckets whose names begin with
+this prefix.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>token</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A previously-returned page token representing part
+of the larger set of results to view.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>max</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Maximum number of buckets to return.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Bucket.html" title="Gcloud::Storage::Bucket (class)">Gcloud::Storage::Bucket</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>(See
+<span class='object_link'><a href="Bucket/List.html" title="Gcloud::Storage::Bucket::List (class)">Bucket::List</a></span>)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+138
+139
+140
+141
+142
+143
+144
+145
+146</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/storage/project.rb', line 138</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_buckets'>buckets</span> <span class='label'>prefix:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>token:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>max:</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>prefix:</span> <span class='id identifier rubyid_prefix'>prefix</span><span class='comma'>,</span> <span class='label'>token:</span> <span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='label'>max:</span> <span class='id identifier rubyid_max'>max</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_resp'>resp</span> <span class='op'>=</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_list_buckets'>list_buckets</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_resp'>resp</span><span class='period'>.</span><span class='id identifier rubyid_success?'>success?</span>
+    <span class='const'>Bucket</span><span class='op'>::</span><span class='const'>List</span><span class='period'>.</span><span class='id identifier rubyid_from_response'>from_response</span> <span class='id identifier rubyid_resp'>resp</span><span class='comma'>,</span> <span class='id identifier rubyid_connection'>connection</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_fail'>fail</span> <span class='const'>ApiError</span><span class='period'>.</span><span class='id identifier rubyid_from_response'>from_response</span><span class='lparen'>(</span><span class='id identifier rubyid_resp'>resp</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_bucket-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Bucket.html" title="Gcloud::Storage::Bucket (class)">Gcloud::Storage::Bucket</a></span></tt>) <strong>create_bucket</strong>(bucket_name, acl: nil, default_acl: nil, cors: nil, location: nil, logging_bucket: nil, logging_prefix: nil, retries: nil, storage_class: nil, versioning: nil, website_main: nil, website_404: nil) {|cors| ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new bucket with optional attributes. Also accepts a block for
+defining the CORS configuration for a static website served from the
+bucket. See <span class='object_link'><a href="Bucket/Cors.html" title="Gcloud::Storage::Bucket::Cors (class)">Bucket::Cors</a></span> for details.</p>
+
+<p>The API call to create the bucket may be retried under certain
+conditions. See <span class='object_link'><a href="../Backoff.html" title="Gcloud::Backoff (class)">Backoff</a></span> to control this behavior, or
+specify the wanted behavior in the call with the <code>:retries:</code> option.</p>
+
+<p>You can pass <a href="https://cloud.google.com/storage/docs/website-configuration">website
+settings</a>
+for the bucket, including a block that defines CORS rule. See
+<span class='object_link'><a href="Bucket/Cors.html" title="Gcloud::Storage::Bucket::Cors (class)">Bucket::Cors</a></span> for details.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_storage'>storage</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_storage'>storage</span>
+
+<span class='id identifier rubyid_bucket'>bucket</span> <span class='op'>=</span> <span class='id identifier rubyid_storage'>storage</span><span class='period'>.</span><span class='id identifier rubyid_create_bucket'>create_bucket</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-bucket</span><span class='tstring_end'>&quot;</span></span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Specify the number of retries to attempt:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_storage'>storage</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_storage'>storage</span>
+
+<span class='id identifier rubyid_bucket'>bucket</span> <span class='op'>=</span> <span class='id identifier rubyid_storage'>storage</span><span class='period'>.</span><span class='id identifier rubyid_create_bucket'>create_bucket</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-bucket</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>retries:</span> <span class='int'>5</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Add CORS rules in a block:</p>
+</div></p>
+      
+      <pre class="example code"><code>require &quot;gcloud&quot;
+
+gcloud = Gcloud.new
+storage = gcloud.storage
+
+options = {
+  website_main: &quot;index.html&quot;
+  website_404: &quot;not_found.html&quot;
+}
+bucket = storage.create_bucket &quot;my-bucket&quot;, options do |c|
+  c.add_rule [&quot;http://example.org&quot;, &quot;https://example.org&quot;],
+             &quot;*&quot;,
+             response_headers: [&quot;X-My-Custom-Header&quot;],
+             max_age: 300
+end</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>bucket_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Name of a bucket.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>acl</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Apply a predefined set of access controls to this
+bucket.</p>
+
+<p>Acceptable values are:</p>
+
+<ul>
+<li><code>auth</code>, <code>auth_read</code>, <code>authenticated</code>, <code>authenticated_read</code>,
+<code>authenticatedRead</code> - Project team owners get OWNER access, and
+allAuthenticatedUsers get READER access.</li>
+<li><code>private</code> - Project team owners get OWNER access.</li>
+<li><code>project_private</code>, <code>projectPrivate</code> - Project team members get
+access according to their roles.</li>
+<li><code>public</code>, <code>public_read</code>, <code>publicRead</code> - Project team owners get
+OWNER access, and allUsers get READER access.</li>
+<li><code>public_write</code>, <code>publicReadWrite</code> - Project team owners get OWNER
+access, and allUsers get WRITER access.</li>
+</ul>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>default_acl</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Apply a predefined set of default object
+access controls to this bucket.</p>
+
+<p>Acceptable values are:</p>
+
+<ul>
+<li><code>auth</code>, <code>auth_read</code>, <code>authenticated</code>, <code>authenticated_read</code>,
+<code>authenticatedRead</code> - File owner gets OWNER access, and
+allAuthenticatedUsers get READER access.</li>
+<li><code>owner_full</code>, <code>bucketOwnerFullControl</code> - File owner gets OWNER
+access, and project team owners get OWNER access.</li>
+<li><code>owner_read</code>, <code>bucketOwnerRead</code> - File owner gets OWNER access, and
+project team owners get READER access.</li>
+<li><code>private</code> - File owner gets OWNER access.</li>
+<li><code>project_private</code>, <code>projectPrivate</code> - File owner gets OWNER access,
+and project team members get access according to their roles.</li>
+<li><code>public</code>, <code>public_read</code>, <code>publicRead</code> - File owner gets OWNER
+access, and allUsers get READER access.</li>
+</ul>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>cors</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The CORS rules for the bucket. Accepts an array of
+hashes containing the attributes specified for the <a href="https://cloud.google.com/storage/docs/json_api/v1/buckets#cors">resource
+description of
+cors</a>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>location</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The location of the bucket. Object data for
+objects in the bucket resides in physical storage within this region.
+Possible values include <code>ASIA</code>, <code>EU</code>, and <code>US</code>. (See the <a href="https://cloud.google.com/storage/docs/bucket-locations">developer&#39;s
+guide</a> for the
+authoritative list. The default value is <code>US</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>logging_bucket</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The destination bucket for the bucket&#39;s
+logs. For more information, see <a href="https://cloud.google.com/storage/docs/access-logs">Access
+Logs</a>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>logging_prefix</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The prefix used to create log object
+names for the bucket. It can be at most 900 characters and must be a
+<a href="https://cloud.google.com/storage/docs/bucket-naming#objectnames">valid object
+name</a>
+. By default, the object prefix is the name of the bucket for which
+the logs are enabled. For more information, see <a href="https://cloud.google.com/storage/docs/access-logs">Access
+Logs</a>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>retries</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The number of times the API call should be
+retried. Default is <span class='object_link'><a href="../Backoff.html#retries-class_method" title="Gcloud::Backoff.retries (method)">Backoff.retries</a></span>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>storage_class</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Defines how objects in the bucket
+are stored and determines the SLA and the cost of storage. Values
+include <code>:standard</code>, <code>:nearline</code>, and <code>:dra</code> (Durable Reduced
+Availability), as well as the strings returned by
+Bucket#storage_class. For more information, see <a href="https://cloud.google.com/storage/docs/storage-classes">Storage
+Classes</a>. The
+default value is <code>:standard</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>versioning</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Whether <a href="https://cloud.google.com/storage/docs/object-versioning">Object
+Versioning</a>
+is to be enabled for the bucket. The default value is <code>false</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>website_main</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The index page returned from a static
+website served from the bucket when a site visitor requests the top
+level directory. For more information, see <a href="https://cloud.google.com/storage/docs/website-configuration#step4">How to Host a Static
+Website
+</a>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>website_404</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The page returned from a static website
+served from the bucket when a site visitor requests a resource that
+does not exist. For more information, see <a href="https://cloud.google.com/storage/docs/website-configuration#step4">How to Host a Static
+Website
+</a>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>cors</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a block for setting CORS rules</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>cors</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Bucket/Cors.html" title="Gcloud::Storage::Bucket::Cors (class)">Bucket::Cors</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the object accepting CORS rules</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Bucket.html" title="Gcloud::Storage::Bucket (class)">Gcloud::Storage::Bucket</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://cloud.google.com/storage/docs/cross-origin" target="_parent" title="Cross-Origin Resource Sharing (CORS)">Cross-Origin Resource Sharing (CORS)</a></li>
+    
+      <li><a href="https://cloud.google.com/storage/docs/website-configuration" target="_parent" title="How to Host a Static Website">How to Host a Static Website</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/storage/project.rb', line 308</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_bucket'>create_bucket</span> <span class='id identifier rubyid_bucket_name'>bucket_name</span><span class='comma'>,</span> <span class='label'>acl:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>default_acl:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>cors:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                  <span class='label'>location:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>logging_bucket:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>logging_prefix:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                  <span class='label'>retries:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>storage_class:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>versioning:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                  <span class='label'>website_main:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>website_404:</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>acl:</span> <span class='id identifier rubyid_acl_rule'>acl_rule</span><span class='lparen'>(</span><span class='id identifier rubyid_acl'>acl</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>default_acl:</span> <span class='id identifier rubyid_acl_rule'>acl_rule</span><span class='lparen'>(</span><span class='id identifier rubyid_default_acl'>default_acl</span><span class='rparen'>)</span><span class='comma'>,</span>
+           <span class='label'>cors:</span> <span class='id identifier rubyid_cors'>cors</span><span class='comma'>,</span> <span class='label'>location:</span> <span class='id identifier rubyid_location'>location</span><span class='comma'>,</span> <span class='label'>logging_bucket:</span> <span class='id identifier rubyid_logging_bucket'>logging_bucket</span><span class='comma'>,</span>
+           <span class='label'>logging_prefix:</span> <span class='id identifier rubyid_logging_prefix'>logging_prefix</span><span class='comma'>,</span> <span class='label'>retries:</span> <span class='id identifier rubyid_retries'>retries</span><span class='comma'>,</span>
+           <span class='label'>storage_class:</span> <span class='id identifier rubyid_storage_class'>storage_class</span><span class='comma'>,</span> <span class='label'>versioning:</span> <span class='id identifier rubyid_versioning'>versioning</span><span class='comma'>,</span>
+           <span class='label'>website_main:</span> <span class='id identifier rubyid_website_main'>website_main</span><span class='comma'>,</span> <span class='label'>website_404:</span> <span class='id identifier rubyid_website_404'>website_404</span> <span class='rbrace'>}</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='id identifier rubyid_cors_builder'>cors_builder</span> <span class='op'>=</span> <span class='const'>Bucket</span><span class='op'>::</span><span class='const'>Cors</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_cors_builder'>cors_builder</span>
+    <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:cors</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_cors_builder'>cors_builder</span> <span class='kw'>if</span> <span class='id identifier rubyid_cors_builder'>cors_builder</span><span class='period'>.</span><span class='id identifier rubyid_changed?'>changed?</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_insert_bucket'>insert_bucket</span> <span class='id identifier rubyid_bucket_name'>bucket_name</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="project-instance_method">
+  
+    - (<tt>Object</tt>) <strong>project</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The Storage project connected to.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>my-todo-project</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/path/to/keyfile.json</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_storage'>storage</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_storage'>storage</span>
+
+<span class='id identifier rubyid_storage'>storage</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span> <span class='comment'>#=&gt; &quot;my-todo-project&quot;</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/storage/project.rb', line 76</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_project'>project</span>
+  <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_project'>project</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:46 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>

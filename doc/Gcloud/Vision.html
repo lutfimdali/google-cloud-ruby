@@ -1,0 +1,843 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Gcloud::Vision
+  
+    &mdash; Gcloud
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Gcloud/Vision.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (V)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Gcloud.html" title="Gcloud (module)">Gcloud</a></span></span>
+     &raquo; 
+    <span class="title">Vision</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Gcloud::Vision
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/gcloud/vision.rb<span class="defines">,<br />
+  lib/gcloud/vision/image.rb,<br /> lib/gcloud/vision/errors.rb,<br /> lib/gcloud/vision/project.rb,<br /> lib/gcloud/vision/annotate.rb,<br /> lib/gcloud/vision/location.rb,<br /> lib/gcloud/vision/connection.rb,<br /> lib/gcloud/vision/annotation.rb,<br /> lib/gcloud/vision/credentials.rb,<br /> lib/gcloud/vision/annotation/face.rb,<br /> lib/gcloud/vision/annotation/text.rb,<br /> lib/gcloud/vision/annotation/entity.rb,<br /> lib/gcloud/vision/annotation/vertex.rb,<br /> lib/gcloud/vision/annotation/properties.rb,<br /> lib/gcloud/vision/annotation/safe_search.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <h1>Google Cloud Vision</h1>
+
+<p>Google Cloud Vision allows easy integration of vision detection features
+developer applications, including image labeling, face and landmark
+detection, optical character recognition (OCR), and tagging of explicit
+content.</p>
+
+<p>For more information about Cloud Vision, read the <a href="https://cloud.google.com/vision/docs/">Google Cloud Vision API
+Documentation</a>.</p>
+
+<p>Gcloud&#39;s goal is to provide an API that is familiar and comfortable to
+Rubyists. Authentication is handled by <span class='object_link'><a href="../Gcloud.html#vision-instance_method" title="Gcloud#vision (method)">#vision</a></span>. You can provide the
+project and credential information to connect to the Cloud Vision service,
+or if you are running on Google Compute Engine this configuration is taken
+care of for you. You can read more about the options for connecting in the
+<a href="https://googlecloudplatform.github.io/gcloud-ruby/#/docs/guides/authentication">Authentication
+Guide</a>.</p>
+
+<h2>Creating images</h2>
+
+<p>The Cloud Vision API supports a variety of image file formats, including
+JPEG, PNG8, PNG24, Animated GIF (first frame only), and RAW. See <a href="https://cloud.google.com/vision/docs/image-best-practices#image_types">Best
+Practices - Image Types</a>
+for the list of formats. Be aware that Cloud Vision sets upper limits on
+file size as well as on the total combined size of all images in a request.
+Reducing your file size can significantly improve throughput; however, be
+careful not to reduce image quality in the process. See <a href="https://cloud.google.com/vision/docs/image-best-practices#image_sizing">Best Practices -
+Image Sizing</a>
+for current file size limits.</p>
+
+<p>Use <span class='object_link'><a href="Vision/Project.html#image-instance_method" title="Gcloud::Vision::Project#image (method)">Project#image</a></span> to create images for the Cloud Vision service:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='id identifier rubyid_image'>image</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/landmark.jpg</span><span class='tstring_end'>&quot;</span></span>
+</code></pre>
+
+<p>Once you have an image, you can set metadata on its context:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='id identifier rubyid_image'>image</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/landmark.jpg</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_image'>image</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_area'>area</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>longitude:</span> <span class='op'>-</span><span class='float'>122.0862462</span><span class='comma'>,</span>
+                           <span class='label'>latitude:</span> <span class='float'>37.4220041</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_image'>image</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_area'>area</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>longitude:</span> <span class='op'>-</span><span class='float'>122.0762462</span><span class='comma'>,</span>
+                           <span class='label'>latitude:</span> <span class='float'>37.4320041</span> <span class='rbrace'>}</span>
+
+</code></pre>
+
+<h2>Annotating images</h2>
+
+<p>You can use the instance methods on <span class='object_link'><a href="Vision/Image.html" title="Gcloud::Vision::Image (class)">Image</a></span> to invoke Cloud Vision&#39;s
+detection features individually. Each method call makes an API request. (If
+you want to run multiple features in a single request, see the examples for
+<span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Project#annotate</a></span>, below.)</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='id identifier rubyid_image'>image</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/face.jpg</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_face'>face</span> <span class='op'>=</span> <span class='id identifier rubyid_image'>image</span><span class='period'>.</span><span class='id identifier rubyid_face'>face</span>
+
+<span class='id identifier rubyid_face'>face</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='comment'>#=&gt; 9
+</span><span class='id identifier rubyid_face'>face</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_eyes'>eyes</span><span class='period'>.</span><span class='id identifier rubyid_left'>left</span><span class='period'>.</span><span class='id identifier rubyid_pupil'>pupil</span>
+<span class='comment'>#=&gt; #&lt;Landmark (x: 190.41544, y: 84.4557, z: -1.3682901)&gt;
+</span><span class='id identifier rubyid_face'>face</span><span class='period'>.</span><span class='id identifier rubyid_features'>features</span><span class='period'>.</span><span class='id identifier rubyid_chin'>chin</span><span class='period'>.</span><span class='id identifier rubyid_center'>center</span>
+<span class='comment'>#=&gt; #&lt;Landmark (x: 233.21977, y: 189.47475, z: 19.487228)&gt;
+</span></code></pre>
+
+<p>You can also use the <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Project#annotate</a></span> method to perform image
+detection. This method allows you to configure multiple detection features
+in a single request.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='id identifier rubyid_image'>image</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/face.jpg</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_annotation'>annotation</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='label'>faces:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>labels:</span> <span class='kw'>true</span>
+<span class='id identifier rubyid_annotation'>annotation</span><span class='period'>.</span><span class='id identifier rubyid_faces'>faces</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='comment'>#=&gt; 1
+</span><span class='id identifier rubyid_annotation'>annotation</span><span class='period'>.</span><span class='id identifier rubyid_labels'>labels</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='comment'>#=&gt; 4
+</span></code></pre>
+
+<p>You can also perform detection tasks on multiple images in a single request:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='id identifier rubyid_face_image'>face_image</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/face.jpg</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_landmark_image'>landmark_image</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/landmark.jpg</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_annotations'>annotations</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='id identifier rubyid_face_image'>face_image</span><span class='comma'>,</span> <span class='id identifier rubyid_landmark_image'>landmark_image</span><span class='comma'>,</span> <span class='label'>labels:</span> <span class='kw'>true</span>
+
+<span class='id identifier rubyid_annotations'>annotations</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_labels'>labels</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='comment'>#=&gt; 4
+</span><span class='id identifier rubyid_annotations'>annotations</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_labels'>labels</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='comment'>#=&gt; 6
+</span></code></pre>
+
+<p>It is even possible to configure different features for multiple images in
+a single call using a block. The following example results in a single
+request to the Cloud Vision API:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='id identifier rubyid_face_image'>face_image</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/face.jpg</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_landmark_image'>landmark_image</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/landmark.jpg</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_text_image'>text_image</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/text.png</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_annotations'>annotations</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_annotate'>annotate</span><span class='op'>|</span>
+   <span class='id identifier rubyid_annotate'>annotate</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='id identifier rubyid_face_image'>face_image</span><span class='comma'>,</span> <span class='label'>faces:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>labels:</span> <span class='kw'>true</span>
+   <span class='id identifier rubyid_annotate'>annotate</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='id identifier rubyid_landmark_image'>landmark_image</span><span class='comma'>,</span> <span class='label'>landmarks:</span> <span class='kw'>true</span>
+   <span class='id identifier rubyid_annotate'>annotate</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='id identifier rubyid_text_image'>text_image</span><span class='comma'>,</span> <span class='label'>text:</span> <span class='kw'>true</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_annotations'>annotations</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_faces'>faces</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='comment'>#=&gt; 1
+</span><span class='id identifier rubyid_annotations'>annotations</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_labels'>labels</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='comment'>#=&gt; 4
+</span><span class='id identifier rubyid_annotations'>annotations</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_landmarks'>landmarks</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='comment'>#=&gt; 1
+</span><span class='id identifier rubyid_annotations'>annotations</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span><span class='period'>.</span><span class='id identifier rubyid_words'>words</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='comment'>#=&gt; 28
+</span></code></pre>
+
+<p>The maximum number of results returned when performing face, landmark, logo,
+and label detection are configured with <span class='object_link'><a href="#default_max_faces-class_method" title="Gcloud::Vision.default_max_faces (method)">Vision.default_max_faces</a></span>,
+<span class='object_link'><a href="#default_max_landmarks-class_method" title="Gcloud::Vision.default_max_landmarks (method)">Vision.default_max_landmarks</a></span>, <span class='object_link'><a href="#default_max_logos-class_method" title="Gcloud::Vision.default_max_logos (method)">Vision.default_max_logos</a></span>, and
+<span class='object_link'><a href="#default_max_labels-class_method" title="Gcloud::Vision.default_max_labels (method)">Vision.default_max_labels</a></span>, respectfully. To change the default behavior
+you can update the configuration, or provide a different value in the method
+call.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='id identifier rubyid_image'>image</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/face.jpg</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># Return just one face.
+</span><span class='id identifier rubyid_annotation'>annotation</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='label'>faces:</span> <span class='int'>1</span>
+<span class='comment'># Return up to 100 faces.
+</span><span class='id identifier rubyid_annotation'>annotation</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='label'>faces:</span> <span class='int'>100</span>
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Vision/Annotate.html" title="Gcloud::Vision::Annotate (class)">Annotate</a></span>, <span class='object_link'><a href="Vision/Annotation.html" title="Gcloud::Vision::Annotation (class)">Annotation</a></span>, <span class='object_link'><a href="Vision/ApiError.html" title="Gcloud::Vision::ApiError (class)">ApiError</a></span>, <span class='object_link'><a href="Vision/Error.html" title="Gcloud::Vision::Error (class)">Error</a></span>, <span class='object_link'><a href="Vision/Image.html" title="Gcloud::Vision::Image (class)">Image</a></span>, <span class='object_link'><a href="Vision/Location.html" title="Gcloud::Vision::Location (class)">Location</a></span>, <span class='object_link'><a href="Vision/Project.html" title="Gcloud::Vision::Project (class)">Project</a></span>
+    
+  
+</p>
+
+
+
+
+  <h2>Class Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default_max_faces-class_method" title="default_max_faces (class method)">+ (Object) <strong>default_max_faces</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The default max results to return for facial detection requests.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default_max_labels-class_method" title="default_max_labels (class method)">+ (Object) <strong>default_max_labels</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The default max results to return for label detection requests.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default_max_landmarks-class_method" title="default_max_landmarks (class method)">+ (Object) <strong>default_max_landmarks</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The default max results to return for landmark detection requests.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default_max_logos-class_method" title="default_max_logos (class method)">+ (Object) <strong>default_max_logos</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The default max results to return for logo detection requests.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+
+  <div id="class_attr_details" class="attr_details">
+    <h2>Class Attribute Details</h2>
+    
+      
+      <span id="default_max_faces=-class_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="default_max_faces-class_method">
+  
+    + (<tt>Object</tt>) <strong>default_max_faces</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The default max results to return for facial detection requests. This is
+used on <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Gcloud::Vision::Project#annotate</a></span> as well as <span class='object_link'><a href="Vision/Image.html#faces-instance_method" title="Gcloud::Vision::Image#faces (method)">Gcloud::Vision::Image#faces</a></span>.</p>
+
+<p>The default value is 10.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Using the default setting on <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Gcloud::Vision::Project#annotate</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_faces'>default_max_faces</span> <span class='comment'>#=&gt; 10
+</span>
+<span class='id identifier rubyid_annotation'>annotation</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/faces.jpg</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>faces:</span> <span class='kw'>true</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># annotation = vision.annotate &quot;path/to/faces.jpg&quot;, faces: 10</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Updating the default setting on <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Gcloud::Vision::Project#annotate</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='comment'># Set a new default
+</span><span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_faces'>default_max_faces</span> <span class='op'>=</span> <span class='int'>25</span>
+
+<span class='id identifier rubyid_annotation'>annotation</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/faces.jpg</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>faces:</span> <span class='kw'>true</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># annotation = vision.annotate &quot;path/to/faces.jpg&quot;, faces: 25</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Using the default setting on <span class='object_link'><a href="Vision/Image.html#faces-instance_method" title="Gcloud::Vision::Image#faces (method)">Gcloud::Vision::Image#faces</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_faces'>default_max_faces</span> <span class='comment'>#=&gt; 10
+</span>
+<span class='id identifier rubyid_faces'>faces</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/faces.jpg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_faces'>faces</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># faces = vision.image(&quot;path/to/faces.jpg&quot;).faces 10</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Updating the default setting on <span class='object_link'><a href="Vision/Image.html#faces-instance_method" title="Gcloud::Vision::Image#faces (method)">Gcloud::Vision::Image#faces</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='comment'># Set a new default
+</span><span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_faces'>default_max_faces</span> <span class='op'>=</span> <span class='int'>25</span>
+
+<span class='id identifier rubyid_faces'>faces</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/faces.jpg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_faces'>faces</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># faces = vision.image(&quot;path/to/faces.jpg&quot;).faces 25</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+283
+284
+285</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/vision.rb', line 283</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_default_max_faces'>default_max_faces</span>
+  <span class='ivar'>@default_max_faces</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="default_max_labels=-class_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="default_max_labels-class_method">
+  
+    + (<tt>Object</tt>) <strong>default_max_labels</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The default max results to return for label detection requests. This is
+used on <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Gcloud::Vision::Project#annotate</a></span> as well as <span class='object_link'><a href="Vision/Image.html#labels-instance_method" title="Gcloud::Vision::Image#labels (method)">Gcloud::Vision::Image#labels</a></span>.</p>
+
+<p>The default value is 10.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Using the default setting on <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Gcloud::Vision::Project#annotate</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_labels'>default_max_labels</span> <span class='comment'>#=&gt; 10
+</span>
+<span class='id identifier rubyid_annotation'>annotation</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/labels.jpg</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>labels:</span> <span class='kw'>true</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># annotation = vision.annotate &quot;path/to/labels.jpg&quot;, labels: 10</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Updating the default setting on <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Gcloud::Vision::Project#annotate</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='comment'># Set a new default
+</span><span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_labels'>default_max_labels</span> <span class='op'>=</span> <span class='int'>25</span>
+
+<span class='id identifier rubyid_annotation'>annotation</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/labels.jpg</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>labels:</span> <span class='kw'>true</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># annotation = vision.annotate &quot;path/to/labels.jpg&quot;, labels: 25</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Using the default setting on <span class='object_link'><a href="Vision/Image.html#labels-instance_method" title="Gcloud::Vision::Image#labels (method)">Gcloud::Vision::Image#labels</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_labels'>default_max_labels</span> <span class='comment'>#=&gt; 10
+</span>
+<span class='id identifier rubyid_labels'>labels</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/labels.jpg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_labels'>labels</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># labels = vision.image(&quot;path/to/labels.jpg&quot;).labels 10</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Updating the default setting on <span class='object_link'><a href="Vision/Image.html#labels-instance_method" title="Gcloud::Vision::Image#labels (method)">Gcloud::Vision::Image#labels</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='comment'># Set a new default
+</span><span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_labels'>default_max_labels</span> <span class='op'>=</span> <span class='int'>25</span>
+
+<span class='id identifier rubyid_labels'>labels</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/labels.jpg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_labels'>labels</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># labels = vision.image(&quot;path/to/labels.jpg&quot;).labels 25</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+460
+461
+462</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/vision.rb', line 460</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_default_max_labels'>default_max_labels</span>
+  <span class='ivar'>@default_max_labels</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="default_max_landmarks=-class_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="default_max_landmarks-class_method">
+  
+    + (<tt>Object</tt>) <strong>default_max_landmarks</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The default max results to return for landmark detection requests. This
+is used on <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Gcloud::Vision::Project#annotate</a></span> as well as <span class='object_link'><a href="Vision/Image.html#landmarks-instance_method" title="Gcloud::Vision::Image#landmarks (method)">Gcloud::Vision::Image#landmarks</a></span>.</p>
+
+<p>The default value is 10.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Using the default setting on <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Gcloud::Vision::Project#annotate</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_landmarks'>default_max_landmarks</span> <span class='comment'>#=&gt; 10
+</span>
+<span class='id identifier rubyid_annotation'>annotation</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/landmarks.jpg</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>landmarks:</span> <span class='kw'>true</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># annotation = vision.annotate &quot;path/to/landmarks.jpg&quot;, landmarks: 10</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Updating the default setting on <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Gcloud::Vision::Project#annotate</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='comment'># Set a new default
+</span><span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_landmarks'>default_max_landmarks</span> <span class='op'>=</span> <span class='int'>25</span>
+
+<span class='id identifier rubyid_annotation'>annotation</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/landmarks.jpg</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>landmarks:</span> <span class='kw'>true</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># annotation = vision.annotate &quot;path/to/landmarks.jpg&quot;, landmarks: 25</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Using the default setting on <span class='object_link'><a href="Vision/Image.html#landmarks-instance_method" title="Gcloud::Vision::Image#landmarks (method)">Gcloud::Vision::Image#landmarks</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_landmarks'>default_max_landmarks</span> <span class='comment'>#=&gt; 10
+</span>
+<span class='id identifier rubyid_landmarks'>landmarks</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/landmarks.jpg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_landmarks'>landmarks</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># landmarks = vision.image(&quot;path/to/landmarks.jpg&quot;).landmarks 10</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Updating the default setting on <span class='object_link'><a href="Vision/Image.html#landmarks-instance_method" title="Gcloud::Vision::Image#landmarks (method)">Gcloud::Vision::Image#landmarks</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='comment'># Set a new default
+</span><span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_landmarks'>default_max_landmarks</span> <span class='op'>=</span> <span class='int'>25</span>
+
+<span class='id identifier rubyid_landmarks'>landmarks</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/landmarks.jpg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_landmarks'>landmarks</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># landmarks = vision.image(&quot;path/to/landmarks.jpg&quot;).landmarks 25</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+342
+343
+344</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/vision.rb', line 342</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_default_max_landmarks'>default_max_landmarks</span>
+  <span class='ivar'>@default_max_landmarks</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="default_max_logos=-class_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="default_max_logos-class_method">
+  
+    + (<tt>Object</tt>) <strong>default_max_logos</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The default max results to return for logo detection requests. This is
+used on <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Gcloud::Vision::Project#annotate</a></span> as well as <span class='object_link'><a href="Vision/Image.html#logos-instance_method" title="Gcloud::Vision::Image#logos (method)">Gcloud::Vision::Image#logos</a></span>.</p>
+
+<p>The default value is 10.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Using the default setting on <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Gcloud::Vision::Project#annotate</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_logos'>default_max_logos</span> <span class='comment'>#=&gt; 10
+</span>
+<span class='id identifier rubyid_annotation'>annotation</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/logos.jpg</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>logos:</span> <span class='kw'>true</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># annotation = vision.annotate &quot;path/to/logos.jpg&quot;, logos: 10</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Updating the default setting on <span class='object_link'><a href="Vision/Project.html#annotate-instance_method" title="Gcloud::Vision::Project#annotate (method)">Gcloud::Vision::Project#annotate</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='comment'># Set a new default
+</span><span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_logos'>default_max_logos</span> <span class='op'>=</span> <span class='int'>25</span>
+
+<span class='id identifier rubyid_annotation'>annotation</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_annotate'>annotate</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/logos.jpg</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>logos:</span> <span class='kw'>true</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># annotation = vision.annotate &quot;path/to/logos.jpg&quot;, logos: 25</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Using the default setting on <span class='object_link'><a href="Vision/Image.html#logos-instance_method" title="Gcloud::Vision::Image#logos (method)">Gcloud::Vision::Image#logos</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_logos'>default_max_logos</span> <span class='comment'>#=&gt; 10
+</span>
+<span class='id identifier rubyid_logos'>logos</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/logos.jpg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_logos'>logos</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># logos = vision.image(&quot;path/to/logos.jpg&quot;).logos 10</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Updating the default setting on <span class='object_link'><a href="Vision/Image.html#logos-instance_method" title="Gcloud::Vision::Image#logos (method)">Gcloud::Vision::Image#logos</a></span>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gcloud</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='id identifier rubyid_gcloud'>gcloud</span> <span class='op'>=</span> <span class='const'>Gcloud</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_vision'>vision</span> <span class='op'>=</span> <span class='id identifier rubyid_gcloud'>gcloud</span><span class='period'>.</span><span class='id identifier rubyid_vision'>vision</span>
+
+<span class='comment'># Set a new default
+</span><span class='const'>Gcloud</span><span class='op'>::</span><span class='const'>Vision</span><span class='period'>.</span><span class='id identifier rubyid_default_max_logos'>default_max_logos</span> <span class='op'>=</span> <span class='int'>25</span>
+
+<span class='id identifier rubyid_logos'>logos</span> <span class='op'>=</span> <span class='id identifier rubyid_vision'>vision</span><span class='period'>.</span><span class='id identifier rubyid_image'>image</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path/to/logos.jpg</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_logos'>logos</span>
+<span class='comment'># This is the same as calling
+</span><span class='comment'># logos = vision.image(&quot;path/to/logos.jpg&quot;).logos 25</span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+401
+402
+403</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gcloud/vision.rb', line 401</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_default_max_logos'>default_max_logos</span>
+  <span class='ivar'>@default_max_logos</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+</div>
+
+    <div id="footer">
+  Generated on Wed May 18 15:17:42 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.3).
+</div>
+
+  </body>
+</html>
