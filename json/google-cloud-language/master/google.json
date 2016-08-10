@@ -1,0 +1,1 @@
+{"id":"google","name":"Google","title":["Google"],"description":"<p>require “google/language/v1/language_services”</p>","source":"lib/google/cloud/language/service.rb#L22","resources":[],"examples":[],"methods":[]}
