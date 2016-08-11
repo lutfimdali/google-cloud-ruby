@@ -17,6 +17,7 @@
       "name": "google-cloud",
       "defaultService": "google/cloud",
       "versions": [
+        "v0.12.2",
         "master"
       ]
     },
