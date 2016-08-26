@@ -33,6 +33,8 @@ small amount of setup:
     $ bundle install
     ```
 
+As explained in the [README](README.md), the support for each Google Cloud service in google-cloud-ruby is distributed as a separate gem. (For your convenience, the `google-cloud` umbrella gem lets you install the entire collection.) This separation makes it easier to contribute code for just one of the services, because you most likely won't need to run the tests for any of the other services while you do your work. An important exception to this is `google-cloud-storage`, which is a dependency of several other services. If you work on Storage, be sure to run tests from the top level. Otherwise, you can run the `bundle` and `rake` tasks shown in this guide within the subdirectory for the individual service gem (e.g., `google-cloud-datastore`), rather than at the top level.
+
 ## Console
 
 In order to run code interactively, you can automatically load google-cloud-ruby and
@@ -41,6 +43,8 @@ its dependencies in IRB with:
 ```sh
 $ bundle exec rake console
 ```
+
+You also can run this command within the subdirectory for the individual service gem on which you are working (e.g., `google-cloud-datastore`), rather than at the top level.
 
 ## Tests
 
@@ -54,17 +58,23 @@ To run the unit tests, simply run:
 $ rake test
 ```
 
+You also can run this command within the subdirectory for the individual service gem on which you are working (e.g., `google-cloud-datastore`), rather than at the top level.
+
 ### Acceptance Tests
 
-The google-cloud-ruby acceptance tests interact with the following live service APIs:
+The google-cloud-ruby acceptance test suite interacts with the live service APIs listed below.
 
-* BigQuery
-* Cloud Datastore
-* Cloud DNS
-* Cloud Pub/Sub
-* Cloud Storage
+* BigQuery (google-cloud-bigquery)
+* Cloud Datastore (google-cloud-datastore)
+* Cloud DNS (google-cloud-dns)
+* Stackdriver Logging (google-cloud-logging)
+* Cloud Natural Language API (google-cloud-language)
+* Cloud Pub/Sub (google-cloud-pubsub)
+* Cloud Storage (google-cloud-storage)
+* Translate API (google-cloud-translate)
+* Cloud Vision API (google-cloud-vision)
 
-Follow the instructions in the [Authentication guide](AUTHENTICATION.md) for enabling APIs. Some of the APIs may not yet be generally available, making it difficult for some contributors to successfully run the entire acceptance test suite. However, please ensure that you do successfully run acceptance tests for any code areas covered by your pull request.
+To enable these APIs, follow the instructions in the [Authentication guide](AUTHENTICATION.md). Some of the APIs may not yet be generally available, making it difficult for some contributors to successfully run the entire acceptance test suite. However, please ensure that you do successfully run acceptance tests for any code areas covered by your pull request.
 
 To run the acceptance tests, first create and configure a project in the Google Developers Console, as described in the [Authentication guide](AUTHENTICATION.md). Be sure to download the JSON KEY file. Make note of the PROJECT_ID and the KEYFILE location on your system.
 
@@ -103,7 +113,9 @@ To run the acceptance tests:
 $ rake test:acceptance[PROJECT_ID,KEYFILE_PATH]
 ```
 
-Or, if you prefer you can store the values in the `GCLOUD_TEST_PROJECT` and `GCLOUD_TEST_KEYFILE` environment variables:
+You also can run this command within the subdirectory for the individual service gem on which you are working (e.g., `google-cloud-datastore`), rather than at the top level.
+
+If you prefer, you can store the credentials in the `GCLOUD_TEST_PROJECT` and `GCLOUD_TEST_KEYFILE` environment variables:
 
 ``` sh
 $ export GCLOUD_TEST_PROJECT=my-project-id
@@ -133,6 +145,8 @@ You can check your code against these rules by running Rubocop like so:
 ```sh
 $ rake rubocop
 ```
+
+You also can run this command within the subdirectory for the individual service gem on which you are working (e.g., `google-cloud-datastore`), rather than at the top level.
 
 ## Code of Conduct
 
