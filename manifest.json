@@ -5,6 +5,7 @@
   "markdown": "ruby",
   "titleDelimiter": "::",
   "defaultModule": "google-cloud",
+  "matchServiceTitle": true,
   "content": "json",
   "home": "home.html",
   "package": {
@@ -17,8 +18,11 @@
       "name": "gcloud",
       "defaultService": "gcloud",
       "versions": [
-        "v0.20.0",
+        "v0.23.0",
         "master",
+        "v0.22.0",
+        "v0.21.0",
+        "v0.20.0",
         "v0.12.2",
         "v0.12.1",
         "v0.12.0",
@@ -37,8 +41,13 @@
       "name": "google-cloud",
       "defaultService": "google/cloud",
       "versions": [
-        "v0.20.0",
-        "master"
+        "v0.23.0",
+        "master",
+        "v0.22.0",
+        "v0.21.1",
+        "v0.21.0",
+        "v0.20.1",
+        "v0.20.0"
       ]
     },
     {
@@ -46,8 +55,11 @@
       "name": "google-cloud-bigquery",
       "defaultService": "google/cloud/bigquery",
       "versions": [
-        "v0.20.1",
+        "v0.23.0",
         "master",
+        "v0.21.0",
+        "v0.20.2",
+        "v0.20.1",
         "v0.20.0"
       ]
     },
@@ -56,8 +68,10 @@
       "name": "google-cloud-core",
       "defaultService": "google/cloud/error",
       "versions": [
-        "v0.20.1",
-        "master"
+        "v0.21.1",
+        "master",
+        "v0.21.0",
+        "v0.20.1"
       ]
     },
     {
@@ -65,8 +79,10 @@
       "name": "google-cloud-datastore",
       "defaultService": "google/cloud/datastore",
       "versions": [
-        "v0.20.1",
+        "v0.23.0",
         "master",
+        "v0.21.0",
+        "v0.20.1",
         "v0.20.0"
       ]
     },
@@ -75,9 +91,21 @@
       "name": "google-cloud-dns",
       "defaultService": "google/cloud/dns",
       "versions": [
-        "v0.20.1",
+        "v0.21.0",
         "master",
+        "v0.20.1",
         "v0.20.0"
+      ]
+    },
+    {
+      "id": "google-cloud-error_reporting",
+      "name": "google-cloud-error_reporting",
+      "defaultService": "google/cloud/errorreporting/v1beta1",
+      "versions": [
+        "v0.21.2",
+        "master",
+        "v0.21.1",
+        "v0.21.0"
       ]
     },
     {
@@ -85,8 +113,10 @@
       "name": "google-cloud-language",
       "defaultService": "google/cloud/language",
       "versions": [
-        "v0.20.2",
+        "v0.22.0",
         "master",
+        "v0.21.0",
+        "v0.20.2",
         "v0.20.1",
         "v0.20.0"
       ]
@@ -96,9 +126,24 @@
       "name": "google-cloud-logging",
       "defaultService": "google/cloud/logging",
       "versions": [
-        "v0.20.1",
+        "v0.23.2",
         "master",
+        "v0.23.1",
+        "v0.23.0",
+        "v0.21.2",
+        "v0.21.1",
+        "v0.21.0",
+        "v0.20.1",
         "v0.20.0"
+      ]
+    },
+    {
+      "id": "google-cloud-monitoring",
+      "name": "google-cloud-monitoring",
+      "defaultService": "google/cloud/monitoring/v3",
+      "versions": [
+        "v0.21.0",
+        "master"
       ]
     },
     {
@@ -106,8 +151,9 @@
       "name": "google-cloud-pubsub",
       "defaultService": "google/cloud/pubsub",
       "versions": [
-        "v0.20.1",
+        "v0.21.0",
         "master",
+        "v0.20.1",
         "v0.20.0"
       ]
     },
@@ -116,8 +162,20 @@
       "name": "google-cloud-resource_manager",
       "defaultService": "google/cloud/resourcemanager",
       "versions": [
-        "v0.20.1",
+        "v0.21.0",
         "master",
+        "v0.20.1",
+        "v0.20.0"
+      ]
+    },
+    {
+      "id": "google-cloud-speech",
+      "name": "google-cloud-speech",
+      "defaultService": "google/cloud/speech",
+      "versions": [
+        "v0.21.1",
+        "master",
+        "v0.21.0",
         "v0.20.0"
       ]
     },
@@ -126,9 +184,22 @@
       "name": "google-cloud-storage",
       "defaultService": "google/cloud/storage",
       "versions": [
-        "v0.20.1",
+        "v0.23.1",
         "master",
+        "v0.23.0",
+        "v0.21.0",
+        "v0.20.2",
+        "v0.20.1",
         "v0.20.0"
+      ]
+    },
+    {
+      "id": "google-cloud-trace",
+      "name": "google-cloud-trace",
+      "defaultService": "google/cloud/trace",
+      "versions": [
+        "v0.21.0",
+        "master"
       ]
     },
     {
@@ -136,8 +207,12 @@
       "name": "google-cloud-translate",
       "defaultService": "google/cloud/translate",
       "versions": [
-        "v0.20.1",
+        "v0.22.2",
         "master",
+        "v0.22.1",
+        "v0.22.0",
+        "v0.21.0",
+        "v0.20.1",
         "v0.20.0"
       ]
     },
@@ -146,10 +221,31 @@
       "name": "google-cloud-vision",
       "defaultService": "google/cloud/vision",
       "versions": [
-        "v0.20.2",
+        "v0.21.1",
         "master",
+        "v0.21.0",
+        "v0.20.2",
         "v0.20.1",
         "v0.20.0"
+      ]
+    },
+    {
+      "id": "stackdriver",
+      "name": "stackdriver",
+      "defaultService": "stackdriver",
+      "versions": [
+        "v0.4.0",
+        "master",
+        "v0.3.0"
+      ]
+    },
+    {
+      "id": "stackdriver-core",
+      "name": "stackdriver-core",
+      "defaultService": "stackdriver/core",
+      "versions": [
+        "v0.21.0",
+        "master"
       ]
     }
   ],
